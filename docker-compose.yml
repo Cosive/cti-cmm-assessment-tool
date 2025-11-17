@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  web:
+    image: caddy:latest
+    ports:
+      # Use the variable $HTTPS_PORT, but default to "443" if it's not set
+      - "${HTTPS_PORT:-8443}:443"
+      # Use the variable $HTTP_PORT, but default to "80" if it's not set
+      - "${HTTP_PORT:-8880}:80"
+    volumes:
+      - ./index.html:/srv/index.html:ro
+      - ./cti-cmm-data.json:/srv/cti-cmm-data.json:ro
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+
+volumes:
+  caddy_data:
+  caddy_config:

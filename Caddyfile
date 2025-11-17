@@ -1,0 +1,8 @@
+localhost {
+    # Tell Caddy to serve files from its root directory
+    file_server
+
+    # Tell Caddy to generate its own self-signed certificate
+    # instead of trying to get a public one for "localhost"
+    tls internal
+}
