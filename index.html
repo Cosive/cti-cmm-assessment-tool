@@ -1375,8 +1375,8 @@ class Domain {
                 // 1. Populate Table
                 dom.dashboardTableBody.innerHTML = ''; // Clear old data
                 domainScores.forEach(domain => {
-                    // === MODIFICATION: Use NICKNAME (Full Name) format ===
-                    const domainName = `${domain.nickname} (${domain.name})`;
+                    // === MODIFICATION: Use just the nickname (e.g., "ASSET") ===
+                    const domainName = domain.nickname;
                     // === END MODIFICATION ===
                     const rowClass = domain.relevant ? "hover:bg-slate-50" : "hover:bg-slate-50 opacity-50 line-through";
                     // SECURE: All data here is either from our own map or a calculation.
@@ -1582,7 +1582,21 @@ class Domain {
 
                             const slugDiv = document.createElement('div');
                             slugDiv.className = "font-semibold text-slate-800 pr-32"; // Added padding-right
-                            slugDiv.textContent = practice.slug; // Safe
+                            
+                            // Create identifier span in grey
+                            const idSpan = document.createElement('span');
+                            idSpan.className = "text-slate-500 font-normal";
+                            idSpan.textContent = practice.id;
+                            
+                            // Create line break
+                            const lineBreak = document.createElement('br');
+                            
+                            // Create slug text node
+                            const slugText = document.createTextNode(practice.slug);
+                            
+                            slugDiv.appendChild(idSpan);
+                            slugDiv.appendChild(lineBreak);
+                            slugDiv.appendChild(slugText);
                             
                             if (!practice.relevant) {
                                 slugDiv.classList.add('line-through', 'text-slate-400');
@@ -1862,7 +1876,20 @@ class Domain {
                     };
 
                     addTextCell(item.domainNickname, "py-4 px-4 text-sm font-medium text-slate-900");
-                    addTextCell(practice.slug, "py-4 px-4 text-sm text-slate-700");
+                    
+                    // Practice cell with ID and slug
+                    const practiceCell = document.createElement('td');
+                    practiceCell.className = "py-4 px-4 text-sm";
+                    const practiceIdSpan = document.createElement('span');
+                    practiceIdSpan.className = "text-slate-500 font-normal block";
+                    practiceIdSpan.textContent = practice.id;
+                    const practiceSlugSpan = document.createElement('span');
+                    practiceSlugSpan.className = "text-slate-700 font-semibold block";
+                    practiceSlugSpan.textContent = practice.slug;
+                    practiceCell.appendChild(practiceIdSpan);
+                    practiceCell.appendChild(practiceSlugSpan);
+                    row.appendChild(practiceCell);
+                    
                     addHTMLCell(view.createDisplayMaturityWidget(practice.score, 'current'), "py-2 px-4 text-sm text-slate-500");
                     addHTMLCell(view.createDisplayMaturityWidget(practice.targetScore, 'target'), "py-2 px-4 text-sm text-slate-500");
                     addTextCell(practice.impact || '-', "py-4 px-4 text-sm text-slate-500");
