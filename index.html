@@ -221,8 +221,8 @@
         
         <nav class="w-64 bg-slate-800 text-slate-200 flex-shrink-0 overflow-y-auto">
             <div class="p-4">
-                <h1 class="text-xl font-bold text-white">CTI-CMM Tool</h1>
-                <span class="text-sm text-slate-400">Assessment v1.5</span>
+                <h1 class="text-xl font-bold text-white">CTI-CMM v1.3</h1>
+                <span class="text-sm text-slate-400">Tool version 1.3.0</span>
             </div>
             <ul id="main-nav" class="space-y-1 p-2">
 <li>
@@ -479,13 +479,23 @@
 
                         <h3 class="text-xl font-semibold text-slate-800 mt-6 mb-2">About this Tool</h3>
                         <p class="text-lg text-slate-600 mb-6">
-                             This web assessment tool is an alternative to the <a href="https://cti-cmm.org/beta-assessment-tool" target="_blank" rel="noopener noreferrer" class="text-blue-600 font-semibold underline decoration-2 decoration-blue-200 hover:text-blue-800 hover:decoration-blue-400 px-1 rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-200 transition">spreadsheet version</a> of the CTI-CMM. 
+                             This web assessment tool is an alternative to the <a href="https://cti-cmm.org/assessment-tool" target="_blank" rel="noopener noreferrer" class="text-blue-600 font-semibold underline decoration-2 decoration-blue-200 hover:text-blue-800 hover:decoration-blue-400 px-1 rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-200 transition">spreadsheet version</a> of the CTI-CMM. 
                              It provides an interactive interface, auto-saving capabilities, import / export of results and a dashboard to visualize your maturity posture.
                         </p>
             
                         <h3 class="text-xl font-semibold text-slate-800 mt-6 mb-2">Version History</h3>
                         <div class="text-lg text-slate-600 mb-6">
                             <ul class="space-y-3">
+                                <li>
+                                    <strong>v1.3.0 (2026-01-21):</strong>
+                                    <ul class="list-disc pl-6 mt-2 space-y-1">
+                                        <li>Update data for CTI-CMM v1.3 criteria</li>
+                                        <li>Add Practice IDs to the Priorities Sheet</li>
+                                        <li>Add Practice IDs to the Practice Cards</li>
+                                        <li>Flag incompatibility between JSON data and the current version of the tool</li>
+                                        <li>Rework numbering to match CTI-CMM model version</li>
+                                    </ul>
+                                </li>
                                 <li>
                                     <strong>v3 (2025-11-14):</strong>
                                     <ul class="list-disc pl-6 mt-2 space-y-1">
@@ -2466,7 +2476,7 @@ class Domain {
                     
                     if (fileName.length === 0) fileName = 'cti-cmm-assessment';
 
-                    fileName = `${fileName}-export-${new Date().toISOString().split('T')[0]}.json`;
+                    fileName = `${fileName}-v1.3-export-${new Date().toISOString().split('T')[0]}.json`;
                     
                     link.setAttribute('href', url);
                     link.setAttribute('download', fileName);
