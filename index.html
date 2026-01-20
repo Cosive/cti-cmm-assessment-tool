@@ -283,6 +283,20 @@
         </nav>
         <main id="main-content" class="flex-1 overflow-y-auto p-6 md:p-8">
             
+            <!-- Version Mismatch Warning Banner -->
+            <div id="version-warning-banner" class="hidden bg-amber-100 border-l-4 border-amber-500 text-amber-900 p-4 mb-6" role="alert">
+                <div class="flex items-start">
+                    <svg class="w-6 h-6 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+                    </svg>
+                    <div>
+                        <p class="font-bold">Data Version Mismatch</p>
+                        <p id="version-warning-message" class="mt-1"></p>
+                        <p class="mt-2">Please use the <a href="#" class="font-semibold underline" data-page="data">Data Management</a> page to reset your data or export your current assessment before continuing.</p>
+                    </div>
+                </div>
+            </div>
+            
             <div id="page-dashboard" class="page">
                 <h2 class="text-3xl font-bold text-slate-800 mb-6">Assessment Dashboard</h2>
                 
@@ -866,10 +880,12 @@ class Domain {
 
         // --- 1. Constants ---
         const CURRENT_TOOL_VERSION = '1.6'; // === BUMPED VERSION ===
+        const CURRENT_CTI_CMM_VERSION = '1.3'; // CTI-CMM Model Version
         const STORAGE_KEY = 'ctiCmmAssessmentData';
         const MODE_STORAGE_KEY = 'ctiCmmAppMode';
-        const VIEW_STORAGE_KEY = 'ctiCmmAppView'; 
+        const VIEW_STORAGE_KEY = 'ctiCmmAppView';
         const ASSESSMENT_NAME_KEY = 'ctiCmmAssessmentName';
+        const CTI_CMM_VERSION_KEY = 'ctiCmmModelVersion';
 
         // === REMOVED DOMAIN_NAME_MAP ===
         
@@ -931,7 +947,9 @@ class Domain {
             assessmentDisabledBanner: document.getElementById('assessment-disabled-banner'),
             dashboardTableBody: document.getElementById('dashboard-table-body'),
             dashboardTableFooter: document.getElementById('dashboard-table-footer'),
-            prioritiesTableBody: document.getElementById('priorities-table-body')
+            prioritiesTableBody: document.getElementById('priorities-table-body'),
+            versionWarningBanner: document.getElementById('version-warning-banner'),
+            versionWarningMessage: document.getElementById('version-warning-message')
         };
 
 
@@ -1069,6 +1087,8 @@ class Domain {
                     const dataToSave = store.getUserDataForSave();
                     const savedString = JSON.stringify(dataToSave);
                     localStorage.setItem(STORAGE_KEY, savedString);
+                    // Save CTI-CMM model version
+                    localStorage.setItem(CTI_CMM_VERSION_KEY, CURRENT_CTI_CMM_VERSION);
                     console.log('User assessment data saved.');
                 } catch (error) {
                     console.error('Error saving data to localStorage:', error);
@@ -1136,6 +1156,13 @@ class Domain {
                             return value;
                         });
                         console.log('User progress loaded.');
+                        
+                        // Check CTI-CMM model version
+                        const storedVersion = localStorage.getItem(CTI_CMM_VERSION_KEY) || '1.2';
+                        if (storedVersion !== CURRENT_CTI_CMM_VERSION) {
+                            dom.versionWarningMessage.textContent = `Your saved data is from CTI-CMM version ${storedVersion}, but this tool supports version ${CURRENT_CTI_CMM_VERSION}. Some features may not work correctly.`;
+                            dom.versionWarningBanner.classList.remove('hidden');
+                        }
                     } else {
                         console.log('No saved data found.');
                     }
@@ -2414,7 +2441,8 @@ class Domain {
                     assessmentName: state.assessmentName,
                     exportDate: new Date().toISOString(),
                     toolVersion: CURRENT_TOOL_VERSION,
-                    modelHash: modelHash, 
+                    ctiCmmVersion: CURRENT_CTI_CMM_VERSION,
+                    modelHash: modelHash,
                     data: userData
                 };
                 
@@ -2770,6 +2798,10 @@ class Domain {
                             // Save the new data
                             localStorage.setItem(STORAGE_KEY, JSON.stringify(importedData.data));
                             localStorage.setItem(ASSESSMENT_NAME_KEY, importedData.assessmentName);
+                            
+                            // Save and check CTI-CMM model version
+                            const importedVersion = importedData.ctiCmmVersion || '1.2';
+                            localStorage.setItem(CTI_CMM_VERSION_KEY, importedVersion);
                             
                             // Reload to apply
                             alert('Import successful! The application will now reload.');
