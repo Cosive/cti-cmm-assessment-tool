@@ -86,7 +86,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Access available asset inventory"
+                        "slug": "Access to asset inventory"
                     },
                     {
                         "id": "ASSET-1-b",
@@ -116,7 +116,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Contextualized future asset scenarios"
+                        "slug": "CTI-driven asset threat assessments"
                     },
                     {
                         "id": "ASSET-1-d",
@@ -197,7 +197,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Triage relevant threat campaigns"
+                        "slug": "Maintain cyber threat landscape visibility"
                     },
                     {
                         "id": "ASSET-2-c",
@@ -227,7 +227,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Identify priority asset vulnerabilities"
+                        "slug": "Identify priority vulnerabilities"
                     },
                     {
                         "id": "ASSET-2-e",
@@ -242,7 +242,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Prescriptive asset protection analysis"
+                        "slug": "Prescriptive asset protection recommendations"
                     },
                     {
                         "id": "ASSET-2-f",
@@ -257,7 +257,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Informed asset risk strategies"
+                        "slug": "Informed asset risk reduction strategies"
                     },
                     {
                         "id": "ASSET-2-g",
@@ -272,7 +272,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Consult on asset purchases"
+                        "slug": "CTI consultation on asset purchases"
                     }
                 ]
             }
@@ -295,7 +295,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Deliver external indicators manually"
+                        "slug": "Deliver external indicators to operations"
                     },
                     {
                         "id": "THREAT-1-b",
@@ -325,7 +325,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Prune indicator collections manually"
+                        "slug": "Prune / expire indicator collections"
                     },
                     {
                         "id": "THREAT-1-d",
@@ -385,7 +385,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Automated indicator collection scale"
+                        "slug": "Automated indicator collection at scale"
                     },
                     {
                         "id": "THREAT-1-h",
@@ -400,7 +400,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Refine indicator fidelity quality"
+                        "slug": "Refine indicator fidelity, quality"
                     },
                     {
                         "id": "THREAT-1-i",
@@ -415,7 +415,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Ecosystem-based indicator context"
+                        "slug": "Internal ecosystem-based indicator context"
                     },
                     {
                         "id": "THREAT-1-j",
@@ -430,7 +430,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Integrate indicators with automation"
+                        "slug": "Integrate proactive defense using indicators"
                     },
                     {
                         "id": "THREAT-1-k",
@@ -445,7 +445,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Correlate and share indicators"
+                        "slug": "Correlate, action, and share indicators"
                     }
                 ]
             },
@@ -466,7 +466,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Support detection logic alerts"
+                        "slug": "Support detection logic via threat alerts"
                     },
                     {
                         "id": "THREAT-2-b",
@@ -481,7 +481,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Profile threats for gaps"
+                        "slug": "Threat profiling for control gap analysis"
                     },
                     {
                         "id": "THREAT-2-c",
@@ -526,7 +526,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Drive strategic detection opportunities"
+                        "slug": "Drive regular detection opportunities"
                     }
                 ]
             },
@@ -562,7 +562,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Prioritize manual threat hunts"
+                        "slug": "Prioritize manual threat hunts with CTI"
                     },
                     {
                         "id": "THREAT-3-c",
@@ -607,7 +607,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Generate hunting hypothesis context"
+                        "slug": "Generate RFIs, context for hunt hypotheses"
                     }
                 ]
             },
@@ -643,7 +643,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Inform operations with novelties"
+                        "slug": "Inform offensive security operations with novel techniques"
                     },
                     {
                         "id": "THREAT-4-c",
@@ -658,7 +658,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Provide replicable threat intelligence"
+                        "slug": "Provide replicable behaviours via intelligence"
                     },
                     {
                         "id": "THREAT-4-d",
@@ -688,7 +688,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Identify non-exploited novel procedures"
+                        "slug": "Identify not-yet-exploited novel threat procedures"
                     },
                     {
                         "id": "THREAT-4-f",
@@ -724,7 +724,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Alert on viral vulnerabilities"
+                        "slug": "Alert on trending vulnerabilities"
                     },
                     {
                         "id": "THREAT-5-b",
@@ -754,7 +754,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Influence patch priority metrics"
+                        "slug": "Influence patch prioritization"
                     },
                     {
                         "id": "THREAT-5-d",
