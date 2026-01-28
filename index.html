@@ -133,6 +133,12 @@
             background-color: #2d3748; /* dark grey */
             font-weight: 600;
         }
+        a:not(.nav-link) {
+            color: var(--brand-red);
+        }
+        a:not(.nav-link):hover {
+            color: var(--brand-red-dark);
+        }
         .cell-sm {
             width: 5rem; /* 80px */
         }
@@ -207,14 +213,14 @@
             z-index: 10;
             flex-shrink: 0;
         }
-        .maturity-dot:hover { border-color: #3b82f6; /* blue-500 */ }
-        .maturity-dot.active { background-color: #3b82f6; border-color: #3b82f6; }
+        .maturity-dot:hover { border-color: var(--brand-red); }
+        .maturity-dot.active { background-color: var(--brand-red); border-color: var(--brand-red); }
         .maturity-dot.selected {
-            border-color: #1d4ed8; /* blue-700 */
+            border-color: var(--brand-red-dark);
             transform: scale(1.1);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+            box-shadow: 0 0 0 3px rgba(229, 56, 52, 0.3);
         }
-        .maturity-line.active { background-color: #3b82f6; }
+        .maturity-line.active { background-color: var(--brand-red); }
         .target-dot {
             width: 18px;
             height: 18px;
@@ -227,14 +233,14 @@
             z-index: 10;
             flex-shrink: 0;
         }
-        .target-dot:hover { border-color: #22c55e; /* green-500 */ }
-        .target-dot.active { background-color: #22c55e; border-color: #22c55e; }
+        .target-dot:hover { border-color: var(--brand-blue); }
+        .target-dot.active { background-color: var(--brand-blue); border-color: var(--brand-blue); }
         .target-dot.selected {
-            border-color: #15803d; /* green-700 */
+            border-color: var(--brand-blue-dark);
             transform: scale(1.1);
-            box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.3);
+            box-shadow: 0 0 0 3px rgba(42, 182, 246, 0.3);
         }
-        .target-line.active { background-color: #22c55e; }
+        .target-line.active { background-color: var(--brand-blue); }
         .sortable-header {
             cursor: pointer;
             user-select: none; /* Prevent text selection on click */
@@ -332,7 +338,7 @@
                     <label class="flex items-center justify-between cursor-pointer" title="Enable to show Target, Priority, and planning fields.">Planning mode
                         <div class="relative">
                             <input type="checkbox" id="mode-toggle" class="sr-only peer">
-                            <div class="w-11 h-6 bg-slate-600 rounded-full peer-checked:bg-blue-600"></div>
+                            <div class="w-11 h-6 bg-toggle-bg rounded-full peer-checked:bg-brand-red"></div>
                             <div class="absolute top-0.5 left-[2px] bg-white w-5 h-5 rounded-full transition-all peer-checked:translate-x-full"></div>
                         </div>
                     </label>
@@ -393,10 +399,10 @@
             </div>
 
             <div id="page-assessment" class="page">
-                <div class="flex justify-between items-center mb-4">
+                <div class="flex justify-between items-center mb-6">
                     <h2 id="assessment-title" class="text-3xl font-bold text-slate-800"></h2>
                     <div class="flex space-x-2">
-                        <button id="expand-all" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md text-sm font-medium">Expand All</button>
+                        <button id="expand-all" class="bg-brand-red hover:bg-brand-red-dark text-white py-2 px-4 rounded-md text-sm font-medium">Expand All</button>
                         <button id="collapse-all" class="bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded-md text-sm font-medium">Collapse All</button>
                     </div>
                 </div>
@@ -405,9 +411,9 @@
                         <span class="font-bold">Date Last Assessed:</span>
                         <input type="date" id="assessment-date" class="ml-2 p-1 border rounded-md">
                     </div>
-                    <div>
+                    <div class="flex items-center">
                         <label for="assessment-relevant" class="font-bold">Domain is Relevant?</label>
-                        <input type="checkbox" id="assessment-relevant" class="ml-2 h-5 w-5 text-blue-600 rounded">
+                        <input type="checkbox" id="assessment-relevant" class="ml-2 h-5 w-5 rounded accent-brand-red">
                     </div>
                     <div id="assessment-summary" class="text-right">
                         </div>
@@ -429,7 +435,7 @@
                     <p class="text-slate-600">This planning sheet aggregates all practices where your <strong>Target Score</strong> is greater than your current <strong>Score</strong> (or where your Current Score is not yet set). Click any column header to sort the list and help you plan your improvement journey.</p>
                     <p class="text-slate-600 mt-2">Only practices from 'Relevant' domains that are individually marked 'Relevant' are shown here.</p>
                     <div class="mt-4">
-                        <button id="export-csv" class="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-md font-medium text-sm">
+                        <button id="export-csv" class="bg-brand-blue hover:bg-brand-blue-dark text-white py-2 px-4 rounded-md font-medium text-sm">
                             Export to CSV
                         </button>
                     </div>
@@ -467,13 +473,13 @@
                         <div>
                             <h3 class="text-xl font-semibold text-slate-800 mb-2">Assessment Name</h3>
                             <label for="assessment-name" class="sr-only">Assessment Name</label>
-                            <input type="text" id="assessment-name" class="w-full max-w-md bg-slate-50 text-slate-900 text-sm p-2 rounded-md border border-slate-300 focus:ring-blue-500 focus:border-blue-500" placeholder="e.g., Q3 2025 Assessment">
+                            <input type="text" id="assessment-name" class="w-full max-w-md bg-slate-50 text-slate-900 text-sm p-2 rounded-md border border-slate-300 focus:ring-brand-red focus:border-brand-red" placeholder="e.g., Q3 2025 Assessment">
                             <p class="mt-2 text-slate-600">A name for this assessment (e.g., "Q3 2025 Assessment"). This is saved with your export file.</p>
                         </div>
 
                         <div>
                             <h3 class="text-xl font-semibold text-slate-800 mb-2">Export Data</h3>
-                            <button id="export-json" class="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-md">
+                            <button id="export-json" class="bg-brand-blue hover:bg-brand-blue-dark text-white font-medium py-2 px-4 rounded-md">
                                 Export Results (.json)
                             </button>
                             <p class="mt-2 text-slate-600">Save a backup of all your scores and planning data to a JSON file on your computer.</p>
@@ -481,7 +487,7 @@
                         
                         <div>
                             <h3 class="text-xl font-semibold text-slate-800 mb-2">Import Data</h3>
-                             <label for="import-json" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md cursor-pointer inline-block">
+                             <label for="import-json" class="bg-brand-red hover:bg-brand-red-dark text-white font-medium py-2 px-4 rounded-md cursor-pointer inline-block">
                                 Import Results (.json)
                             </label>
                             <input type="file" id="import-json" class="hidden" accept=".json,application/json">
@@ -531,7 +537,7 @@
 
                         <h3 class="text-xl font-semibold text-slate-800 mt-6 mb-2">About this Tool</h3>
                         <p class="text-lg text-slate-600 mb-6">
-                             This web assessment tool is an alternative to the <a href="https://cti-cmm.org/beta-assessment-tool" target="_blank" rel="noopener noreferrer" class="text-blue-600 font-semibold underline decoration-2 decoration-blue-200 hover:text-blue-800 hover:decoration-blue-400 px-1 rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-200 transition">spreadsheet version</a> of the CTI-CMM. 
+                             This web assessment tool is an alternative to the <a href="https://cti-cmm.org/beta-assessment-tool" target="_blank" rel="noopener noreferrer" class="font-semibold underline">spreadsheet version</a> of the CTI-CMM. 
                              It provides an interactive interface, auto-saving capabilities, import / export of results and a dashboard to visualize your maturity posture.
                         </p>
             
@@ -566,12 +572,12 @@
             
                         <h3 class="text-xl font-semibold text-slate-800 mt-6 mb-2">Repo</h3>
                         <p class="text-lg text-slate-600 mb-6">
-                            The source code for this tool is available on <a href="https://github.com/chorsley/cti-cmm-assessment-tool" target="_blank" rel="noopener noreferrer" class="text-blue-600 font-semibold underline decoration-2 decoration-blue-200 hover:text-blue-800 hover:decoration-blue-400 px-1 rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-200 transition">GitHub</a> under the MIT License.
+                            The source code for this tool is available on <a href="https://github.com/chorsley/cti-cmm-assessment-tool" target="_blank" rel="noopener noreferrer" class="font-semibold underline">GitHub</a> under the MIT License.
                         </p>
 
                         <h3 class="text-xl font-semibold text-slate-800 mt-6 mb-2">Contact</h3>
                         <p class="text-lg text-slate-600 mb-6">
-                            Maintained by Chris Horsley at <a href="https://cosive.com" target="_blank" rel="noopener noreferrer" class="text-blue-600 font-semibold underline decoration-2 decoration-blue-200 hover:text-blue-800 hover:decoration-blue-400 px-1 rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-200 transition">Cosive</a> in Melbourne, Australia. For questions or feedback, please reach out via <a href="mailto:hello@cosive.com" class="text-blue-600 font-semibold underline decoration-2 decoration-blue-200 hover:text-blue-800 hover:decoration-blue-400 px-1 rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-200 transition">hello@cosive.com</a>.
+                            Maintained by Chris Horsley at <a href="https://cosive.com" target="_blank" rel="noopener noreferrer" class="font-semibold underline">Cosive</a> in Melbourne, Australia. For questions or feedback, please reach out via <a href="mailto:hello@cosive.com" class="font-semibold underline">hello@cosive.com</a>.
                         </p>
                     </div>
                 </div>
@@ -1638,7 +1644,7 @@ class Domain {
                                     <span class="text-xs font-medium text-slate-600 mr-2">Relevant</span>
                                     <div class="relative">
                                         <input type="checkbox" class="sr-only peer practice-relevance-toggle" data-id="${practice.id}" data-field="relevant" ${practice.relevant ? 'checked' : ''}>
-                                        <div class="w-11 h-6 bg-slate-400 rounded-full peer-checked:bg-blue-600"></div>
+                                        <div class="w-11 h-6 bg-toggle-bg rounded-full peer-checked:bg-brand-red"></div>
                                         <div class="absolute top-0.5 left-[2px] bg-white w-5 h-5 rounded-full transition-all peer-checked:translate-x-full"></div>
                                     </div>
                                 </label>
