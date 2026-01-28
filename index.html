@@ -1458,14 +1458,14 @@ class Domain {
                             <td class="py-4 px-6 text-sm text-slate-500">${domain.totalScore}</td>
                             <td class="py-4 px-6 text-sm text-slate-500">${domain.totalMax}</td>
                             <td class="py-4 px-6 text-sm text-slate-500">
-                                <div class="w-full bg-slate-200 rounded-full h-2.5">
-                                    <div class="bg-blue-600 h-2.5 rounded-full" style="width: ${domain.percent.toFixed(0)}%"></div>
+                                <div class="w-full bg-muted rounded-full h-2.5">
+                                    <div class="bg-brand-red h-2.5 rounded-full" style="width: ${domain.percent.toFixed(0)}%"></div>
                                 </div>
                                 <span class="text-xs">${domain.percent.toFixed(1)}%</span>
                             </td>
                             <td class="py-4 px-6 text-sm text-slate-500">
-                                <div class="w-full bg-slate-200 rounded-full h-2.5">
-                                    <div class="bg-green-600 h-2.5 rounded-full" style="width: ${domain.targetPercent.toFixed(0)}%"></div>
+                                <div class="w-full bg-muted rounded-full h-2.5">
+                                    <div class="bg-brand-blue h-2.5 rounded-full" style="width: ${domain.targetPercent.toFixed(0)}%"></div>
                                 </div>
                                 <span class="text-xs">${domain.targetPercent.toFixed(1)}%</span>
                             </td>
@@ -1496,15 +1496,15 @@ class Domain {
                             {
                                 label: 'Current Maturity %',
                                 data: domainScores.map(d => d.relevant ? d.percent : 0),
-                                backgroundColor: 'rgba(59, 130, 246, 0.2)',
-                                borderColor: 'rgba(59, 130, 246, 1)',
+                                backgroundColor: withAlpha(BRAND_COLORS.red, 0.2),
+                                borderColor: BRAND_COLORS.red,
                                 borderWidth: 2,
                             },
                             {
                                 label: 'Target Maturity %',
                                 data: domainScores.map(d => d.relevant ? d.targetPercent : 0),
-                                backgroundColor: 'rgba(22, 163, 74, 0.2)',
-                                borderColor: 'rgba(22, 163, 74, 1)',
+                                backgroundColor: withAlpha(BRAND_COLORS.blue, 0.2),
+                                borderColor: BRAND_COLORS.blue,
                                 borderWidth: 2,
                             }
                         ]
@@ -1527,7 +1527,7 @@ class Domain {
                         labels: ['Assessed', 'Not Assessed'],
                         datasets: [{
                             data: [grandTotalAssessed, grandTotalPractices - grandTotalAssessed],
-                            backgroundColor: ['rgba(59, 130, 246, 1)', 'rgba(229, 231, 235, 1)'],
+                            backgroundColor: [BRAND_COLORS.red, BRAND_COLORS.muted],
                             borderWidth: 1
                         }]
                     },
@@ -2212,8 +2212,8 @@ class Domain {
                             <span class="text-sm font-medium text-slate-700">Assessment Progress</span>
                             <span class="text-sm font-medium text-slate-500">${percent}%</span>
                         </div>
-                        <div class="w-full bg-slate-200 rounded-full h-2.5">
-                            <div class="bg-blue-600 h-2.5 rounded-full" style="width: ${percent}%"></div>
+                        <div class="w-full bg-muted rounded-full h-2.5">
+                            <div class="bg-brand-red h-2.5 rounded-full" style="width: ${percent}%"></div>
                         </div>
                     `;
                 }
