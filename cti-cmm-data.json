@@ -822,7 +822,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Align products with risk"
+                        "slug": "Align intelligence products with risk"
                     },
                     {
                         "id": "RISK-1-d",
@@ -837,7 +837,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Regular risk management engagements"
+                        "slug": "Regular CTI / risk management engagements"
                     },
                     {
                         "id": "RISK-1-e",
@@ -852,7 +852,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Influence risk strategy adjustments"
+                        "slug": "CTI influences risk strategy adjustments"
                     },
                     {
                         "id": "RISK-1-f",
@@ -867,7 +867,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Adhere to risk frameworks"
+                        "slug": "Adherence to risk frameworks"
                     },
                     {
                         "id": "RISK-1-g",
@@ -882,7 +882,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Prioritize threat-based risk decisions"
+                        "slug": "Prioritize threat-based risk decisions using CTI"
                     },
                     {
                         "id": "RISK-1-h",
@@ -918,7 +918,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Prioritize threats ad hoc"
+                        "slug": "Threat prioritization alignment to risk management strategy"
                     },
                     {
                         "id": "RISK-2-b",
@@ -933,7 +933,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Understand organizational risk posture"
+                        "slug": "Understand organizational assets, controls, risk posture"
                     },
                     {
                         "id": "RISK-2-c",
@@ -948,7 +948,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Support ad hoc assessments"
+                        "slug": "CTI supports risk assessments in ad hoc manner"
                     },
                     {
                         "id": "RISK-2-d",
@@ -963,7 +963,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Integrate CTI into assessments"
+                        "slug": "Integrate CTI into risk assessments"
                     },
                     {
                         "id": "RISK-2-e",
@@ -978,7 +978,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Leverage regular risk insights"
+                        "slug": "CTI regularly leveraged in risk assessments"
                     },
                     {
                         "id": "RISK-2-f",
@@ -993,7 +993,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Adjust risk-based controls"
+                        "slug": "Adjust risk-based controls using CTI"
                     },
                     {
                         "id": "RISK-2-g",
@@ -1023,7 +1023,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Collaboratively refine risk decisions"
+                        "slug": "Collaboratively refine risk controls and processes"
                     }
                 ]
             }
@@ -1046,7 +1046,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Review leaked credentials manually"
+                        "slug": "Review leaked credentials on ad hoc basis"
                     },
                     {
                         "id": "ACCESS-1-b",
@@ -1061,7 +1061,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Identify identity system vulnerabilities"
+                        "slug": "Identify identity system vulnerabilities on ad hoc basis"
                     },
                     {
                         "id": "ACCESS-1-c",
@@ -1076,7 +1076,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Automate identity alert dissemination"
+                        "slug": "Assist automation of identity alert dissemination"
                     },
                     {
                         "id": "ACCESS-1-d",
@@ -1136,7 +1136,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Predict future identity scenarios"
+                        "slug": "Continuously improve identity threat detection"
                     }
                 ]
             },
@@ -1172,7 +1172,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Focus on organization identity"
+                        "slug": "Intel collection focus on org-specific identity threats"
                     },
                     {
                         "id": "ACCESS-2-c",
@@ -1187,7 +1187,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Understand high-risk identity threats"
+                        "slug": "Understand identity threats to high-risk assets"
                     },
                     {
                         "id": "ACCESS-2-d",
@@ -1202,7 +1202,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Influence access control adjustments"
+                        "slug": "Influence access control adjustments regularly"
                     },
                     {
                         "id": "ACCESS-2-e",
@@ -1217,7 +1217,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Focus on industry identity"
+                        "slug": "Collection focus on industry/geography identity threats"
                     },
                     {
                         "id": "ACCESS-2-f",
@@ -1232,7 +1232,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Test authentication threat scenarios"
+                        "slug": "Inform identity threat scenario testing"
                     },
                     {
                         "id": "ACCESS-2-g",
@@ -1247,7 +1247,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Inform identity tabletop exercises"
+                        "slug": "Inform tabletop exercises"
                     }
                 ]
             }
@@ -1270,7 +1270,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Collect awareness alerts routinely"
+                        "slug": "Collect situational awareness alerts"
                     },
                     {
                         "id": "SITUATION-1-b",
@@ -1285,7 +1285,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Provide short-term trend insights"
+                        "slug": "Ad hoc situational awareness insights for COAs"
                     },
                     {
                         "id": "SITUATION-1-c",
@@ -1300,7 +1300,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Focus on organizational threats"
+                        "slug": "Collection focus on organizational threats"
                     },
                     {
                         "id": "SITUATION-1-d",
@@ -1345,7 +1345,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Analyze source ROI baseline"
+                        "slug": "Analyze intel source value baseline"
                     },
                     {
                         "id": "SITUATION-1-g",
@@ -1360,7 +1360,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Inform strategic decision making"
+                        "slug": "CTL informs strategic decision making"
                     },
                     {
                         "id": "SITUATION-1-i",
@@ -1398,7 +1398,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Correlate event incident data"
+                        "slug": "Correlate event data to external sources"
                     },
                     {
                         "id": "RESPONSE-1-b",
@@ -1413,7 +1413,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Enrich data hasten response"
+                        "slug": "Ad hoc event data enrichment"
                     },
                     {
                         "id": "RESPONSE-1-c",
@@ -1428,7 +1428,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Automated IR insight enrichment"
+                        "slug": "Automated event context enrichment"
                     },
                     {
                         "id": "RESPONSE-1-d",
@@ -1458,7 +1458,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Prescriptive proactive response prioritization"
+                        "slug": "CTI outputs include prescriptive recommendations"
                     },
                     {
                         "id": "RESPONSE-1-f",
@@ -1473,7 +1473,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Inform threat tabletop scenarios"
+                        "slug": "Threat analysis informs tabletop scenarios"
                     }
                 ]
             },
@@ -1494,7 +1494,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Map incidents to frameworks"
+                        "slug": "Map incidents to industry frameworks"
                     },
                     {
                         "id": "RESPONSE-2-b",
@@ -1509,7 +1509,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Incorporate insights IR reports"
+                        "slug": "CTI insights incorporated into IR reports"
                     },
                     {
                         "id": "RESPONSE-2-c",
@@ -1524,7 +1524,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Manual research incident context"
+                        "slug": "Manual research and pivoting on TTPs and IoCs"
                     },
                     {
                         "id": "RESPONSE-2-d",
@@ -1539,7 +1539,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Stand-alone CTI incident reports"
+                        "slug": "Stand-alone CTI incident findings reports"
                     },
                     {
                         "id": "RESPONSE-2-e",
@@ -1554,7 +1554,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Automated kill chain mapping"
+                        "slug": "Automated enrichment and kill chain mapping"
                     },
                     {
                         "id": "RESPONSE-2-f",
@@ -1569,7 +1569,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Orchestrate indicators via TIP"
+                        "slug": "Automated ingestion of intel into a TIP"
                     },
                     {
                         "id": "RESPONSE-2-g",
@@ -1584,7 +1584,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Trigger automated CTI analysis"
+                        "slug": "Automated triggers for CTI analysis and escalation"
                     },
                     {
                         "id": "RESPONSE-2-h",
@@ -1599,7 +1599,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Convey risk recommendations IR"
+                        "slug": "Risk-based assessments and recommendations to IR team"
                     }
                 ]
             },
@@ -1620,7 +1620,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Capture post-mortem lessons learned"
+                        "slug": "Capture incident findings and lessons learned"
                     },
                     {
                         "id": "RESPONSE-3-b",
@@ -1635,7 +1635,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Manually enrich SOC indicators"
+                        "slug": "Manual ingestion and enrichment of intel / internal IoCs"
                     },
                     {
                         "id": "RESPONSE-3-c",
@@ -1650,7 +1650,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Collaborate with threat hunting"
+                        "slug": "Collaborate with threat hunting team"
                     },
                     {
                         "id": "RESPONSE-3-d",
@@ -1695,7 +1695,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Map investigation TTP findings"
+                        "slug": "Map TTPs to MITRE ATT&CK"
                     },
                     {
                         "id": "RESPONSE-3-g",
@@ -1725,7 +1725,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Establish post-mortem response metrics"
+                        "slug": "Establish and tune metrics based on post-mortems"
                     },
                     {
                         "id": "RESPONSE-3-i",
@@ -1740,7 +1740,7 @@
                         "poc": "",
                         "targetDate": "",
                         "notes": "",
-                        "slug": "Update runbooks via TTPs"
+                        "slug": "CTI moderates threat hunting activities"
                     },
                     {
                         "id": "RESPONSE-3-j",
