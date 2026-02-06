@@ -353,10 +353,6 @@
                         <span class="font-bold">Date Last Assessed:</span>
                         <input type="date" id="assessment-date" class="ml-2 p-1 border rounded-md">
                     </div>
-                    <div>
-                        <label for="assessment-relevant" class="font-bold">Domain is Relevant?</label>
-                        <input type="checkbox" id="assessment-relevant" class="ml-2 h-5 w-5 text-blue-600 rounded">
-                    </div>
                     <div id="assessment-summary" class="text-right">
                         </div>
                 </div>
@@ -951,7 +947,6 @@ class Domain {
             // Other elements
             assessmentTitle: document.getElementById('assessment-title'),
             assessmentDate: document.getElementById('assessment-date'),
-            assessmentRelevant: document.getElementById('assessment-relevant'),
             assessmentSummary: document.getElementById('assessment-summary'),
             assessmentObjectivesContainer: document.getElementById('assessment-objectives-container'),
             assessmentDisabledBanner: document.getElementById('assessment-disabled-banner'),
@@ -1539,7 +1534,6 @@ class Domain {
                 dom.assessmentTitle.textContent = domain.name || domain.nickname;
                 // === END MODIFICATION ===
                 dom.assessmentDate.value = domain.date;
-                dom.assessmentRelevant.checked = domain.relevant;
                 
                 view.updateAssessmentSummary(domainId); // Render summary
 
@@ -2182,9 +2176,11 @@ class Domain {
                     const label = document.querySelector(`[data-progress-label-domain="${domain.id}"]`);
                     const bar = document.querySelector(`[data-progress-bar-domain="${domain.id}"]`);
                     const navLink = document.querySelector(`a[data-domain="${domain.id}"]`);
+                    const toggle = document.querySelector(`.domain-relevance-toggle[data-domain-id="${domain.id}"]`);
                     
                     if (label) label.textContent = `${percent}%`;
                     if (bar) bar.style.width = `${percent}%`;
+                    if (toggle) toggle.checked = domain.relevant;
                     if (navLink) {
                         navLink.style.opacity = domain.relevant ? '1' : '0.5';
                         navLink.style.textDecoration = domain.relevant ? 'none' : 'line-through';
@@ -2639,25 +2635,6 @@ class Domain {
                     store.updateDomainMeta(state.activeDomain, 'date', target.value);
                     return;
                 }
-                if (target.id === 'assessment-relevant') {
-                    const isRelevant = target.checked;
-                    store.updateDomainMeta(state.activeDomain, 'relevant', isRelevant);
-                    
-                    // Update UI
-                    view.updateSidebarProgress();
-                    if (state.activePage === 'dashboard') view.renderDashboardPage();
-                    if (state.activePage === 'priorities') view.renderPrioritiesPage();
-                    
-                    // Toggle disabled overlay on current page
-                    if (isRelevant) {
-                        dom.assessmentObjectivesContainer.classList.remove('content-disabled');
-                        dom.assessmentDisabledBanner.classList.add('hidden');
-                    } else {
-                        dom.assessmentObjectivesContainer.classList.add('content-disabled');
-                        dom.assessmentDisabledBanner.classList.remove('hidden');
-                    }
-                    return;
-                }
             },
 
             // --- Sub-handlers (called by main handlers) ---
@@ -2837,10 +2814,45 @@ class Domain {
          * Attaches all permanent event listeners.
          */
         function bindEvents() {
-            dom.mainNav.addEventListener('click', events.handleNavClick);
+            dom.mainNav.addEventListener('click', (e) => {
+                // Handle clicks on the toggle or any of its visual children to prevent navigation
+                const toggleLabel = e.target.closest('label');
+                if (
+                    e.target.closest('.domain-relevance-toggle') ||
+                    (toggleLabel && toggleLabel.querySelector('.domain-relevance-toggle'))
+                ) {
+                    return;
+                }
+                events.handleNavClick(e);
+            });
             dom.resetData.addEventListener('click', store.resetData);
             dom.modeToggle.addEventListener('change', events.handleModeToggle);
             
+            // --- Domain Relevance Toggle ---
+            dom.domainNav.addEventListener('change', (e) => {
+                if (e.target.classList.contains('domain-relevance-toggle')) {
+                    const domainId = e.target.dataset.domainId;
+                    const isRelevant = e.target.checked;
+                    store.updateDomainMeta(domainId, 'relevant', isRelevant);
+                    
+                    // Update UI
+                    view.updateSidebarProgress();
+                    if (state.activePage === 'dashboard') view.renderDashboardPage();
+                    if (state.activePage === 'priorities') view.renderPrioritiesPage();
+                    
+                    // If we are currently viewing this domain, update the assessment page UI
+                    if (state.activePage === 'assessment' && state.activeDomain === domainId) {
+                        if (isRelevant) {
+                            dom.assessmentObjectivesContainer.classList.remove('content-disabled');
+                            dom.assessmentDisabledBanner.classList.add('hidden');
+                        } else {
+                            dom.assessmentObjectivesContainer.classList.add('content-disabled');
+                            dom.assessmentDisabledBanner.classList.remove('hidden');
+                        }
+                    }
+                }
+            });
+
             // --- Event Delegation ---
             // Use delegation for content clicks/changes
             dom.mainContent.addEventListener('change', events.handleContentChange);
@@ -2872,17 +2884,26 @@ class Domain {
 
             // Populate Domain Nav
             window.CMM_DATA.domains.forEach(domain => {
+                const domainInstance = state.assessmentData[domain.id];
                 const li = document.createElement('li');
+                li.className = "group relative px-3 py-1";
                 li.innerHTML = `
-                    <a href="#" class="nav-link block rounded-md py-2 px-3 hover:bg-slate-700 text-sm" data-page="assessment" data-domain="${domain.id}">
-                        <div class="flex justify-between items-center">
-                            <span>${domain.nickname}</span>
-                            <span class="text-xs text-slate-400" data-progress-label-domain="${domain.id}">0%</span>
-                        </div>
-                        <div class="w-full bg-slate-600 rounded-full h-1 mt-1">
-                            <div data-progress-bar-domain="${domain.id}" class="bg-blue-500 h-1 rounded-full" style="width: 0%"></div>
-                        </div>
-                    </a>`;
+                    <div class="flex items-center">
+                        <label class="relative flex-shrink-0 mr-2 z-20 cursor-pointer">
+                            <input type="checkbox" class="sr-only peer domain-relevance-toggle" data-domain-id="${domain.id}" ${domainInstance.relevant ? 'checked' : ''}>
+                            <div class="w-8 h-4 bg-slate-600 rounded-full peer-checked:bg-blue-600"></div>
+                            <div class="absolute top-0.5 left-[2px] bg-white w-3 h-3 rounded-full transition-all peer-checked:translate-x-4"></div>
+                        </label>
+                        <a href="#" class="nav-link block rounded-md py-2 px-1 hover:bg-slate-700 text-sm flex-1" data-page="assessment" data-domain="${domain.id}">
+                            <div class="flex justify-between items-center">
+                                <span>${domain.nickname}</span>
+                                <span class="text-xs text-slate-400" data-progress-label-domain="${domain.id}">0%</span>
+                            </div>
+                            <div class="w-full bg-slate-600 rounded-full h-1 mt-1">
+                                <div data-progress-bar-domain="${domain.id}" class="bg-blue-500 h-1 rounded-full" style="width: 0%"></div>
+                            </div>
+                        </a>
+                    </div>`;
                 dom.domainNav.appendChild(li);
             });
 
