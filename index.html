@@ -198,6 +198,36 @@
             opacity: 0.5;
             pointer-events: none;
         }
+        .maturity-filter-group {
+            display: inline-flex;
+            border: 1px solid #cbd5e1; /* slate-300 */
+            border-radius: 9999px;
+            overflow: hidden;
+            background-color: #f8fafc; /* slate-50 */
+        }
+        .maturity-filter-button {
+            padding: 0.25rem 0.75rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #475569; /* slate-600 */
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+        .maturity-filter-button.active {
+            background-color: #2563eb; /* blue-600 */
+            color: #ffffff;
+        }
+        .maturity-group.collapsed .maturity-group-body {
+            display: none;
+        }
+        .maturity-group-toggle-icon {
+            transition: transform 0.2s ease;
+        }
+        .maturity-group.collapsed .maturity-group-toggle-icon {
+            transform: rotate(-90deg);
+        }
         /* === NEW STYLES FOR WIDGET WARNING === */
         .target-widget.widget-warning .target-dot {
             border-color: #f59e0b; /* amber-500 */
@@ -222,7 +252,7 @@
         <nav class="w-64 bg-slate-800 text-slate-200 flex-shrink-0 overflow-y-auto">
             <div class="p-4">
                 <h1 class="text-xl font-bold text-white">CTI-CMM v1.3</h1>
-                <span class="text-sm text-slate-400">Tool version 1.3.0</span>
+                <span class="text-sm text-slate-400">Tool version 1.3.1</span>
             </div>
             <ul id="main-nav" class="space-y-1 p-2">
 <li>
@@ -348,10 +378,18 @@
                         <button id="collapse-all" class="bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded-md text-sm font-medium">Collapse All</button>
                     </div>
                 </div>
-                <div class="bg-white p-4 rounded-lg shadow-md mb-6 flex justify-between items-center">
+                <div class="bg-white p-4 rounded-lg shadow-md mb-6 flex flex-wrap items-center justify-between gap-4">
                     <div>
                         <span class="font-bold">Date Last Assessed:</span>
                         <input type="date" id="assessment-date" class="ml-2 p-1 border rounded-md">
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <label for="maturity-filter" class="font-bold text-slate-700">Maturity filter</label>
+                        <div id="maturity-filter" class="maturity-filter-group" role="group" aria-label="Maturity filter">
+                            <button type="button" class="maturity-filter-button" data-maturity-filter-value="1">CTI 1</button>
+                            <button type="button" class="maturity-filter-button" data-maturity-filter-value="2">CTI 2</button>
+                            <button type="button" class="maturity-filter-button" data-maturity-filter-value="3">CTI 3</button>
+                        </div>
                     </div>
                     <div id="assessment-summary" class="text-right">
                         </div>
@@ -761,6 +799,7 @@ class Domain {
     // --- User Data (with defaults) ---
     date = '';
     relevant = true;
+    maturityFilter = 3;
 
     constructor(staticDomain, objectivesData) {
         this.id = staticDomain.id;
@@ -778,6 +817,7 @@ class Domain {
     loadUserData(savedDomain) {
         if (savedDomain.date !== undefined) this.date = savedDomain.date;
         if (savedDomain.relevant !== undefined) this.relevant = savedDomain.relevant;
+        if (savedDomain.maturityFilter !== undefined) this.maturityFilter = savedDomain.maturityFilter;
 
         const objectiveMap = new Map();
         if (savedDomain.objectives) {
@@ -798,6 +838,7 @@ class Domain {
             // key in the top-level assessmentData object.
             date: this.date,
             relevant: this.relevant,
+            maturityFilter: this.maturityFilter,
             objectives: this.objectives.map(o => o.serialize())
         };
     }
@@ -948,6 +989,7 @@ class Domain {
             assessmentTitle: document.getElementById('assessment-title'),
             assessmentDate: document.getElementById('assessment-date'),
             assessmentSummary: document.getElementById('assessment-summary'),
+            maturityFilter: document.getElementById('maturity-filter'),
             assessmentObjectivesContainer: document.getElementById('assessment-objectives-container'),
             assessmentDisabledBanner: document.getElementById('assessment-disabled-banner'),
             dashboardTableBody: document.getElementById('dashboard-table-body'),
@@ -981,6 +1023,14 @@ class Domain {
                 }
                 const intScore = parseInt(score, 10);
                 return isNaN(intScore) ? null : intScore;
+            },
+
+            getMaturityLevel(maturityText) {
+                const normalized = (maturityText || '').replace(/\s+/g, ' ').toUpperCase();
+                if (normalized.startsWith('CTI1') || normalized.startsWith('CTI 1')) return 1;
+                if (normalized.startsWith('CTI2') || normalized.startsWith('CTI 2')) return 2;
+                if (normalized.startsWith('CTI3') || normalized.startsWith('CTI 3')) return 3;
+                return null;
             },
 
             /**
@@ -1534,6 +1584,7 @@ class Domain {
                 dom.assessmentTitle.textContent = domain.name || domain.nickname;
                 // === END MODIFICATION ===
                 dom.assessmentDate.value = domain.date;
+                view.updateMaturityFilterUI(domain.maturityFilter || 3);
                 
                 view.updateAssessmentSummary(domainId); // Render summary
 
@@ -1568,16 +1619,28 @@ class Domain {
                     for (const maturityLevel of ['CTI 1', 'CTI 2', 'CTI 3', 'Other']) {
                         const practices = practicesByMaturity[maturityLevel];
                         if (!practices || practices.length === 0) continue;
-                        
-                        const groupHeader = document.createElement('h4');
-                        groupHeader.className = "text-md font-semibold text-slate-700 pt-2";
+
+                        const groupWrapper = document.createElement('div');
+                        groupWrapper.className = "maturity-group border rounded-md";
+                        groupWrapper.dataset.maturityLevel = utils.getMaturityLevel(maturityLevel);
+
+                        const groupHeader = document.createElement('button');
+                        groupHeader.type = "button";
+                        groupHeader.className = "w-full flex items-center justify-between text-md font-semibold text-slate-700 px-4 py-3 bg-slate-50 hover:bg-slate-100";
+                        groupHeader.dataset.maturityToggle = "true";
                         let maturityName = "Uncategorized";
                         if (maturityLevel === 'CTI 1') maturityName = "Foundational";
                         if (maturityLevel === 'CTI 2') maturityName = "Intermediate";
                         if (maturityLevel === 'CTI 3') maturityName = "Advanced";
-                        groupHeader.textContent = `${maturityLevel} - ${maturityName}`;
-                        maturityGroupsContainer.appendChild(groupHeader);
-                        
+                        groupHeader.innerHTML = `
+                            <span>${maturityLevel} - ${maturityName}</span>
+                            <span class="maturity-group-toggle-icon">▾</span>
+                        `;
+                        groupWrapper.appendChild(groupHeader);
+
+                        const groupBody = document.createElement('div');
+                        groupBody.className = "maturity-group-body";
+
                         const tableContainer = document.createElement('div');
                         tableContainer.className = "overflow-x-auto border rounded-md";
                         const table = document.createElement('table');
@@ -1586,9 +1649,11 @@ class Domain {
                         tbody.className = "bg-white";
 
                         practices.forEach(practice => {
+                            const practiceMaturityLevel = utils.getMaturityLevel(practice.maturity);
                             // Row 1: Practice Info
                             const rowInfo = document.createElement('tr');
                             rowInfo.className = "bg-slate-50";
+                            if (practiceMaturityLevel) rowInfo.dataset.maturityLevel = practiceMaturityLevel;
                             // --- SECURE MODIFICATION: Use .textContent for untrusted data ---
                             const cellInfo = document.createElement('td');
                             cellInfo.colSpan = 5;
@@ -1654,6 +1719,7 @@ class Domain {
                             // === NEW v1.6: Add dataset and class for disabling ===
                             rowWidgets1.dataset.practiceRowId = practice.id;
                             if (!practice.relevant) rowWidgets1.classList.add('content-disabled');
+                            if (practiceMaturityLevel) rowWidgets1.dataset.maturityLevel = practiceMaturityLevel;
                             
                             // Col 1: Current Maturity
                             const cellCurrent = document.createElement('td');
@@ -1709,6 +1775,7 @@ class Domain {
                                 // === NEW v1.6: Add dataset and class for disabling ===
                                 rowWidgets2.dataset.practiceRowId = practice.id;
                                 if (!practice.relevant) rowWidgets2.classList.add('content-disabled');
+                                if (practiceMaturityLevel) rowWidgets2.dataset.maturityLevel = practiceMaturityLevel;
 
                                 const cellTarget = document.createElement('td');
                                 cellTarget.className = "pb-4 pl-4 w-[180px]";
@@ -1755,7 +1822,9 @@ class Domain {
                         
                         table.appendChild(tbody);
                         tableContainer.appendChild(table);
-                        maturityGroupsContainer.appendChild(tableContainer);
+                        groupBody.appendChild(tableContainer);
+                        groupWrapper.appendChild(groupBody);
+                        maturityGroupsContainer.appendChild(groupWrapper);
                     }
 
                     details.appendChild(maturityGroupsContainer);
@@ -1782,6 +1851,8 @@ class Domain {
                     details.appendChild(subtotalEl);
                     dom.assessmentObjectivesContainer.appendChild(details);
                 });
+
+                view.applyMaturityFilter(domainId);
             },
 
             /**
@@ -2156,6 +2227,45 @@ class Domain {
                 if (state.appMode === 'benchmark' && state.activePage === 'priorities') {
                     view.showPage('dashboard');
                 }
+            },
+
+            updateMaturityFilterLabel(level) {
+                return level;
+            },
+
+            updateMaturityFilterUI(level) {
+                view.updateMaturityFilterLabel(level);
+                if (!dom.maturityFilter) return;
+                const buttons = dom.maturityFilter.querySelectorAll('.maturity-filter-button');
+                buttons.forEach(button => {
+                    const value = parseInt(button.dataset.maturityFilterValue, 10);
+                    button.classList.toggle('active', value === level);
+                });
+            },
+
+            applyMaturityFilter(domainId) {
+                const domain = state.assessmentData[domainId];
+                if (!domain) return;
+                const level = parseInt(domain.maturityFilter, 10) || 3;
+                const groups = document.querySelectorAll('#page-assessment .maturity-group');
+                groups.forEach(group => {
+                    const groupLevel = parseInt(group.dataset.maturityLevel, 10);
+                    const body = group.querySelector('.maturity-group-body');
+                    if (!body || !groupLevel) return;
+                    body.classList.toggle('content-disabled', groupLevel > level);
+                    if (groupLevel > level) {
+                        group.classList.add('collapsed');
+                        group.dataset.autoCollapsed = 'true';
+                    } else if (group.dataset.autoCollapsed === 'true') {
+                        group.classList.remove('collapsed');
+                        delete group.dataset.autoCollapsed;
+                    }
+                });
+                const rows = document.querySelectorAll('#page-assessment [data-maturity-level]');
+                rows.forEach(row => {
+                    const rowLevel = parseInt(row.dataset.maturityLevel, 10);
+                    row.classList.toggle('content-disabled', rowLevel > level);
+                });
             },
             
             /**
@@ -2534,6 +2644,26 @@ class Domain {
                     return;
                 }
 
+                // --- Maturity Group Toggle ---
+                const maturityToggle = target.closest('[data-maturity-toggle="true"]');
+                if (maturityToggle) {
+                    const group = maturityToggle.closest('.maturity-group');
+                    if (group) {
+                        group.classList.toggle('collapsed');
+                    }
+                    return;
+                }
+
+                // --- Maturity Filter Button ---
+                const maturityButton = target.closest('.maturity-filter-button');
+                if (maturityButton) {
+                    const level = parseInt(maturityButton.dataset.maturityFilterValue, 10) || 3;
+                    store.updateDomainMeta(state.activeDomain, 'maturityFilter', level);
+                    view.updateMaturityFilterUI(level);
+                    view.applyMaturityFilter(state.activeDomain);
+                    return;
+                }
+
                 // --- Priority Sort ---
                 const sortHeader = target.closest('.sortable-header');
                 if (sortHeader) {
@@ -2633,6 +2763,9 @@ class Domain {
                 // --- Domain Field Change (date, relevant) ---
                 if (target.id === 'assessment-date') {
                     store.updateDomainMeta(state.activeDomain, 'date', target.value);
+                    return;
+                }
+                if (target.id === 'maturity-filter') {
                     return;
                 }
             },
