@@ -5,7 +5,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CTI-CMM Assessment Tool</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // === BRAND COLORS (Single Source of Truth) ===
+        const BRAND_COLORS = {
+            red: '#E53834',
+            redDark: '#cc312d',
+            blue: '#2AB6F6',
+            blueDark: '#1a9fd8',
+            sidebar: '#0E141C',
+            sidebarHover: '#1a2330',
+            muted: '#BCBCBC',
+            toggleBg: '#2d3748',
+        };
+
+        // Inject as CSS custom properties for <style> block
+        const root = document.documentElement;
+        root.style.setProperty('--brand-red', BRAND_COLORS.red);
+        root.style.setProperty('--brand-red-dark', BRAND_COLORS.redDark);
+        root.style.setProperty('--brand-blue', BRAND_COLORS.blue);
+        root.style.setProperty('--brand-blue-dark', BRAND_COLORS.blueDark);
+        root.style.setProperty('--sidebar', BRAND_COLORS.sidebar);
+        root.style.setProperty('--sidebar-hover', BRAND_COLORS.sidebarHover);
+        root.style.setProperty('--muted', BRAND_COLORS.muted);
+        root.style.setProperty('--toggle-bg', BRAND_COLORS.toggleBg);
+
+        // Tailwind config uses the same values
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            red: BRAND_COLORS.red,
+                            'red-dark': BRAND_COLORS.redDark,
+                            blue: BRAND_COLORS.blue,
+                            'blue-dark': BRAND_COLORS.blueDark,
+                        },
+                        sidebar: {
+                            DEFAULT: BRAND_COLORS.sidebar,
+                            hover: BRAND_COLORS.sidebarHover,
+                        },
+                        muted: BRAND_COLORS.muted,
+                        toggle: {
+                            bg: BRAND_COLORS.toggleBg,
+                        },
+                    }
+                }
+            }
+        };
+
+        // Expose for Chart.js and other JS
+        window.BRAND_COLORS = BRAND_COLORS;
+
+        // Helper for RGBA with alpha
+        window.withAlpha = (hex, alpha) => {
+            const r = parseInt(hex.slice(1, 3), 16);
+            const g = parseInt(hex.slice(3, 5), 16);
+            const b = parseInt(hex.slice(5, 7), 16);
+            return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+        };
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script>
         // Load the CMM data from the JSON file before the main script runs
         (async () => {
@@ -41,6 +103,9 @@
         })();
     </script>
     <style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
         /* [All CSS styles remain unchanged] */
         /* ... */
         ::-webkit-scrollbar {
@@ -63,9 +128,16 @@
             max-width: 100%;
             box-sizing: border-box;
         }
-        .nav-link.active {
-            background-color: #334155; /* slate-700 */
+        .nav-link.active,
+        .nav-link.active:hover {
+            background-color: #2d3748; /* dark grey */
             font-weight: 600;
+        }
+        a:not(.nav-link) {
+            color: var(--brand-red);
+        }
+        a:not(.nav-link):hover {
+            color: var(--brand-red-dark);
         }
         .cell-sm {
             width: 5rem; /* 80px */
@@ -141,14 +213,14 @@
             z-index: 10;
             flex-shrink: 0;
         }
-        .maturity-dot:hover { border-color: #3b82f6; /* blue-500 */ }
-        .maturity-dot.active { background-color: #3b82f6; border-color: #3b82f6; }
+        .maturity-dot:hover { border-color: var(--brand-red); }
+        .maturity-dot.active { background-color: var(--brand-red); border-color: var(--brand-red); }
         .maturity-dot.selected {
-            border-color: #1d4ed8; /* blue-700 */
+            border-color: var(--brand-red-dark);
             transform: scale(1.1);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+            box-shadow: 0 0 0 3px rgba(229, 56, 52, 0.3);
         }
-        .maturity-line.active { background-color: #3b82f6; }
+        .maturity-line.active { background-color: var(--brand-red); }
         .target-dot {
             width: 18px;
             height: 18px;
@@ -161,14 +233,14 @@
             z-index: 10;
             flex-shrink: 0;
         }
-        .target-dot:hover { border-color: #22c55e; /* green-500 */ }
-        .target-dot.active { background-color: #22c55e; border-color: #22c55e; }
+        .target-dot:hover { border-color: var(--brand-blue); }
+        .target-dot.active { background-color: var(--brand-blue); border-color: var(--brand-blue); }
         .target-dot.selected {
-            border-color: #15803d; /* green-700 */
+            border-color: var(--brand-blue-dark);
             transform: scale(1.1);
-            box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.3);
+            box-shadow: 0 0 0 3px rgba(42, 182, 246, 0.3);
         }
-        .target-line.active { background-color: #22c55e; }
+        .target-line.active { background-color: var(--brand-blue); }
         .sortable-header {
             cursor: pointer;
             user-select: none; /* Prevent text selection on click */
@@ -245,18 +317,18 @@
         /* === END NEW STYLES === */
     </style>
 </head>
-<body class="bg-slate-100 font-sans text-slate-900">
+<body class="bg-slate-100 text-slate-900">
 
     <div class="flex h-screen overflow-hidden">
         
-        <nav class="w-64 bg-slate-800 text-slate-200 flex-shrink-0 overflow-y-auto">
+        <nav class="w-64 bg-sidebar text-white flex-shrink-0 overflow-y-auto flex flex-col">
             <div class="p-4">
                 <h1 class="text-xl font-bold text-white">CTI-CMM v1.3</h1>
                 <span class="text-sm text-slate-400">Tool version 1.3.1</span>
             </div>
             <ul id="main-nav" class="space-y-1 p-2">
 <li>
-                    <a href="#" class="nav-link flex items-center space-x-2 rounded-md py-2 px-3 hover:bg-slate-700" data-page="dashboard">
+                    <a href="#" class="nav-link flex items-center space-x-2 rounded-md py-2 px-3 hover:bg-sidebar-hover" data-page="dashboard">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 flex-shrink-0">
                           <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" />
                         </svg>
@@ -264,7 +336,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="nav-link flex items-center space-x-2 rounded-md py-2 px-3 hover:bg-slate-700" data-page="priorities">
+                    <a href="#" class="nav-link flex items-center space-x-2 rounded-md py-2 px-3 hover:bg-sidebar-hover" data-page="priorities">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 flex-shrink-0">
                           <path stroke-linecap="round" stroke-linejoin="round" d="M9 4.5v15m6-15v15m-10.5-15h15a2.25 2.25 0 012.25 2.25v10.5A2.25 2.25 0 0119.5 19.5h-15a2.25 2.25 0 01-2.25-2.25V6.75A2.25 2.25 0 014.5 4.5z" />
                         </svg>
@@ -273,7 +345,7 @@
                 </li>
                 
                 <li>
-                    <a href="#" class="nav-link flex items-center space-x-2 rounded-md py-2 px-3 hover:bg-slate-700" data-page="data">
+                    <a href="#" class="nav-link flex items-center space-x-2 rounded-md py-2 px-3 hover:bg-sidebar-hover" data-page="data">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 flex-shrink-0">
                           <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375" />
                         </svg>
@@ -282,7 +354,7 @@
                 </li>
                 
                 <li>
-                    <a href="#" class="nav-link flex items-center space-x-2 rounded-md py-2 px-3 hover:bg-slate-700" data-page="about">
+                    <a href="#" class="nav-link flex items-center space-x-2 rounded-md py-2 px-3 hover:bg-sidebar-hover" data-page="about">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-5 h-5 flex-shrink-0" fill="none">
                             <circle opacity="0.5" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"></circle>
                             <path d="M12 17V11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
@@ -296,7 +368,7 @@
                     <label class="flex items-center justify-between cursor-pointer" title="Enable to show Target, Priority, and planning fields.">Planning mode
                         <div class="relative">
                             <input type="checkbox" id="mode-toggle" class="sr-only peer">
-                            <div class="w-11 h-6 bg-slate-600 rounded-full peer-checked:bg-blue-600"></div>
+                            <div class="w-11 h-6 bg-toggle-bg rounded-full peer-checked:bg-brand-red"></div>
                             <div class="absolute top-0.5 left-[2px] bg-white w-5 h-5 rounded-full transition-all peer-checked:translate-x-full"></div>
                         </div>
                     </label>
@@ -304,12 +376,19 @@
 
                 
                 <li class="pt-4">
-                    <h2 class="px-3 text-sm font-semibold text-slate-400 uppercase tracking-wider">Domain completion %</h2>
+                    <h2 class="px-3 text-sm font-semibold text-muted uppercase tracking-wider">Domain completion %</h2>
                     <ul id="domain-nav" class="mt-1 space-y-1">
                         </ul>
                 </li>
 
            </ul>
+
+            <!-- Maintained by Cosive badge -->
+            <a href="https://cosive.com" target="_blank" rel="noopener noreferrer"
+               class="mt-auto mb-4 mx-4 flex flex-col items-start gap-1 py-2">
+                <span class="text-muted text-[10px] uppercase tracking-wider">Maintained by</span>
+                <img src="cosive-logo.webp" alt="Cosive" class="h-[20px]">
+            </a>
         </nav>
         <main id="main-content" class="flex-1 overflow-y-auto p-6 md:p-8">
             
@@ -371,10 +450,10 @@
             </div>
 
             <div id="page-assessment" class="page">
-                <div class="flex justify-between items-center mb-4">
+                <div class="flex justify-between items-center mb-6">
                     <h2 id="assessment-title" class="text-3xl font-bold text-slate-800"></h2>
                     <div class="flex space-x-2">
-                        <button id="expand-all" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md text-sm font-medium">Expand All</button>
+                        <button id="expand-all" class="bg-brand-red hover:bg-brand-red-dark text-white py-2 px-4 rounded-md text-sm font-medium">Expand All</button>
                         <button id="collapse-all" class="bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded-md text-sm font-medium">Collapse All</button>
                     </div>
                 </div>
@@ -411,7 +490,7 @@
                     <p class="text-slate-600">This planning sheet aggregates all practices where your <strong>Target Score</strong> is greater than your current <strong>Score</strong> (or where your Current Score is not yet set). Click any column header to sort the list and help you plan your improvement journey.</p>
                     <p class="text-slate-600 mt-2">Only practices from 'Relevant' domains that are individually marked 'Relevant' are shown here.</p>
                     <div class="mt-4">
-                        <button id="export-csv" class="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-md font-medium text-sm">
+                        <button id="export-csv" class="bg-brand-blue hover:bg-brand-blue-dark text-white py-2 px-4 rounded-md font-medium text-sm">
                             Export to CSV
                         </button>
                     </div>
@@ -449,13 +528,13 @@
                         <div>
                             <h3 class="text-xl font-semibold text-slate-800 mb-2">Assessment Name</h3>
                             <label for="assessment-name" class="sr-only">Assessment Name</label>
-                            <input type="text" id="assessment-name" class="w-full max-w-md bg-slate-50 text-slate-900 text-sm p-2 rounded-md border border-slate-300 focus:ring-blue-500 focus:border-blue-500" placeholder="e.g., Q3 2025 Assessment">
+                            <input type="text" id="assessment-name" class="w-full max-w-md bg-slate-50 text-slate-900 text-sm p-2 rounded-md border border-slate-300 focus:ring-brand-red focus:border-brand-red" placeholder="e.g., Q3 2025 Assessment">
                             <p class="mt-2 text-slate-600">A name for this assessment (e.g., "Q3 2025 Assessment"). This is saved with your export file.</p>
                         </div>
 
                         <div>
                             <h3 class="text-xl font-semibold text-slate-800 mb-2">Export Data</h3>
-                            <button id="export-json" class="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-md">
+                            <button id="export-json" class="bg-brand-blue hover:bg-brand-blue-dark text-white font-medium py-2 px-4 rounded-md">
                                 Export Results (.json)
                             </button>
                             <p class="mt-2 text-slate-600">Save a backup of all your scores and planning data to a JSON file on your computer.</p>
@@ -463,7 +542,7 @@
                         
                         <div>
                             <h3 class="text-xl font-semibold text-slate-800 mb-2">Import Data</h3>
-                             <label for="import-json" class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md cursor-pointer inline-block">
+                             <label for="import-json" class="bg-brand-red hover:bg-brand-red-dark text-white font-medium py-2 px-4 rounded-md cursor-pointer inline-block">
                                 Import Results (.json)
                             </label>
                             <input type="file" id="import-json" class="hidden" accept=".json,application/json">
@@ -565,12 +644,12 @@
             
                         <h3 class="text-xl font-semibold text-slate-800 mt-6 mb-2">Repo</h3>
                         <p class="text-lg text-slate-600 mb-6">
-                            The source code for this tool is available on <a href="https://github.com/chorsley/cti-cmm-assessment-tool" target="_blank" rel="noopener noreferrer" class="text-blue-600 font-semibold underline decoration-2 decoration-blue-200 hover:text-blue-800 hover:decoration-blue-400 px-1 rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-200 transition">GitHub</a> under the MIT License.
+                            The source code for this tool is available on <a href="https://github.com/chorsley/cti-cmm-assessment-tool" target="_blank" rel="noopener noreferrer" class="font-semibold underline">GitHub</a> under the MIT License.
                         </p>
 
                         <h3 class="text-xl font-semibold text-slate-800 mt-6 mb-2">Contact</h3>
                         <p class="text-lg text-slate-600 mb-6">
-                            Maintained by Chris Horsley at <a href="https://cosive.com" target="_blank" rel="noopener noreferrer" class="text-blue-600 font-semibold underline decoration-2 decoration-blue-200 hover:text-blue-800 hover:decoration-blue-400 px-1 rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-200 transition">Cosive</a> in Melbourne, Australia. For questions or feedback, please reach out via <a href="mailto:hello@cosive.com" class="text-blue-600 font-semibold underline decoration-2 decoration-blue-200 hover:text-blue-800 hover:decoration-blue-400 px-1 rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-200 transition">hello@cosive.com</a>.
+                            Maintained by Chris Horsley at <a href="https://cosive.com" target="_blank" rel="noopener noreferrer" class="font-semibold underline">Cosive</a> in Melbourne, Australia. For questions or feedback, please reach out via <a href="mailto:hello@cosive.com" class="font-semibold underline">hello@cosive.com</a>.
                         </p>
                     </div>
                 </div>
@@ -1475,14 +1554,14 @@ class Domain {
                             <td class="py-4 px-6 text-sm text-slate-500">${domain.totalScore}</td>
                             <td class="py-4 px-6 text-sm text-slate-500">${domain.totalMax}</td>
                             <td class="py-4 px-6 text-sm text-slate-500">
-                                <div class="w-full bg-slate-200 rounded-full h-2.5">
-                                    <div class="bg-blue-600 h-2.5 rounded-full" style="width: ${domain.percent.toFixed(0)}%"></div>
+                                <div class="w-full bg-muted rounded-full h-2.5">
+                                    <div class="bg-brand-red h-2.5 rounded-full" style="width: ${domain.percent.toFixed(0)}%"></div>
                                 </div>
                                 <span class="text-xs">${domain.percent.toFixed(1)}%</span>
                             </td>
                             <td class="py-4 px-6 text-sm text-slate-500">
-                                <div class="w-full bg-slate-200 rounded-full h-2.5">
-                                    <div class="bg-green-600 h-2.5 rounded-full" style="width: ${domain.targetPercent.toFixed(0)}%"></div>
+                                <div class="w-full bg-muted rounded-full h-2.5">
+                                    <div class="bg-brand-blue h-2.5 rounded-full" style="width: ${domain.targetPercent.toFixed(0)}%"></div>
                                 </div>
                                 <span class="text-xs">${domain.targetPercent.toFixed(1)}%</span>
                             </td>
@@ -1513,15 +1592,15 @@ class Domain {
                             {
                                 label: 'Current Maturity %',
                                 data: domainScores.map(d => d.relevant ? d.percent : 0),
-                                backgroundColor: 'rgba(59, 130, 246, 0.2)',
-                                borderColor: 'rgba(59, 130, 246, 1)',
+                                backgroundColor: withAlpha(BRAND_COLORS.red, 0.2),
+                                borderColor: BRAND_COLORS.red,
                                 borderWidth: 2,
                             },
                             {
                                 label: 'Target Maturity %',
                                 data: domainScores.map(d => d.relevant ? d.targetPercent : 0),
-                                backgroundColor: 'rgba(22, 163, 74, 0.2)',
-                                borderColor: 'rgba(22, 163, 74, 1)',
+                                backgroundColor: withAlpha(BRAND_COLORS.blue, 0.2),
+                                borderColor: BRAND_COLORS.blue,
                                 borderWidth: 2,
                             }
                         ]
@@ -1544,7 +1623,7 @@ class Domain {
                         labels: ['Assessed', 'Not Assessed'],
                         datasets: [{
                             data: [grandTotalAssessed, grandTotalPractices - grandTotalAssessed],
-                            backgroundColor: ['rgba(59, 130, 246, 1)', 'rgba(229, 231, 235, 1)'],
+                            backgroundColor: [BRAND_COLORS.red, BRAND_COLORS.muted],
                             borderWidth: 1
                         }]
                     },
@@ -1558,13 +1637,13 @@ class Domain {
                             title: {
                                 display: true,
                                 text: `${overallAssessmentCompletion.toFixed(1)}%`,
-                                font: { size: 40, weight: 'bold' },
+                                font: { family: 'Manrope', size: 40, weight: 'bold' },
                                 color: '#1e293b'
                             },
                             subtitle: {
                                 display: true,
                                 text: 'Overall Assessment (Relevant Items)',
-                                font: { size: 16 },
+                                font: { family: 'Manrope', size: 16 },
                                 color: '#64748b',
                                 padding: { bottom: 30 }
                             }
@@ -1675,7 +1754,7 @@ class Domain {
                                     <span class="text-xs font-medium text-slate-600 mr-2">Relevant</span>
                                     <div class="relative">
                                         <input type="checkbox" class="sr-only peer practice-relevance-toggle" data-id="${practice.id}" data-field="relevant" ${practice.relevant ? 'checked' : ''}>
-                                        <div class="w-11 h-6 bg-slate-400 rounded-full peer-checked:bg-blue-600"></div>
+                                        <div class="w-11 h-6 bg-toggle-bg rounded-full peer-checked:bg-brand-red"></div>
                                         <div class="absolute top-0.5 left-[2px] bg-white w-5 h-5 rounded-full transition-all peer-checked:translate-x-full"></div>
                                     </div>
                                 </label>
@@ -2340,8 +2419,8 @@ class Domain {
                             <span class="text-sm font-medium text-slate-700">Assessment Progress</span>
                             <span class="text-sm font-medium text-slate-500">${percent}%</span>
                         </div>
-                        <div class="w-full bg-slate-200 rounded-full h-2.5">
-                            <div class="bg-blue-600 h-2.5 rounded-full" style="width: ${percent}%"></div>
+                        <div class="w-full bg-muted rounded-full h-2.5">
+                            <div class="bg-brand-red h-2.5 rounded-full" style="width: ${percent}%"></div>
                         </div>
                     `;
                 }
