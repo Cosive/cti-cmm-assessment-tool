@@ -270,6 +270,36 @@
             opacity: 0.5;
             pointer-events: none;
         }
+        .maturity-filter-group {
+            display: inline-flex;
+            border: 1px solid #cbd5e1; /* slate-300 */
+            border-radius: 9999px;
+            overflow: hidden;
+            background-color: #f8fafc; /* slate-50 */
+        }
+        .maturity-filter-button {
+            padding: 0.25rem 0.75rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #475569; /* slate-600 */
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+        .maturity-filter-button.active {
+            background-color: #2563eb; /* blue-600 */
+            color: #ffffff;
+        }
+        .maturity-group.collapsed .maturity-group-body {
+            display: none;
+        }
+        .maturity-group-toggle-icon {
+            transition: transform 0.2s ease;
+        }
+        .maturity-group.collapsed .maturity-group-toggle-icon {
+            transform: rotate(-90deg);
+        }
         /* === NEW STYLES FOR WIDGET WARNING === */
         .target-widget.widget-warning .target-dot {
             border-color: #f59e0b; /* amber-500 */
@@ -293,8 +323,8 @@
         
         <nav class="w-64 bg-sidebar text-white flex-shrink-0 overflow-y-auto flex flex-col">
             <div class="p-4">
-                <h1 class="text-xl font-bold text-white">CTI-CMM Tool</h1>
-                <span class="text-sm text-muted">Assessment v1.5</span>
+                <h1 class="text-xl font-bold text-white">CTI-CMM v1.3</h1>
+                <span class="text-sm text-slate-400">Tool version 1.3.1</span>
             </div>
             <ul id="main-nav" class="space-y-1 p-2">
 <li>
@@ -362,6 +392,20 @@
         </nav>
         <main id="main-content" class="flex-1 overflow-y-auto p-6 md:p-8">
             
+            <!-- Version Mismatch Warning Banner -->
+            <div id="version-warning-banner" class="hidden bg-amber-100 border-l-4 border-amber-500 text-amber-900 p-4 mb-6" role="alert">
+                <div class="flex items-start">
+                    <svg class="w-6 h-6 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+                    </svg>
+                    <div>
+                        <p class="font-bold">Data Version Mismatch</p>
+                        <p id="version-warning-message" class="mt-1"></p>
+                        <p class="mt-2">Please use the <a href="#" class="font-semibold underline" data-page="data">Data Management</a> page to reset your data or export your current assessment before continuing.</p>
+                    </div>
+                </div>
+            </div>
+            
             <div id="page-dashboard" class="page">
                 <h2 class="text-3xl font-bold text-slate-800 mb-6">Assessment Dashboard</h2>
                 
@@ -413,14 +457,18 @@
                         <button id="collapse-all" class="bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded-md text-sm font-medium">Collapse All</button>
                     </div>
                 </div>
-                <div class="bg-white p-4 rounded-lg shadow-md mb-6 flex justify-between items-center">
+                <div class="bg-white p-4 rounded-lg shadow-md mb-6 flex flex-wrap items-center justify-between gap-4">
                     <div>
                         <span class="font-bold">Date Last Assessed:</span>
                         <input type="date" id="assessment-date" class="ml-2 p-1 border rounded-md">
                     </div>
-                    <div class="flex items-center">
-                        <label for="assessment-relevant" class="font-bold">Domain is Relevant?</label>
-                        <input type="checkbox" id="assessment-relevant" class="ml-2 h-5 w-5 rounded accent-brand-red">
+                    <div class="flex items-center space-x-4">
+                        <label for="maturity-filter" class="font-bold text-slate-700">Maturity filter</label>
+                        <div id="maturity-filter" class="maturity-filter-group" role="group" aria-label="Maturity filter">
+                            <button type="button" class="maturity-filter-button" data-maturity-filter-value="1">CTI 1</button>
+                            <button type="button" class="maturity-filter-button" data-maturity-filter-value="2">CTI 2</button>
+                            <button type="button" class="maturity-filter-button" data-maturity-filter-value="3">CTI 3</button>
+                        </div>
                     </div>
                     <div id="assessment-summary" class="text-right">
                         </div>
@@ -544,13 +592,30 @@
 
                         <h3 class="text-xl font-semibold text-slate-800 mt-6 mb-2">About this Tool</h3>
                         <p class="text-lg text-slate-600 mb-6">
-                             This web assessment tool is an alternative to the <a href="https://cti-cmm.org/beta-assessment-tool" target="_blank" rel="noopener noreferrer" class="font-semibold underline">spreadsheet version</a> of the CTI-CMM. 
+                             This web assessment tool is an alternative to the <a href="https://cti-cmm.org/assessment-tool" target="_blank" rel="noopener noreferrer" class="text-blue-600 font-semibold underline decoration-2 decoration-blue-200 hover:text-blue-800 hover:decoration-blue-400 px-1 rounded-sm focus:outline-none focus:ring-2 focus:ring-blue-200 transition">spreadsheet version</a> of the CTI-CMM. 
                              It provides an interactive interface, auto-saving capabilities, import / export of results and a dashboard to visualize your maturity posture.
                         </p>
             
                         <h3 class="text-xl font-semibold text-slate-800 mt-6 mb-2">Version History</h3>
                         <div class="text-lg text-slate-600 mb-6">
                             <ul class="space-y-3">
+                                <li>
+                                    <strong>v1.3.1 (2026-02-07):</strong>
+                                    <ul class="list-disc pl-6 mt-2 space-y-1">
+                                        <li>Add domain relevancy controls to the left navigation</li>
+                                        <li>Add maturity filters to criteria lists for shorter, focused views</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <strong>v1.3.0 (2026-01-21):</strong>
+                                    <ul class="list-disc pl-6 mt-2 space-y-1">
+                                        <li>Update data for CTI-CMM v1.3 criteria</li>
+                                        <li>Add Practice IDs to the Priorities Sheet</li>
+                                        <li>Add Practice IDs to the Practice Cards</li>
+                                        <li>Flag incompatibility between JSON data and the current version of the tool</li>
+                                        <li>Rework numbering to match CTI-CMM model version</li>
+                                    </ul>
+                                </li>
                                 <li>
                                     <strong>v3 (2025-11-14):</strong>
                                     <ul class="list-disc pl-6 mt-2 space-y-1">
@@ -820,6 +885,7 @@ class Domain {
     // --- User Data (with defaults) ---
     date = '';
     relevant = true;
+    maturityFilter = 3;
 
     constructor(staticDomain, objectivesData) {
         this.id = staticDomain.id;
@@ -837,6 +903,7 @@ class Domain {
     loadUserData(savedDomain) {
         if (savedDomain.date !== undefined) this.date = savedDomain.date;
         if (savedDomain.relevant !== undefined) this.relevant = savedDomain.relevant;
+        if (savedDomain.maturityFilter !== undefined) this.maturityFilter = savedDomain.maturityFilter;
 
         const objectiveMap = new Map();
         if (savedDomain.objectives) {
@@ -857,6 +924,7 @@ class Domain {
             // key in the top-level assessmentData object.
             date: this.date,
             relevant: this.relevant,
+            maturityFilter: this.maturityFilter,
             objectives: this.objectives.map(o => o.serialize())
         };
     }
@@ -945,10 +1013,12 @@ class Domain {
 
         // --- 1. Constants ---
         const CURRENT_TOOL_VERSION = '1.6'; // === BUMPED VERSION ===
+        const CURRENT_CTI_CMM_VERSION = '1.3'; // CTI-CMM Model Version
         const STORAGE_KEY = 'ctiCmmAssessmentData';
         const MODE_STORAGE_KEY = 'ctiCmmAppMode';
-        const VIEW_STORAGE_KEY = 'ctiCmmAppView'; 
+        const VIEW_STORAGE_KEY = 'ctiCmmAppView';
         const ASSESSMENT_NAME_KEY = 'ctiCmmAssessmentName';
+        const CTI_CMM_VERSION_KEY = 'ctiCmmModelVersion';
 
         // === REMOVED DOMAIN_NAME_MAP ===
         
@@ -1004,13 +1074,15 @@ class Domain {
             // Other elements
             assessmentTitle: document.getElementById('assessment-title'),
             assessmentDate: document.getElementById('assessment-date'),
-            assessmentRelevant: document.getElementById('assessment-relevant'),
             assessmentSummary: document.getElementById('assessment-summary'),
+            maturityFilter: document.getElementById('maturity-filter'),
             assessmentObjectivesContainer: document.getElementById('assessment-objectives-container'),
             assessmentDisabledBanner: document.getElementById('assessment-disabled-banner'),
             dashboardTableBody: document.getElementById('dashboard-table-body'),
             dashboardTableFooter: document.getElementById('dashboard-table-footer'),
-            prioritiesTableBody: document.getElementById('priorities-table-body')
+            prioritiesTableBody: document.getElementById('priorities-table-body'),
+            versionWarningBanner: document.getElementById('version-warning-banner'),
+            versionWarningMessage: document.getElementById('version-warning-message')
         };
 
 
@@ -1037,6 +1109,14 @@ class Domain {
                 }
                 const intScore = parseInt(score, 10);
                 return isNaN(intScore) ? null : intScore;
+            },
+
+            getMaturityLevel(maturityText) {
+                const normalized = (maturityText || '').replace(/\s+/g, ' ').toUpperCase();
+                if (normalized.startsWith('CTI1') || normalized.startsWith('CTI 1')) return 1;
+                if (normalized.startsWith('CTI2') || normalized.startsWith('CTI 2')) return 2;
+                if (normalized.startsWith('CTI3') || normalized.startsWith('CTI 3')) return 3;
+                return null;
             },
 
             /**
@@ -1148,6 +1228,8 @@ class Domain {
                     const dataToSave = store.getUserDataForSave();
                     const savedString = JSON.stringify(dataToSave);
                     localStorage.setItem(STORAGE_KEY, savedString);
+                    // Save CTI-CMM model version
+                    localStorage.setItem(CTI_CMM_VERSION_KEY, CURRENT_CTI_CMM_VERSION);
                     console.log('User assessment data saved.');
                 } catch (error) {
                     console.error('Error saving data to localStorage:', error);
@@ -1215,6 +1297,13 @@ class Domain {
                             return value;
                         });
                         console.log('User progress loaded.');
+                        
+                        // Check CTI-CMM model version
+                        const storedVersion = localStorage.getItem(CTI_CMM_VERSION_KEY) || '1.2';
+                        if (storedVersion !== CURRENT_CTI_CMM_VERSION) {
+                            dom.versionWarningMessage.textContent = `Your saved data is from CTI-CMM version ${storedVersion}, but this tool supports version ${CURRENT_CTI_CMM_VERSION}. Some features may not work correctly.`;
+                            dom.versionWarningBanner.classList.remove('hidden');
+                        }
                     } else {
                         console.log('No saved data found.');
                     }
@@ -1454,8 +1543,8 @@ class Domain {
                 // 1. Populate Table
                 dom.dashboardTableBody.innerHTML = ''; // Clear old data
                 domainScores.forEach(domain => {
-                    // === MODIFICATION: Use NICKNAME (Full Name) format ===
-                    const domainName = `${domain.nickname} (${domain.name})`;
+                    // === MODIFICATION: Use just the nickname (e.g., "ASSET") ===
+                    const domainName = domain.nickname;
                     // === END MODIFICATION ===
                     const rowClass = domain.relevant ? "hover:bg-slate-50" : "hover:bg-slate-50 opacity-50 line-through";
                     // SECURE: All data here is either from our own map or a calculation.
@@ -1581,7 +1670,7 @@ class Domain {
                 dom.assessmentTitle.textContent = domain.name || domain.nickname;
                 // === END MODIFICATION ===
                 dom.assessmentDate.value = domain.date;
-                dom.assessmentRelevant.checked = domain.relevant;
+                view.updateMaturityFilterUI(domain.maturityFilter || 3);
                 
                 view.updateAssessmentSummary(domainId); // Render summary
 
@@ -1616,16 +1705,28 @@ class Domain {
                     for (const maturityLevel of ['CTI 1', 'CTI 2', 'CTI 3', 'Other']) {
                         const practices = practicesByMaturity[maturityLevel];
                         if (!practices || practices.length === 0) continue;
-                        
-                        const groupHeader = document.createElement('h4');
-                        groupHeader.className = "text-md font-semibold text-slate-700 pt-2";
+
+                        const groupWrapper = document.createElement('div');
+                        groupWrapper.className = "maturity-group border rounded-md";
+                        groupWrapper.dataset.maturityLevel = utils.getMaturityLevel(maturityLevel);
+
+                        const groupHeader = document.createElement('button');
+                        groupHeader.type = "button";
+                        groupHeader.className = "w-full flex items-center justify-between text-md font-semibold text-slate-700 px-4 py-3 bg-slate-50 hover:bg-slate-100";
+                        groupHeader.dataset.maturityToggle = "true";
                         let maturityName = "Uncategorized";
                         if (maturityLevel === 'CTI 1') maturityName = "Foundational";
                         if (maturityLevel === 'CTI 2') maturityName = "Intermediate";
                         if (maturityLevel === 'CTI 3') maturityName = "Advanced";
-                        groupHeader.textContent = `${maturityLevel} - ${maturityName}`;
-                        maturityGroupsContainer.appendChild(groupHeader);
-                        
+                        groupHeader.innerHTML = `
+                            <span>${maturityLevel} - ${maturityName}</span>
+                            <span class="maturity-group-toggle-icon">▾</span>
+                        `;
+                        groupWrapper.appendChild(groupHeader);
+
+                        const groupBody = document.createElement('div');
+                        groupBody.className = "maturity-group-body";
+
                         const tableContainer = document.createElement('div');
                         tableContainer.className = "overflow-x-auto border rounded-md";
                         const table = document.createElement('table');
@@ -1634,9 +1735,11 @@ class Domain {
                         tbody.className = "bg-white";
 
                         practices.forEach(practice => {
+                            const practiceMaturityLevel = utils.getMaturityLevel(practice.maturity);
                             // Row 1: Practice Info
                             const rowInfo = document.createElement('tr');
                             rowInfo.className = "bg-slate-50";
+                            if (practiceMaturityLevel) rowInfo.dataset.maturityLevel = practiceMaturityLevel;
                             // --- SECURE MODIFICATION: Use .textContent for untrusted data ---
                             const cellInfo = document.createElement('td');
                             cellInfo.colSpan = 5;
@@ -1661,7 +1764,21 @@ class Domain {
 
                             const slugDiv = document.createElement('div');
                             slugDiv.className = "font-semibold text-slate-800 pr-32"; // Added padding-right
-                            slugDiv.textContent = practice.slug; // Safe
+                            
+                            // Create identifier span in grey
+                            const idSpan = document.createElement('span');
+                            idSpan.className = "text-slate-500 font-normal";
+                            idSpan.textContent = practice.id;
+                            
+                            // Create line break
+                            const lineBreak = document.createElement('br');
+                            
+                            // Create slug text node
+                            const slugText = document.createTextNode(practice.slug);
+                            
+                            slugDiv.appendChild(idSpan);
+                            slugDiv.appendChild(lineBreak);
+                            slugDiv.appendChild(slugText);
                             
                             if (!practice.relevant) {
                                 slugDiv.classList.add('line-through', 'text-slate-400');
@@ -1688,6 +1805,7 @@ class Domain {
                             // === NEW v1.6: Add dataset and class for disabling ===
                             rowWidgets1.dataset.practiceRowId = practice.id;
                             if (!practice.relevant) rowWidgets1.classList.add('content-disabled');
+                            if (practiceMaturityLevel) rowWidgets1.dataset.maturityLevel = practiceMaturityLevel;
                             
                             // Col 1: Current Maturity
                             const cellCurrent = document.createElement('td');
@@ -1743,6 +1861,7 @@ class Domain {
                                 // === NEW v1.6: Add dataset and class for disabling ===
                                 rowWidgets2.dataset.practiceRowId = practice.id;
                                 if (!practice.relevant) rowWidgets2.classList.add('content-disabled');
+                                if (practiceMaturityLevel) rowWidgets2.dataset.maturityLevel = practiceMaturityLevel;
 
                                 const cellTarget = document.createElement('td');
                                 cellTarget.className = "pb-4 pl-4 w-[180px]";
@@ -1789,7 +1908,9 @@ class Domain {
                         
                         table.appendChild(tbody);
                         tableContainer.appendChild(table);
-                        maturityGroupsContainer.appendChild(tableContainer);
+                        groupBody.appendChild(tableContainer);
+                        groupWrapper.appendChild(groupBody);
+                        maturityGroupsContainer.appendChild(groupWrapper);
                     }
 
                     details.appendChild(maturityGroupsContainer);
@@ -1816,6 +1937,8 @@ class Domain {
                     details.appendChild(subtotalEl);
                     dom.assessmentObjectivesContainer.appendChild(details);
                 });
+
+                view.applyMaturityFilter(domainId);
             },
 
             /**
@@ -1941,7 +2064,43 @@ class Domain {
                     };
 
                     addTextCell(item.domainNickname, "py-4 px-4 text-sm font-medium text-slate-900");
-                    addTextCell(practice.slug, "py-4 px-4 text-sm text-slate-700");
+                    
+                    // Practice cell with ID and clickable slug
+                    const practiceCell = document.createElement('td');
+                    practiceCell.className = "py-4 px-4 text-sm";
+                    const practiceIdSpan = document.createElement('span');
+                    practiceIdSpan.className = "text-slate-500 font-normal block";
+                    practiceIdSpan.textContent = practice.id;
+                    
+                    // Make slug a clickable link
+                    const practiceSlugLink = document.createElement('a');
+                    practiceSlugLink.href = "#";
+                    practiceSlugLink.className = "text-blue-600 hover:text-blue-800 font-semibold block underline";
+                    practiceSlugLink.textContent = practice.slug;
+                    practiceSlugLink.title = "View practice details";
+                    // Extract domain ID from practice ID (e.g., "ASSET-1-a" → "ASSET")
+                    const domainId = practice.id.split('-')[0];
+                    practiceSlugLink.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        view.showPage('assessment', domainId, false);
+                        // Scroll to the practice after a short delay to allow page render
+                        setTimeout(() => {
+                            const practiceRow = document.querySelector(`[data-practice-row-id="${practice.id}"]`);
+                            if (practiceRow) {
+                                practiceRow.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                // Briefly highlight the row
+                                practiceRow.style.backgroundColor = '#dbeafe'; // blue-100
+                                setTimeout(() => {
+                                    practiceRow.style.backgroundColor = '';
+                                }, 2000);
+                            }
+                        }, 100);
+                    });
+                    
+                    practiceCell.appendChild(practiceIdSpan);
+                    practiceCell.appendChild(practiceSlugLink);
+                    row.appendChild(practiceCell);
+                    
                     addHTMLCell(view.createDisplayMaturityWidget(practice.score, 'current'), "py-2 px-4 text-sm text-slate-500");
                     addHTMLCell(view.createDisplayMaturityWidget(practice.targetScore, 'target'), "py-2 px-4 text-sm text-slate-500");
                     addTextCell(practice.impact || '-', "py-4 px-4 text-sm text-slate-500");
@@ -2155,6 +2314,45 @@ class Domain {
                     view.showPage('dashboard');
                 }
             },
+
+            updateMaturityFilterLabel(level) {
+                return level;
+            },
+
+            updateMaturityFilterUI(level) {
+                view.updateMaturityFilterLabel(level);
+                if (!dom.maturityFilter) return;
+                const buttons = dom.maturityFilter.querySelectorAll('.maturity-filter-button');
+                buttons.forEach(button => {
+                    const value = parseInt(button.dataset.maturityFilterValue, 10);
+                    button.classList.toggle('active', value === level);
+                });
+            },
+
+            applyMaturityFilter(domainId) {
+                const domain = state.assessmentData[domainId];
+                if (!domain) return;
+                const level = parseInt(domain.maturityFilter, 10) || 3;
+                const groups = document.querySelectorAll('#page-assessment .maturity-group');
+                groups.forEach(group => {
+                    const groupLevel = parseInt(group.dataset.maturityLevel, 10);
+                    const body = group.querySelector('.maturity-group-body');
+                    if (!body || !groupLevel) return;
+                    body.classList.toggle('content-disabled', groupLevel > level);
+                    if (groupLevel > level) {
+                        group.classList.add('collapsed');
+                        group.dataset.autoCollapsed = 'true';
+                    } else if (group.dataset.autoCollapsed === 'true') {
+                        group.classList.remove('collapsed');
+                        delete group.dataset.autoCollapsed;
+                    }
+                });
+                const rows = document.querySelectorAll('#page-assessment [data-maturity-level]');
+                rows.forEach(row => {
+                    const rowLevel = parseInt(row.dataset.maturityLevel, 10);
+                    row.classList.toggle('content-disabled', rowLevel > level);
+                });
+            },
             
             /**
              * Updates all progress bars and styling in the sidebar.
@@ -2174,9 +2372,11 @@ class Domain {
                     const label = document.querySelector(`[data-progress-label-domain="${domain.id}"]`);
                     const bar = document.querySelector(`[data-progress-bar-domain="${domain.id}"]`);
                     const navLink = document.querySelector(`a[data-domain="${domain.id}"]`);
+                    const toggle = document.querySelector(`.domain-relevance-toggle[data-domain-id="${domain.id}"]`);
                     
                     if (label) label.textContent = `${percent}%`;
                     if (bar) bar.style.width = `${percent}%`;
+                    if (toggle) toggle.checked = domain.relevant;
                     if (navLink) {
                         navLink.style.opacity = domain.relevant ? '1' : '0.5';
                         navLink.style.textDecoration = domain.relevant ? 'none' : 'line-through';
@@ -2443,7 +2643,8 @@ class Domain {
                     assessmentName: state.assessmentName,
                     exportDate: new Date().toISOString(),
                     toolVersion: CURRENT_TOOL_VERSION,
-                    modelHash: modelHash, 
+                    ctiCmmVersion: CURRENT_CTI_CMM_VERSION,
+                    modelHash: modelHash,
                     data: userData
                 };
                 
@@ -2467,7 +2668,7 @@ class Domain {
                     
                     if (fileName.length === 0) fileName = 'cti-cmm-assessment';
 
-                    fileName = `${fileName}-export-${new Date().toISOString().split('T')[0]}.json`;
+                    fileName = `${fileName}-v1.3-export-${new Date().toISOString().split('T')[0]}.json`;
                     
                     link.setAttribute('href', url);
                     link.setAttribute('download', fileName);
@@ -2526,6 +2727,26 @@ class Domain {
                 // --- Collapse/Expand ---
                 if (target.id === 'expand-all' || target.id === 'collapse-all') {
                     events.handleCollapseExpand(target.id);
+                    return;
+                }
+
+                // --- Maturity Group Toggle ---
+                const maturityToggle = target.closest('[data-maturity-toggle="true"]');
+                if (maturityToggle) {
+                    const group = maturityToggle.closest('.maturity-group');
+                    if (group) {
+                        group.classList.toggle('collapsed');
+                    }
+                    return;
+                }
+
+                // --- Maturity Filter Button ---
+                const maturityButton = target.closest('.maturity-filter-button');
+                if (maturityButton) {
+                    const level = parseInt(maturityButton.dataset.maturityFilterValue, 10) || 3;
+                    store.updateDomainMeta(state.activeDomain, 'maturityFilter', level);
+                    view.updateMaturityFilterUI(level);
+                    view.applyMaturityFilter(state.activeDomain);
                     return;
                 }
 
@@ -2630,23 +2851,7 @@ class Domain {
                     store.updateDomainMeta(state.activeDomain, 'date', target.value);
                     return;
                 }
-                if (target.id === 'assessment-relevant') {
-                    const isRelevant = target.checked;
-                    store.updateDomainMeta(state.activeDomain, 'relevant', isRelevant);
-                    
-                    // Update UI
-                    view.updateSidebarProgress();
-                    if (state.activePage === 'dashboard') view.renderDashboardPage();
-                    if (state.activePage === 'priorities') view.renderPrioritiesPage();
-                    
-                    // Toggle disabled overlay on current page
-                    if (isRelevant) {
-                        dom.assessmentObjectivesContainer.classList.remove('content-disabled');
-                        dom.assessmentDisabledBanner.classList.add('hidden');
-                    } else {
-                        dom.assessmentObjectivesContainer.classList.add('content-disabled');
-                        dom.assessmentDisabledBanner.classList.remove('hidden');
-                    }
+                if (target.id === 'maturity-filter') {
                     return;
                 }
             },
@@ -2800,6 +3005,10 @@ class Domain {
                             localStorage.setItem(STORAGE_KEY, JSON.stringify(importedData.data));
                             localStorage.setItem(ASSESSMENT_NAME_KEY, importedData.assessmentName);
                             
+                            // Save and check CTI-CMM model version
+                            const importedVersion = importedData.ctiCmmVersion || '1.2';
+                            localStorage.setItem(CTI_CMM_VERSION_KEY, importedVersion);
+                            
                             // Reload to apply
                             alert('Import successful! The application will now reload.');
                             location.reload();
@@ -2824,10 +3033,45 @@ class Domain {
          * Attaches all permanent event listeners.
          */
         function bindEvents() {
-            dom.mainNav.addEventListener('click', events.handleNavClick);
+            dom.mainNav.addEventListener('click', (e) => {
+                // Handle clicks on the toggle or any of its visual children to prevent navigation
+                const toggleLabel = e.target.closest('label');
+                if (
+                    e.target.closest('.domain-relevance-toggle') ||
+                    (toggleLabel && toggleLabel.querySelector('.domain-relevance-toggle'))
+                ) {
+                    return;
+                }
+                events.handleNavClick(e);
+            });
             dom.resetData.addEventListener('click', store.resetData);
             dom.modeToggle.addEventListener('change', events.handleModeToggle);
             
+            // --- Domain Relevance Toggle ---
+            dom.domainNav.addEventListener('change', (e) => {
+                if (e.target.classList.contains('domain-relevance-toggle')) {
+                    const domainId = e.target.dataset.domainId;
+                    const isRelevant = e.target.checked;
+                    store.updateDomainMeta(domainId, 'relevant', isRelevant);
+                    
+                    // Update UI
+                    view.updateSidebarProgress();
+                    if (state.activePage === 'dashboard') view.renderDashboardPage();
+                    if (state.activePage === 'priorities') view.renderPrioritiesPage();
+                    
+                    // If we are currently viewing this domain, update the assessment page UI
+                    if (state.activePage === 'assessment' && state.activeDomain === domainId) {
+                        if (isRelevant) {
+                            dom.assessmentObjectivesContainer.classList.remove('content-disabled');
+                            dom.assessmentDisabledBanner.classList.add('hidden');
+                        } else {
+                            dom.assessmentObjectivesContainer.classList.add('content-disabled');
+                            dom.assessmentDisabledBanner.classList.remove('hidden');
+                        }
+                    }
+                }
+            });
+
             // --- Event Delegation ---
             // Use delegation for content clicks/changes
             dom.mainContent.addEventListener('change', events.handleContentChange);
@@ -2859,17 +3103,26 @@ class Domain {
 
             // Populate Domain Nav
             window.CMM_DATA.domains.forEach(domain => {
+                const domainInstance = state.assessmentData[domain.id];
                 const li = document.createElement('li');
+                li.className = "group relative px-3 py-1";
                 li.innerHTML = `
-                    <a href="#" class="nav-link block rounded-md py-2 px-3 hover:bg-sidebar-hover text-sm" data-page="assessment" data-domain="${domain.id}">
-                        <div class="flex justify-between items-center">
-                            <span>${domain.nickname}</span>
-                            <span class="text-xs text-muted" data-progress-label-domain="${domain.id}">0%</span>
-                        </div>
-                        <div class="w-full bg-sidebar-hover rounded-full h-1 mt-1">
-                            <div data-progress-bar-domain="${domain.id}" class="bg-brand-red h-1 rounded-full" style="width: 0%"></div>
-                        </div>
-                    </a>`;
+                    <div class="flex items-center">
+                        <label class="relative flex-shrink-0 mr-2 z-20 cursor-pointer">
+                            <input type="checkbox" class="sr-only peer domain-relevance-toggle" data-domain-id="${domain.id}" ${domainInstance.relevant ? 'checked' : ''}>
+                            <div class="w-8 h-4 bg-slate-600 rounded-full peer-checked:bg-blue-600"></div>
+                            <div class="absolute top-0.5 left-[2px] bg-white w-3 h-3 rounded-full transition-all peer-checked:translate-x-4"></div>
+                        </label>
+                        <a href="#" class="nav-link block rounded-md py-2 px-1 hover:bg-slate-700 text-sm flex-1" data-page="assessment" data-domain="${domain.id}">
+                            <div class="flex justify-between items-center">
+                                <span>${domain.nickname}</span>
+                                <span class="text-xs text-slate-400" data-progress-label-domain="${domain.id}">0%</span>
+                            </div>
+                            <div class="w-full bg-slate-600 rounded-full h-1 mt-1">
+                                <div data-progress-bar-domain="${domain.id}" class="bg-blue-500 h-1 rounded-full" style="width: 0%"></div>
+                            </div>
+                        </a>
+                    </div>`;
                 dom.domainNav.appendChild(li);
             });
 

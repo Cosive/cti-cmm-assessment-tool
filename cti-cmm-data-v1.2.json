@@ -1,0 +1,2002 @@
+{
+    "domains": [
+        {
+            "id": "ASSET",
+            "name": "Asset, Change, and Configuration Management",
+            "nickname": "ASSET",
+            "max": 54
+        },
+        {
+            "id": "THREAT",
+            "name": "Threat and Vulnerability Management",
+            "nickname": "THREAT",
+            "max": 96
+        },
+        {
+            "id": "RISK",
+            "name": "Risk Management",
+            "nickname": "RISK",
+            "max": 51
+        },
+        {
+            "id": "ACCESS",
+            "name": "Identity and Access Management",
+            "nickname": "ACCESS",
+            "max": 48
+        },
+        {
+            "id": "SITUATION",
+            "name": "Situational Awareness",
+            "nickname": "SITUATION",
+            "max": 39
+        },
+        {
+            "id": "RESPONSE",
+            "name": "Event and Incident Response, Continuity of Operations",
+            "nickname": "RESPONSE",
+            "max": 78
+        },
+        {
+            "id": "THIRD-PARTIES",
+            "name": "Third-Party Risk Management",
+            "nickname": "THIRD-PARTIES",
+            "max": 93
+        },
+        {
+            "id": "FRAUD",
+            "name": "Fraud and Abuse Management",
+            "nickname": "FRAUD",
+            "max": 81
+        },
+        {
+            "id": "WORKFORCE",
+            "name": "Workforce Management",
+            "nickname": "WORKFORCE",
+            "max": 69
+        },
+        {
+            "id": "ARCHITECTURE",
+            "name": "Cybersecurity Architecture",
+            "nickname": "ARCHITECTURE",
+            "max": 54
+        },
+        {
+            "id": "PROGRAM",
+            "name": "Cybersecurity Program Management",
+            "nickname": "PROGRAM",
+            "max": 72
+        }
+    ],
+    "objectives": {
+        "ASSET": {
+            "1. IMPROVE ASSET VISIBILITY": {
+                "id": "ASSET-1",
+                "name": "IMPROVE ASSET VISIBILITY",
+                "practices": [
+                    {
+                        "id": "ASSET-1-a",
+                        "maturity": "CTI1",
+                        "text": "a. Assets are accurately inventoried and classified and CTI team members have access to appropriate systems to understand the organization\u2019s tech stack.",
+                        "slug": "Accurate asset list",
+                        "max": 3
+                    },
+                    {
+                        "id": "ASSET-1-b",
+                        "maturity": "CTI2",
+                        "text": "b. Alerts about previously unidentified assets are delivered in a timely manner to identify and remediate risk of exposure.",
+                        "slug": "Unidentified asset alerts",
+                        "max": 3
+                    },
+                    {
+                        "id": "ASSET-1-c",
+                        "maturity": "CTI2",
+                        "text": "c. Intelligence includes contextualized insights and threat assessments to continuously improve asset discovery practices and predict future scenarios based on the threat environment.",
+                        "slug": "Intel-driven asset discovery",
+                        "max": 3
+                    },
+                    {
+                        "id": "ASSET-1-d",
+                        "maturity": "CTI3",
+                        "text": "d. Intelligence regularly includes prescriptive threat analysis and recommendations to support asset discovery and risk assessments.",
+                        "slug": "Prescriptive asset threat analysis",
+                        "max": 3
+                    },
+                    {
+                        "id": "ASSET-1-e",
+                        "maturity": "CTI3",
+                        "text": "e. Intelligence supports regulatory requirements by providing evidence-based information on how assets are protected against known threats.",
+                        "slug": "Regulatory compliance support",
+                        "max": 3
+                    },
+                    {
+                        "id": "ASSET-1-f",
+                        "maturity": "CTI3",
+                        "text": "f. ASSET domain objectives focused on identifying and prioritizing mitigation efforts are regularly informed by CTI insights to ensure a comprehensive view of the organization\u2019s ecosystem.",
+                        "slug": "CTI-informed objectives",
+                        "max": 3
+                    }
+                ]
+            },
+            "2. SAFEGUARD ASSETS": {
+                "id": "ASSET-2",
+                "name": "SAFEGUARD ASSETS",
+                "practices": [
+                    {
+                        "id": "ASSET-2-a",
+                        "maturity": "CTI1",
+                        "text": "a. CTI team members maintain an understanding of \u201ccrown jewels assets\u201d informed based on potential to disrupt business operations and cyber threat landscape trends. This prioritization is\u00a0based on their targeting, criticality, vulnerability, and potential impact in case of attack or exposure.",
+                        "slug": "Crown jewels understanding",
+                        "max": 3
+                    },
+                    {
+                        "id": "ASSET-2-b",
+                        "maturity": "CTI2",
+                        "text": "b. Intelligence supports proactive risk mitigation efforts by providing contextualized insights, predictive assessments, and alerting about threats and vulnerabilities that could affect priority assets.",
+                        "slug": "Intel-supported risk mitigation",
+                        "max": 3
+                    },
+                    {
+                        "id": "ASSET-2-c",
+                        "maturity": "CTI3",
+                        "text": "c. Intelligence includes prescriptive threat analysis and recommendations to protect current and pre-deployed assets and change configurations based on the threat environment.",
+                        "slug": "Prescriptive asset protection",
+                        "max": 3
+                    },
+                    {
+                        "id": "ASSET-2-d",
+                        "maturity": "CTI3",
+                        "text": "d. ASSET domain risk reduction strategies are consistently informed by CTI insights.",
+                        "slug": "CTI-informed risk strategies",
+                        "max": 3
+                    },
+                    {
+                        "id": "ASSET-2-e",
+                        "maturity": "CTI3",
+                        "text": "e. Intelligence program is part of the asset purchase cycle informing the organization about risks to certain appliances/tools (e.g., specific hardware that has been targeted in the past) as well as potential software assets.",
+                        "slug": "Intel in purchase cycle",
+                        "max": 3
+                    }
+                ]
+            },
+            "3. ACCELERATE DETECTION OF ASSET-RELATED THREATS": {
+                "id": "ASSET-3",
+                "name": "ACCELERATE DETECTION OF ASSET-RELATED THREATS",
+                "practices": [
+                    {
+                        "id": "ASSET-3-a",
+                        "maturity": "CTI1",
+                        "text": "a. CTI team members maintain regular visibility into changes in the cyber threat landscape, triaging intelligence sources to determine relevance and relative impact of newly discovered threat campaigns and vulnerabilities to organizational assets.",
+                        "slug": "Threat landscape visibility",
+                        "max": 3
+                    },
+                    {
+                        "id": "ASSET-3-b",
+                        "maturity": "CTI1",
+                        "text": "b. Alerts about threats against priority assets are delivered at least in an ad hoc manner.",
+                        "slug": "Ad hoc threat alerts",
+                        "max": 3
+                    },
+                    {
+                        "id": "ASSET-3-c",
+                        "maturity": "CTI2",
+                        "text": "c. Alert dissemination is integrated into repeatable workflows for ASSET domain triage and rapid response, advancing early detection warnings for priority assets.",
+                        "slug": "Repeatable alert workflows",
+                        "max": 3
+                    },
+                    {
+                        "id": "ASSET-3-d",
+                        "maturity": "CTI2",
+                        "text": "d. Intelligence on emerging threats and exploits supports rapid response and remediation, reducing the window of exposure for assets.",
+                        "slug": "Emerging threat intelligence",
+                        "max": 3
+                    },
+                    {
+                        "id": "ASSET-3-e",
+                        "maturity": "CTI2",
+                        "text": "e. Intelligence identifies vulnerabilities that directly affect priority assets, allowing the organization to prioritize patching efforts. (see THREAT)",
+                        "slug": "Identify asset vulnerabilities",
+                        "max": 3
+                    },
+                    {
+                        "id": "ASSET-3-f",
+                        "maturity": "CTI3",
+                        "text": "f. Continuous monitoring is extended to include all assets across each tier level.",
+                        "slug": "Monitor all asset tiers",
+                        "max": 3
+                    },
+                    {
+                        "id": "ASSET-3-g",
+                        "maturity": "CTI3",
+                        "text": "g. Intelligence about the threat environment is used to continuously refine and improve detection strategies and security posture, enabling the organization to focus efforts on pro tecting the most critical assets based on CTI insights.",
+                        "slug": "Refine detection strategies",
+                        "max": 3
+                    }
+                ]
+            }
+        },
+        "THREAT": {
+            "1. Enhance Attack Prevention and Preparedness": {
+                "id": "THREAT-1",
+                "name": "Enhance Attack Prevention and Preparedness",
+                "practices": [
+                    {
+                        "id": "THREAT-1-a",
+                        "maturity": "CTI1",
+                        "text": "a. Indicators of compromise/behavior/attack (IoC/B/As) are collected from external threat reports and delivered to security operations teams in a mostly ad hoc manner (e.g., over email) to support prevention and blocking.",
+                        "slug": "Ad hoc IoC collection",
+                        "max": 3
+                    },
+                    {
+                        "id": "THREAT-1-b",
+                        "maturity": "CTI2",
+                        "text": "b. Ad hoc steps are taken to account for identified false positives.",
+                        "slug": "Ad hoc false positive handling",
+                        "max": 3
+                    },
+                    {
+                        "id": "THREAT-1-c",
+                        "maturity": "CTI2",
+                        "text": "c. IoC/B/As are collected from external feeds (usually segmented by specific types of threats, e.g., phishing hosts, botnets, command-and-control (C2) hosts) and delivered directly to security technologies (e.g., security information and event management (SIEM) or firewall solutions) in a mostly automated fashion.",
+                        "slug": "Automated feed collection",
+                        "max": 3
+                    },
+                    {
+                        "id": "THREAT-1-d",
+                        "maturity": "CTI2",
+                        "text": "d. Indicator ingestion and pruning occurs on regular cadences (e.g., weekly or daily).",
+                        "slug": "Regular indicator pruning",
+                        "max": 3
+                    },
+                    {
+                        "id": "THREAT-1-e",
+                        "maturity": "CTI2",
+                        "text": "e. Some level of threat context (e.g., type of threat, attack stage) is also provided to aid operator awareness.",
+                        "slug": "Basic threat context",
+                        "max": 3
+                    },
+                    {
+                        "id": "THREAT-1-f",
+                        "maturity": "CTI2",
+                        "text": "f. Threat context input is provided to the organization\u2019s training and education material and is aligned with observed cyber threat activities.",
+                        "slug": "Threat-informed training",
+                        "max": 3
+                    },
+                    {
+                        "id": "THREAT-1-g",
+                        "maturity": "CTI3",
+                        "text": "g. IoC/B/As are collected at scale from external feeds covering most types of threats (e.g., phishing infrastructure, botnets, C2 hosts) and delivered directly to relevant security technologies automatically.",
+                        "slug": "Automated IoC collection at scale",
+                        "max": 3
+                    },
+                    {
+                        "id": "THREAT-1-h",
+                        "maturity": "CTI3",
+                        "text": "h. Polling for fresh indicators occurs on very regular cadences where relevant (e.g., hourly or daily for indicators with high entropy).",
+                        "slug": "Frequent indicator polling",
+                        "max": 3
+                    },
+                    {
+                        "id": "THREAT-1-i",
+                        "maturity": "CTI3",
+                        "text": "i. False positives are identified and accounted for regularly.",
+                        "slug": "Regular false positive handling",
+                        "max": 3
+                    },
+                    {
+                        "id": "THREAT-1-j",
+                        "maturity": "CTI3",
+                        "text": "j. Threat context (e.g., type of threat, attack stage, detection time stamps for relevance) is provided for most indicators to aid operator awareness.",
+                        "slug": "Comprehensive threat context",
+                        "max": 3
+                    },
+                    {
+                        "id": "THREAT-1-k",
+                        "maturity": "CTI3",
+                        "text": "k. Ingested indicators connect to automation playbooks and trigger COAs where relevant (e.g., automating implementation of low-regret blocking or phishing response).",
+                        "slug": "Indicator-driven automation",
+                        "max": 3
+                    },
+                    {
+                        "id": "THREAT-1-l",
+                        "maturity": "CTI3",
+                        "text": "l. Original indicators are identified within internal event data (e.g., SOC/incident response (IR) investigations), actioned elsewhere within the organization (e.g., via threat hunting), and may also be shared externally.",
+                        "slug": "Internal indicator generation",
+                        "max": 3
+                    }
+                ]
+            },
+            "2. Improve Detection Engineering": {
+                "id": "THREAT-2",
+                "name": "Improve Detection Engineering",
+                "practices": [
+                    {
+                        "id": "THREAT-2-a",
+                        "maturity": "CTI1",
+                        "text": "a. Alerts about adversaries actively posing potential threats to the organization are delivered in a mostly ad hoc manner to support new detection logic.",
+                        "slug": "Ad hoc adversary alerts",
+                        "max": 3
+                    },
+                    {
+                        "id": "THREAT-2-b",
+                        "maturity": "CTI2",
+                        "text": "b. Threat profiling is routinely developed to support gap analysis activities and prioritize detection controls based on relevant threats against the organization.",
+                        "slug": "Threat profiling for gap analysis",
+                        "max": 3
+                    },
+                    {
+                        "id": "THREAT-2-c",
+                        "maturity": "CTI2",
+                        "text": "c. Continuous detection engineering improvements are supported by requests for information (RFIs) for CTI about specific gaps and vulnerabilities.",
+                        "slug": "RFI-supported detection engineering",
+                        "max": 3
+                    },
+                    {
+                        "id": "THREAT-2-d",
+                        "maturity": "CTI3",
+                        "text": "d. Threat modeling is routinely developed to identify and contextualize priority threats relevant to the organization.",
+                        "slug": "Routine threat modeling",
+                        "max": 3
+                    },
+                    {
+                        "id": "THREAT-2-e",
+                        "maturity": "CTI3",
+                        "text": "e. CTI products regularly highlight opportunities for detecting relevant threat activity within event log data.",
+                        "slug": "CTI-driven detection opportunities",
+                        "max": 3
+                    }
+                ]
+            },
+            "3. Enhance Threat Hunting": {
+                "id": "THREAT-3",
+                "name": "Enhance Threat Hunting",
+                "practices": [
+                    {
+                        "id": "THREAT-3-a",
+                        "maturity": "CTI1",
+                        "text": "a. Alerts about emerging atomic indicators are provided to generate awareness and reactive hunt operations at least in an ad hoc manner with minimal contextualization using open sources.",
+                        "slug": "Ad hoc hunt alerts",
+                        "max": 3
+                    },
+                    {
+                        "id": "THREAT-3-b",
+                        "maturity": "CTI1",
+                        "text": "b. Threat hunts are prioritized ad hoc based on emerging reporting of threat or vulnerability risks.",
+                        "slug": "Ad hoc hunt prioritization",
+                        "max": 3
+                    },
+                    {
+                        "id": "THREAT-3-c",
+                        "maturity": "CTI2",
+                        "text": "c. Threat hunt operations are routinely informed by intelligence about threat actor TTPs and behaviors, contextualized using open and commercial sources.",
+                        "slug": "TTP-informed threat hunting",
+                        "max": 3
+                    },
+                    {
+                        "id": "THREAT-3-d",
+                        "maturity": "CTI2",
+                        "text": "d. Threat hunts are continuously prioritized based on priority intelligence requirements (PIRs) and vulnerabilities against critical infrastructure.",
+                        "slug": "PIR-driven hunt prioritization",
+                        "max": 3
+                    },
+                    {
+                        "id": "THREAT-3-e",
+                        "maturity": "CTI3",
+                        "text": "e. RFIs are issued and fulfilled to provide context for new, original threat hunting hypotheses/abstracts (see the TaHiTI Threat Hunting Methodology for further details).",
+                        "slug": "RFIs for hunt hypotheses",
+                        "max": 3
+                    }
+                ]
+            },
+            "4. Inform Offensive Security Operations": {
+                "id": "THREAT-4",
+                "name": "Inform Offensive Security Operations",
+                "practices": [
+                    {
+                        "id": "THREAT-4-a",
+                        "maturity": "CTI1",
+                        "text": "a. Alerts about emerging tactics, techniques, and exploit campaigns are tested in an ad hoc manner with limited contextualization using open sources.",
+                        "slug": "Ad hoc exploit testing",
+                        "max": 3
+                    },
+                    {
+                        "id": "THREAT-4-b",
+                        "maturity": "CTI2",
+                        "text": "b. Insights about novel techniques, procedures, and technical exploits, typically derived from open or commercial sources, are provided regularly to inform relevant offensive security operations.",
+                        "slug": "Intel-informed offensive ops",
+                        "max": 3
+                    },
+                    {
+                        "id": "THREAT-4-c",
+                        "maturity": "CTI2",
+                        "text": "c. Intelligence is typically focused on threats pertaining to the organization\u2019s unique threat profile and provided with contextualization and/or code that enables replication of reported behaviors.",
+                        "slug": "Contextualized threat replication",
+                        "max": 3
+                    },
+                    {
+                        "id": "THREAT-4-d",
+                        "maturity": "CTI3",
+                        "text": "d. Alerts about new and emerging attack procedures and technical exploits are delivered regularly and typically contain enough context to enable precise recreation of observed behaviors.",
+                        "slug": "Precise behavior recreation",
+                        "max": 3
+                    },
+                    {
+                        "id": "THREAT-4-e",
+                        "maturity": "CTI3",
+                        "text": "e. Insights focus on threats pertaining to the organization\u2019s unique threat profile but also novel procedures that may not yet be actively exploited in the wild (e.g., new exploits published on code repositories or acquired via closed sources such as underground forums).",
+                        "slug": "Novel procedure insights",
+                        "max": 3
+                    },
+                    {
+                        "id": "THREAT-4-f",
+                        "maturity": "CTI3",
+                        "text": "f. Offensive security operations based on threat reporting inform ad hoc collection for missing context and discovered gaps are mitigated for threat prevention.",
+                        "slug": "Offensive ops feedback loop",
+                        "max": 3
+                    }
+                ]
+            },
+            "5. Improve Patch Prioritization": {
+                "id": "THREAT-5",
+                "name": "Improve Patch Prioritization",
+                "practices": [
+                    {
+                        "id": "THREAT-5-a",
+                        "maturity": "CTI1",
+                        "text": "a. Alerts are provided in an ad hoc manner for critical vulnerabilities that are experiencing viral popularity in mainstream open sources.",
+                        "slug": "Ad hoc vulnerability alerts",
+                        "max": 3
+                    },
+                    {
+                        "id": "THREAT-5-b",
+                        "maturity": "CTI2",
+                        "text": "b. Vulnerability management is consistently informed in a repeatable manner for critical and high vulnerabilities that are seeing viral popularity in mainstream open and cybercriminal underground sources.",
+                        "slug": "Repeatable vulnerability reporting",
+                        "max": 3
+                    },
+                    {
+                        "id": "THREAT-5-c",
+                        "maturity": "CTI2",
+                        "text": "c. Patch prioritization is influenced by availability of PoC code, observed active exploitation, and sought-after interest by adversaries observed in the dark or surface web.",
+                        "slug": "Exploitation-based prioritization",
+                        "max": 3
+                    },
+                    {
+                        "id": "THREAT-5-d",
+                        "maturity": "CTI3",
+                        "text": "d. Patch management is consistently driven by routine CTI products that prescribe key patches or mitigations that need to be implemented based on the probability of exploitation against the enterprise.",
+                        "slug": "CTI-driven patch management",
+                        "max": 3
+                    }
+                ]
+            }
+        },
+        "RISK": {
+            "1. Align CTI Practices to Risk Management Strategies": {
+                "id": "RISK-1",
+                "name": "Align CTI Practices to Risk Management Strategies",
+                "practices": [
+                    {
+                        "id": "RISK-1-a",
+                        "maturity": "CTI1",
+                        "text": "a. The organization\u2019s risk management strategy and framework are understood, at least in a basic manner.",
+                        "slug": "Risk strategy understanding",
+                        "max": 3
+                    },
+                    {
+                        "id": "RISK-1-b",
+                        "maturity": "CTI1",
+                        "text": "b. Collaboration with risk management stakeholders is conducted in an ad hoc manner.",
+                        "slug": "Ad hoc risk collaboration",
+                        "max": 3
+                    },
+                    {
+                        "id": "RISK-1-c",
+                        "maturity": "CTI2",
+                        "text": "c. CTI practices are initially aligned to the organization\u2019s risk management strategy and framework at least in an ad hoc manner, focused on translating insights to risk in limited CTI processes.",
+                        "slug": "Ad hoc CTI-risk alignment",
+                        "max": 3
+                    },
+                    {
+                        "id": "RISK-1-d",
+                        "maturity": "CTI2",
+                        "text": "d. Meetings and engagements between CTI and risk management teams occur regularly.",
+                        "slug": "Regular CTI-risk meetings",
+                        "max": 3
+                    },
+                    {
+                        "id": "RISK-1-e",
+                        "maturity": "CTI2",
+                        "text": "e. CTI practices influence proactive adjustments to risk management strategies.",
+                        "slug": "CTI-influenced risk strategy",
+                        "max": 3
+                    },
+                    {
+                        "id": "RISK-1-f",
+                        "maturity": "CTI3",
+                        "text": "f. CTI practices are aligned and synchronized with a risk framework adopted by the organization, such as NIST 800-30 and the NIST Cybersecurity Framework.",
+                        "slug": "Framework-aligned CTI",
+                        "max": 3
+                    },
+                    {
+                        "id": "RISK-1-g",
+                        "maturity": "CTI3",
+                        "text": "g. CTI insights are used to prioritize risk-based decisions and actions based upon the threat landscape. If possible, risks identified from CTI insights are integrated into risk management dashboards. (see ARCHITECTURE)",
+                        "slug": "CTI-driven risk decisions",
+                        "max": 3
+                    },
+                    {
+                        "id": "RISK-1-h",
+                        "maturity": "CTI3",
+                        "text": "h. CTI establishes a governance model for continuous alignment with risk management strategies, with a focus on implementing automation and enhancing processes. (see PROGRAM)",
+                        "slug": "CTI-risk governance model",
+                        "max": 3
+                    }
+                ]
+            },
+            "2. Improve Risk Decisions, Assessments, and Controls": {
+                "id": "RISK-2",
+                "name": "Improve Risk Decisions, Assessments, and Controls",
+                "practices": [
+                    {
+                        "id": "RISK-2-a",
+                        "maturity": "CTI1",
+                        "text": "a. Threats are identified, analyzed, and triaged for response at least in an ad hoc manner and mostly independent of the organization\u2019s risk management strategy.",
+                        "slug": "Ad hoc threat triage",
+                        "max": 3
+                    },
+                    {
+                        "id": "RISK-2-b",
+                        "maturity": "CTI1",
+                        "text": "b. The CTI program maintains a basic understanding of organizational assets, controls, operating environment, and risk posture.",
+                        "slug": "Basic organization understanding",
+                        "max": 3
+                    },
+                    {
+                        "id": "RISK-2-c",
+                        "maturity": "CTI1",
+                        "text": "c. CTI insights are leveraged for risk assessment methodologies, at least in an ad hoc manner.",
+                        "slug": "Ad hoc CTI in risk assessments",
+                        "max": 3
+                    },
+                    {
+                        "id": "RISK-2-d",
+                        "maturity": "CTI2",
+                        "text": "d. A process for integrating CTI into risk assessments is created and used to inform basic risk controls and mitigations efforts.",
+                        "slug": "CTI-risk assessment process",
+                        "max": 3
+                    },
+                    {
+                        "id": "RISK-2-e",
+                        "maturity": "CTI2",
+                        "text": "e. CTI insights are regularly leveraged for risk assessment methodologies.",
+                        "slug": "Regular CTI in risk assessments",
+                        "max": 3
+                    },
+                    {
+                        "id": "RISK-2-f",
+                        "maturity": "CTI2",
+                        "text": "f. Risk-based controls are intermittently assessed and adjusted using CTI insights.",
+                        "slug": "CTI-adjusted controls",
+                        "max": 3
+                    },
+                    {
+                        "id": "RISK-2-g",
+                        "maturity": "CTI3",
+                        "text": "g. CTI practices proactively advise and inform risk mitigation and management strategies across the organization, including risk scenario planning and simulation exercises. (see SITUATION)",
+                        "slug": "Proactive risk advising",
+                        "max": 3
+                    },
+                    {
+                        "id": "RISK-2-h",
+                        "maturity": "CTI3",
+                        "text": "h. Risk assessment models and processes routinely leverage CTI insights.",
+                        "slug": "Routine CTI in risk models",
+                        "max": 3
+                    },
+                    {
+                        "id": "RISK-2-i",
+                        "maturity": "CTI3",
+                        "text": "i. Risk-based controls and decisions are routinely and continuously assessed and adjusted using CTI insights.",
+                        "slug": "Continuous CTI-adjusted controls",
+                        "max": 3
+                    }
+                ]
+            }
+        },
+        "ACCESS": {
+            "1. Accelerate Remediation of Identity-Related Threats": {
+                "id": "ACCESS-1",
+                "name": "Accelerate Remediation of Identity-Related Threats",
+                "practices": [
+                    {
+                        "id": "ACCESS-1-a",
+                        "maturity": "CTI1",
+                        "text": "a. Alerts about leaked or compromised credentials and identities from open and commercial sources are delivered at least in an ad hoc manner.",
+                        "slug": "Ad hoc credential alerts",
+                        "max": 3
+                    },
+                    {
+                        "id": "ACCESS-1-b",
+                        "maturity": "CTI1",
+                        "text": "b. Alerts about vulnerabilities impacting identity-related systems that threaten unauthorized access or identity compromise are delivered in an ad hoc manner for patch prioritization. (see THREAT)",
+                        "slug": "Ad hoc identity vulnerability alerts",
+                        "max": 3
+                    },
+                    {
+                        "id": "ACCESS-1-c",
+                        "maturity": "CTI2",
+                        "text": "c. Alert dissemination is integrated into repeatable and automated workflows for ACCESS domain rapid triage and response.",
+                        "slug": "Automated identity alert workflows",
+                        "max": 3
+                    },
+                    {
+                        "id": "ACCESS-1-d",
+                        "maturity": "CTI2",
+                        "text": "d. Intelligence on emerging malware and associated indicators is delivered to enhance early warning detections and proactive mitigation measures.",
+                        "slug": "Emerging malware intelligence",
+                        "max": 3
+                    },
+                    {
+                        "id": "ACCESS-1-e",
+                        "maturity": "CTI3",
+                        "text": "e. Continuous monitoring is extended to identity-related threats posed by third parties. (see THIRD-PARTIES)",
+                        "slug": "Third-party identity monitoring",
+                        "max": 3
+                    },
+                    {
+                        "id": "ACCESS-1-f",
+                        "maturity": "CTI3",
+                        "text": "f. Intelligence on emerging threat actor TTPs is used for detecting anomalous activities related to user accounts, login attempts, or access patterns that may signal identity compromise.",
+                        "slug": "TTP-based anomaly detection",
+                        "max": 3
+                    },
+                    {
+                        "id": "ACCESS-1-g",
+                        "maturity": "CTI3",
+                        "text": "g. Intelligence includes contextualized insights and threat assessments to continuously improve identity-related discovery practices and predict future scenarios to enhance detections.",
+                        "slug": "Intel-driven identity discovery",
+                        "max": 3
+                    },
+                    {
+                        "id": "ACCESS-1-h",
+                        "maturity": "CTI3",
+                        "text": "h. Mitigations and remediations in response to leaked compromised credentials and identities are acted upon as part of an automated process that can be invoked.",
+                        "slug": "Automated credential remediation",
+                        "max": 3
+                    },
+                    {
+                        "id": "ACCESS-1-i",
+                        "maturity": "CTI3",
+                        "text": "i. Mechanisms to action containment of users with access due to intelligence relating to suspected compromise of controlled data.",
+                        "slug": "Compromise-based user containment",
+                        "max": 3
+                    }
+                ]
+            },
+            "2. Fortify Identity and Access Protection": {
+                "id": "ACCESS-2",
+                "name": "Fortify Identity and Access Protection",
+                "practices": [
+                    {
+                        "id": "ACCESS-2-a",
+                        "maturity": "CTI1",
+                        "text": "a. The CTI program maintains basic awareness and monitoring of identity-related threats to logical and physical access controls \u2014 including vulnerability exploitations and security control configurations \u2014 that lead to immediate COAs.",
+                        "slug": "Basic identity threat awareness",
+                        "max": 3
+                    },
+                    {
+                        "id": "ACCESS-2-b",
+                        "maturity": "CTI1",
+                        "text": "b. Collection is focused primarily on identity-related threats relevant specifically to the organization.",
+                        "slug": "Organization-specific collection",
+                        "max": 3
+                    },
+                    {
+                        "id": "ACCESS-2-c",
+                        "maturity": "CTI2",
+                        "text": "c. The CTI program maintains a comprehensive understanding of identity-related threats to logical and physical access controls relevant to the organization\u2019s high risk assets. (see ASSET and RISK)",
+                        "slug": "High-risk asset threat understanding",
+                        "max": 3
+                    },
+                    {
+                        "id": "ACCESS-2-d",
+                        "maturity": "CTI2",
+                        "text": "d. Insights regularly influence proactive adjustments to enhance access control requirements and thresholds based on the threat environment, including MFA strategies and password resets.",
+                        "slug": "Threat-informed access controls",
+                        "max": 3
+                    },
+                    {
+                        "id": "ACCESS-2-e",
+                        "maturity": "CTI2",
+                        "text": "e. Collection is extended to focus on identity-related threats relevant to the organization\u2019s industry and geographic representation. (see SITUATION)",
+                        "slug": "Industry-specific collection",
+                        "max": 3
+                    },
+                    {
+                        "id": "ACCESS-2-f",
+                        "maturity": "CTI3",
+                        "text": "f. Insights regularly inform the creation of threat scenarios and simulations to test, validate, and adjust authentication and access controls and mitigations. (see THREAT)",
+                        "slug": "Intel-informed simulations",
+                        "max": 3
+                    },
+                    {
+                        "id": "ACCESS-2-g",
+                        "maturity": "CTI3",
+                        "text": "g. Insights inform tabletop exercises that fortify response and mitigation efforts across the organization. (see PROGRAM)",
+                        "slug": "Intel-informed tabletop exercises",
+                        "max": 3
+                    }
+                ]
+            }
+        },
+        "SITUATION": {
+            "1. Maintain Comprehensive Understanding of the Cyber Threat Landscape (CTL)": {
+                "id": "SITUATION-1",
+                "name": "Maintain Comprehensive Understanding of the Cyber Threat Landscape (CTL)",
+                "practices": [
+                    {
+                        "id": "SITUATION-1-a",
+                        "maturity": "CTI1",
+                        "text": "a. Situational awareness alerts and updates are collected from open, closed, and commercial sources.",
+                        "slug": "SA alert collection",
+                        "max": 3
+                    },
+                    {
+                        "id": "SITUATION-1-b",
+                        "maturity": "CTI1",
+                        "text": "b. Insights are provided in an hoc manner for short-term trends and observations that lead to immediate COAs.",
+                        "slug": "Ad hoc insights for COAs",
+                        "max": 3
+                    },
+                    {
+                        "id": "SITUATION-1-c",
+                        "maturity": "CTI1",
+                        "text": "c. Collection is focused primarily on all threats relevant specifically to the organization.",
+                        "slug": "Organization-specific collection",
+                        "max": 3
+                    },
+                    {
+                        "id": "SITUATION-1-d",
+                        "maturity": "CTI2",
+                        "text": "d. A systematic process, such as the one described in the ENISA Cybersecurity Threat Landscape Methodology, is implemented to routinely produce CTLs.",
+                        "slug": "Systematic CTL process",
+                        "max": 3
+                    },
+                    {
+                        "id": "SITUATION-1-e",
+                        "maturity": "CTI2",
+                        "text": "e. CTL scope is mostly tactical and operational, delivering insights that provide short- to medium-term results.",
+                        "slug": "Tactical/Operational CTL scope",
+                        "max": 3
+                    },
+                    {
+                        "id": "SITUATION-1-f",
+                        "maturity": "CTI2",
+                        "text": "f. CTL audience and dissemination is to most enterprise stakeholder domains.",
+                        "slug": "Broad CTL dissemination",
+                        "max": 3
+                    },
+                    {
+                        "id": "SITUATION-1-g",
+                        "maturity": "CTI2",
+                        "text": "g. CTL focus is primarily on priority threats and trends specific to the organization.",
+                        "slug": "Organization-specific CTL focus",
+                        "max": 3
+                    },
+                    {
+                        "id": "SITUATION-1-h",
+                        "maturity": "CTI2",
+                        "text": "h. CTL leverages Priority Intelligence Requirements focused on tactical and operational needs.",
+                        "slug": "PIR-driven tactical CTL",
+                        "max": 3
+                    },
+                    {
+                        "id": "SITUATION-1-i",
+                        "maturity": "CTI2",
+                        "text": "i. CTL begins to track Return on Investment between sources and products.",
+                        "slug": "Basic ROI tracking",
+                        "max": 3
+                    },
+                    {
+                        "id": "SITUATION-1-j",
+                        "maturity": "CTI3",
+                        "text": "j. CTL scope is extended to include deliverables that regularly provide prescriptive intelligence to inform long-term strategic decision-making and align with risk reduction strategies. (see RISK)",
+                        "slug": "Strategic/Prescriptive CTL scope",
+                        "max": 3
+                    },
+                    {
+                        "id": "SITUATION-1-k",
+                        "maturity": "CTI3",
+                        "text": "k. CTL audience and dissemination is to all enterprise stakeholder domains based on PIRs. (see PROGRAM)",
+                        "slug": "PIR-driven dissemination",
+                        "max": 3
+                    },
+                    {
+                        "id": "SITUATION-1-l",
+                        "maturity": "CTI3",
+                        "text": "l. CTL focus is extended to include threats, events, and trends relevant to the organization\u2019s industry and geographic representation. (see THREAT)",
+                        "slug": "Industry/Geographic CTL focus",
+                        "max": 3
+                    },
+                    {
+                        "id": "SITUATION-1-m",
+                        "maturity": "CTI3",
+                        "text": "m. CTL operators routinely validate sources, track impact, and engage in ROI reviews for all sources leveraged.",
+                        "slug": "Routine source validation & ROI",
+                        "max": 3
+                    }
+                ]
+            }
+        },
+        "RESPONSE": {
+            "1. Strengthen Pre-Incident Preparedness": {
+                "id": "RESPONSE-1",
+                "name": "Strengthen Pre-Incident Preparedness",
+                "practices": [
+                    {
+                        "id": "RESPONSE-1-a",
+                        "maturity": "CTI1",
+                        "text": "a. Event and incident data is collected and correlated with external open and commercial sources to rapidly detect and remediate threats in an automated manner.",
+                        "slug": "Event data correlation",
+                        "max": 3
+                    },
+                    {
+                        "id": "RESPONSE-1-b",
+                        "maturity": "CTI1",
+                        "text": "b. CTI insights and context are provided in an ad hoc manner to enrich event data, reduce false positives, and hasten response.",
+                        "slug": "Ad hoc event enrichment",
+                        "max": 3
+                    },
+                    {
+                        "id": "RESPONSE-1-c",
+                        "maturity": "CTI2",
+                        "text": "c. Events detected by the IR team are regularly enriched with CTI insights into the threat actor, TTPs, enriching IOCs and context to improve response efficacy.",
+                        "slug": "Regular event enrichment",
+                        "max": 3
+                    },
+                    {
+                        "id": "RESPONSE-1-d",
+                        "maturity": "CTI2",
+                        "text": "d. CTI insights are used for immediate control gap detection analysis and rapid remediation, conducted in a mostly automated manner.",
+                        "slug": "Automated gap analysis",
+                        "max": 3
+                    },
+                    {
+                        "id": "RESPONSE-1-e",
+                        "maturity": "CTI3",
+                        "text": "e. CTI insights include threat landscape assessments and prescriptive recommendations to enable proactive detection controls and event response prioritization. (see SITUATION)",
+                        "slug": "Proactive detection controls",
+                        "max": 3
+                    },
+                    {
+                        "id": "RESPONSE-1-f",
+                        "maturity": "CTI3",
+                        "text": "f. Tabletop and scenario exercises are informed by CTI insights of the latest malware, campaigns, vulnerabilities, and threats. (see RISK)",
+                        "slug": "CTI-informed exercises",
+                        "max": 3
+                    }
+                ]
+            },
+            "2. Improve Incident Analysis and Response": {
+                "id": "RESPONSE-2",
+                "name": "Improve Incident Analysis and Response",
+                "practices": [
+                    {
+                        "id": "RESPONSE-2-a",
+                        "maturity": "CTI1",
+                        "text": "a. Incident details are reviewed and mapped to a cyber kill chain or related industry framework (e.g., Lockheed Martin\u2019s Cyber Kill, MITRE ATT&CK, the Diamond Model of Intrusion Analysis, etc.), and findings are shared in real time to the IR team.",
+                        "slug": "Framework-based incident mapping",
+                        "max": 3
+                    },
+                    {
+                        "id": "RESPONSE-2-b",
+                        "maturity": "CTI1",
+                        "text": "b. Findings are documented as the incident progresses through the lifecycle phases. CTI insights are incorporated into the IR report.",
+                        "slug": "CTI in IR report",
+                        "max": 3
+                    },
+                    {
+                        "id": "RESPONSE-2-c",
+                        "maturity": "CTI2",
+                        "text": "c. Manual research and pivoting on TTPs and IoCs is being conducted to contextualize incidents and improve remediation.",
+                        "slug": "Manual pivoting",
+                        "max": 3
+                    },
+                    {
+                        "id": "RESPONSE-2-d",
+                        "maturity": "CTI2",
+                        "text": "d. Findings are documented in a stand-alone CTI report and can be incorporated into or accompany the IR report.",
+                        "slug": "Standalone CTI report",
+                        "max": 3
+                    },
+                    {
+                        "id": "RESPONSE-2-e",
+                        "maturity": "CTI2",
+                        "text": "e. Automation is used to enrich discovered indicators, which may include the use of machine learning or AI models to map findings to cyber kill chains.",
+                        "slug": "Automated enrichment & mapping",
+                        "max": 3
+                    },
+                    {
+                        "id": "RESPONSE-2-f",
+                        "maturity": "CTI3",
+                        "text": "f. Incident IoCs and related intelligence are ingested into a threat intelligence platform (TIP), using automation that maintains mapping verbosity to industry frameworks within the TIP\u2019s ontology. This empowers orchestration to existing security controls for added enrichmennt and actions by appropriate controls teams.",
+                        "slug": "Automated TIP ingestion",
+                        "max": 3
+                    },
+                    {
+                        "id": "RESPONSE-2-g",
+                        "maturity": "CTI3",
+                        "text": "g. Automated intelligence is used to trigger CTI analysis and escalation to the IR team.",
+                        "slug": "Automated CTI triggers",
+                        "max": 3
+                    },
+                    {
+                        "id": "RESPONSE-2-h",
+                        "maturity": "CTI3",
+                        "text": "h. Risk-based assessments and recommendations are routinely conveyed to the IR team. (see RISK)",
+                        "slug": "Risk-based IR recommendations",
+                        "max": 3
+                    }
+                ]
+            },
+            "3. Enhance Post-Incident Recovery and Continuity of Operations": {
+                "id": "RESPONSE-3",
+                "name": "Enhance Post-Incident Recovery and Continuity of Operations",
+                "practices": [
+                    {
+                        "id": "RESPONSE-3-a",
+                        "maturity": "CTI1",
+                        "text": "a. Incident findings, lessons learned, and improvement opportunities are captured within an internal knowledge base or ticket. Post-morterms are discussed internally and briefed to leadership on an ad hoc basis.",
+                        "slug": "Ad hoc lessons learned",
+                        "max": 3
+                    },
+                    {
+                        "id": "RESPONSE-3-b",
+                        "maturity": "CTI1",
+                        "text": "b. Enrichment of SOC internal indicators and data continues with intelligence via manual ingestion.",
+                        "slug": "Manual indicator enrichment",
+                        "max": 3
+                    },
+                    {
+                        "id": "RESPONSE-3-c",
+                        "maturity": "CTI2",
+                        "text": "c. Incident findings, lessons learned, and improvement opportunities are captured within an internal knowledge base or ticket. Post-morterms are discussed internally and briefed to leadership on an ad hoc basis.",
+                        "slug": "Ad hoc lessons learned (CTI2)",
+                        "max": 3
+                    },
+                    {
+                        "id": "RESPONSE-3-x",
+                        "maturity": "CTI2",
+                        "text": "d.IR time is reduced through automation. Key prevention measures are implemented with IoCs and TTPs from trusted sources.",
+                        "slug": "Automated IR reduction",
+                        "max": 3
+                    },
+                    {
+                        "id": "RESPONSE-3-e",
+                        "maturity": "CTI2",
+                        "text": "e. Artificial Intelligence (AI) and machine learning (ML) are used for analysis of TTP mapping (MITRE TRAM).",
+                        "slug": "AI/ML for TTP mapping",
+                        "max": 3
+                    },
+                    {
+                        "id": "RESPONSE-3-f",
+                        "maturity": "CTI2",
+                        "text": "f. CTI maps enrich incident TTPs to the MITRE ATT&CK framework where control teams review against current detection and prevention capabilities.",
+                        "slug": "ATT&CK mapping for control review",
+                        "max": 3
+                    },
+                    {
+                        "id": "RESPONSE-3-g",
+                        "maturity": "CTI2",
+                        "text": "g. Enrichment of SOC internal indicators and data continues with intelligence via TIP or automation.",
+                        "slug": "Automated indicator enrichment",
+                        "max": 3
+                    },
+                    {
+                        "id": "RESPONSE-3-h",
+                        "maturity": "CTI2",
+                        "text": "h. Partnership with the threat hunting team is initiated for ongoing collaboration. (see THREAT)",
+                        "slug": "Threat hunt partnership",
+                        "max": 3
+                    },
+                    {
+                        "id": "RESPONSE-3-i",
+                        "maturity": "CTI3",
+                        "text": "i. Metrics are established and tuned based on decisions made from Incident post-mortems and related leadership actions.",
+                        "slug": "Post-mortem-driven metrics",
+                        "max": 3
+                    },
+                    {
+                        "id": "RESPONSE-3-h",
+                        "maturity": "CTI3",
+                        "text": "h. Threat hunting activities are moderated by CTI's assessments of prevalent TTPs for priority threat actors and runbooks are enriched based on threat actor TTPs. (see THREAT)",
+                        "slug": "CTI-moderated threat hunting",
+                        "max": 3
+                    },
+                    {
+                        "id": "RESPONSE-3-k",
+                        "maturity": "CTI3",
+                        "text": "k. Automated and semi-automated CTI runbooks are used for enrichment.",
+                        "slug": "Automated enrichment runbooks",
+                        "max": 3
+                    },
+                    {
+                        "id": "RESPONSE-3-l",
+                        "maturity": "CTI3",
+                        "text": "l. Current and anticipated threats are disseminated to relevant security teams using daily or weekly reporting.",
+                        "slug": "Regular threat dissemination",
+                        "max": 3
+                    }
+                ]
+            }
+        },
+        "THIRD-PARTIES": {
+            "1. Accelerate Detection of Third-Party Threats": {
+                "id": "THIRD-PARTIES-1",
+                "name": "Accelerate Detection of Third-Party Threats",
+                "practices": [
+                    {
+                        "id": "THIRD-PARTIES-1-a",
+                        "maturity": "CTI1",
+                        "text": "a. A variety of intelligence sources are employed to detect third-party compromise of suppliers.",
+                        "slug": "Supplier compromise detection",
+                        "max": 3
+                    },
+                    {
+                        "id": "THIRD-PARTIES-1-b",
+                        "maturity": "CTI1",
+                        "text": "b. Identify IT and OT dependencies to establish a list of third-parties.",
+                        "slug": "Identify third-party dependencies",
+                        "max": 3
+                    },
+                    {
+                        "id": "THIRD-PARTIES-1-c",
+                        "maturity": "CTI2",
+                        "text": "c. Intelligence about threats against third parties regularly includes contextualization to identify and reduce risks posed by current threats.",
+                        "slug": "Contextualized third-party intel",
+                        "max": 3
+                    },
+                    {
+                        "id": "THIRD-PARTIES-1-d",
+                        "maturity": "CTI2",
+                        "text": "d. Third-parties are prioritized according to defined parameters, such as business or information security risk.",
+                        "slug": "Risk-based third-party prioritization",
+                        "max": 3
+                    },
+                    {
+                        "id": "THIRD-PARTIES-1-e",
+                        "maturity": "CTI2",
+                        "text": "e. The list of third-parties is dynamically updated.",
+                        "slug": "Dynamic third-party list",
+                        "max": 3
+                    },
+                    {
+                        "id": "THIRD-PARTIES-1-f",
+                        "maturity": "CTI2",
+                        "text": "f. Develop an asssessment framework to determine acceptable/unacceptable risks and evaluate thrid parties accordingly.",
+                        "slug": "Third-party risk framework",
+                        "max": 3
+                    },
+                    {
+                        "id": "THIRD-PARTIES-1-g",
+                        "maturity": "CTI3",
+                        "text": "g. Specalized third-party risk management (TPRM) tooling is used to catalog, monitor, and record changes to vendor risk ratings based on the threat environment.",
+                        "slug": "TPRM tooling",
+                        "max": 3
+                    },
+                    {
+                        "id": "THIRD-PARTIES-1-h",
+                        "maturity": "CTI3",
+                        "text": "h. Intelligence about threats against third parties regularly includes prescriptive analysis and recommendations to proactively protect the organization against current and anticipated incidents.",
+                        "slug": "Prescriptive third-party intel",
+                        "max": 3
+                    },
+                    {
+                        "id": "THIRD-PARTIES-1-i",
+                        "maturity": "CTI3",
+                        "text": "i. Monitoring the news for information related to acquisition or merging of top-tier vendors by foreign companies.",
+                        "slug": "Vendor M&A monitoring",
+                        "max": 3
+                    },
+                    {
+                        "id": "THIRD-PARTIES-1-j",
+                        "maturity": "CTI3",
+                        "text": "j. Intelligence about threats against Third-Parties include geopolitical risk based on the location of top-tier vendors.",
+                        "slug": "Geopolitical risk assessment",
+                        "max": 3
+                    },
+                    {
+                        "id": "THIRD-PARTIES-1-k",
+                        "maturity": "CTI3",
+                        "text": "k. Cybercriinal underground intelligence is used to identify Third-Parties that have been compromised before they report the incident.",
+                        "slug": "Underground compromise detection",
+                        "max": 3
+                    }
+                ]
+            },
+            "2. Mitigate Third-Party Risk Exposure": {
+                "id": "THIRD-PARTIES-2",
+                "name": "Mitigate Third-Party Risk Exposure",
+                "practices": [
+                    {
+                        "id": "THIRD-PARTIES-2-a",
+                        "maturity": "CTI1",
+                        "text": "a. Selected personnel are assigned to monitor and triage potential third-party exposures involving top-tier vendors.",
+                        "slug": "Top-tier vendor monitoring",
+                        "max": 3
+                    },
+                    {
+                        "id": "THIRD-PARTIES-2-b",
+                        "maturity": "CTI1",
+                        "text": "b. Alerts are provided in an ad hoc manner for third-party incidents gleaned primarily from open sources.",
+                        "slug": "Ad hoc third-party alerts",
+                        "max": 3
+                    },
+                    {
+                        "id": "THIRD-PARTIES-2-c",
+                        "maturity": "CTI1",
+                        "text": "c. Vulnerability databases are regularly reviewed and compared with the third-party list.",
+                        "slug": "Vulnerability database review",
+                        "max": 3
+                    },
+                    {
+                        "id": "THIRD-PARTIES-2-d",
+                        "maturity": "CTI2",
+                        "text": "d. Evaluate potential suppliers cybersecurity practices, recommend internal risk mitigations, nad if a supplier is determiend to introduce an unacceptable level of risk, use alternative suppliers.",
+                        "slug": "Supplier security evaluation",
+                        "max": 3
+                    },
+                    {
+                        "id": "THIRD-PARTIES-2-e",
+                        "maturity": "CTI2",
+                        "text": "e. Continuous monitoring and alerting is in place for top-tier vendors to alert of potential threats emanating from open and commercial sources.",
+                        "slug": "Continuous top-tier monitoring",
+                        "max": 3
+                    },
+                    {
+                        "id": "THIRD-PARTIES-2-f",
+                        "maturity": "CTI2",
+                        "text": "f. Risks identified are collected, cumulated, and used to evaluate third parties when contracts have to be renewed.",
+                        "slug": "Risk-based contract renewal",
+                        "max": 3
+                    },
+                    {
+                        "id": "THIRD-PARTIES-2-g",
+                        "maturity": "CTI2",
+                        "text": "g. Collaboration with legal and procurement teams to develop contractual cybersecurity requirements for onboarding or renewing suppliers, such as a certain practices or maturity level, and require notification of any cyber incidents within a specified timeframe.",
+                        "slug": "Contractual security requirements",
+                        "max": 3
+                    },
+                    {
+                        "id": "THIRD-PARTIES-2-h",
+                        "maturity": "CTI3",
+                        "text": "h. Monitoring is extended to include all vendors across each tier level.",
+                        "slug": "All-tier vendor monitoring",
+                        "max": 3
+                    },
+                    {
+                        "id": "THIRD-PARTIES-2-i",
+                        "maturity": "CTI3",
+                        "text": "i. Intelligence includes prescriptive analysis about recommended COAs to reduce risk of exposure to the organization via third-party incidents.",
+                        "slug": "Prescriptive COAs",
+                        "max": 3
+                    },
+                    {
+                        "id": "THIRD-PARTIES-2-j",
+                        "maturity": "CTI3",
+                        "text": "j. Detections and playbooks are created and regularly tuned based on the threat environment and organizational risk.",
+                        "slug": "Threat-tuned playbooks",
+                        "max": 3
+                    },
+                    {
+                        "id": "THIRD-PARTIES-2-k",
+                        "maturity": "CTI3",
+                        "text": "k. Risk identified are collected, cumulated and used to evaluate Third-Parties when contracts have to be renewed.",
+                        "slug": "Risk-based contract renewal (CTI3)",
+                        "max": 3
+                    },
+                    {
+                        "id": "THIRD-PARTIES-2-l",
+                        "maturity": "CTI3",
+                        "text": "l. During the incident, Third-Parties vendors' risks that are identified are leveraged to motivate them to improve their security policies.",
+                        "slug": "Leverage incidents for improvement",
+                        "max": 3
+                    }
+                ]
+            },
+            "3. Improve Time to Response": {
+                "id": "THIRD-PARTIES-3",
+                "name": "Improve Time to Response",
+                "practices": [
+                    {
+                        "id": "THIRD-PARTIES-3-a",
+                        "maturity": "CTI1",
+                        "text": "a. Contracts are available and include Third-Party main contacts and communication channels.",
+                        "slug": "Third-party contact list",
+                        "max": 3
+                    },
+                    {
+                        "id": "THIRD-PARTIES-3-b",
+                        "maturity": "CTI2",
+                        "text": "b. Playbooks and SLAs are documented and Playbooks are updated after each incident.",
+                        "slug": "Documented playbooks & SLAs",
+                        "max": 3
+                    },
+                    {
+                        "id": "THIRD-PARTIES-3-c",
+                        "maturity": "CTI2",
+                        "text": "c. Remote access allowed to the Third-Parties vendors, in the business environment, are documented.",
+                        "slug": "Documented remote access",
+                        "max": 3
+                    },
+                    {
+                        "id": "THIRD-PARTIES-3-d",
+                        "maturity": "CTI2",
+                        "text": "d. The role and responsibilities of the CTI team are documented to prevent interference with other security teams.",
+                        "slug": "Documented CTI role",
+                        "max": 3
+                    },
+                    {
+                        "id": "THIRD-PARTIES-3-e",
+                        "maturity": "CTI3",
+                        "text": "e. The type of data hosted by Third-Party is documented.",
+                        "slug": "Documented third-party data",
+                        "max": 3
+                    },
+                    {
+                        "id": "THIRD-PARTIES-3-f",
+                        "maturity": "CTI3",
+                        "text": "f. Having a single point of contact with each Third-Parties.",
+                        "slug": "Single point of contact",
+                        "max": 3
+                    },
+                    {
+                        "id": "THIRD-PARTIES-3-g",
+                        "maturity": "CTI3",
+                        "text": "g. Enhance cross-functional relationship to coordinate incident response by making recommendations.",
+                        "slug": "Cross-functional IR coordination",
+                        "max": 3
+                    },
+                    {
+                        "id": "THIRD-PARTIES-3-h",
+                        "maturity": "CTI3",
+                        "text": "h. Remote access allowed to the Third-Party and can be revoked with limited impact on the business operations.",
+                        "slug": "Revocable remote access",
+                        "max": 3
+                    }
+                ]
+            }
+        },
+        "FRAUD": {
+            "1. Mitigate Financial Fraud": {
+                "id": "FRAUD-1",
+                "name": "Mitigate Financial Fraud",
+                "practices": [
+                    {
+                        "id": "FRAUD-1-a",
+                        "maturity": "CTI1",
+                        "text": "a. To combat exploitation and threat actor targeting, social media and open source sites are reviewed for posts of compromised customer credentials, gift cards, coupon scams, and credit cards in a mostly ad hoc manner to support mitigation or prevention of fraudulent activity.",
+                        "slug": "Ad hoc social media review",
+                        "max": 3
+                    },
+                    {
+                        "id": "FRAUD-1-b",
+                        "maturity": "CTI1",
+                        "text": "b. CTI team tracks the activity and any mentions of point of sale credit card skimmers on forums and social media.",
+                        "slug": "Track credit card skimmers",
+                        "max": 3
+                    },
+                    {
+                        "id": "FRAUD-1-c",
+                        "maturity": "CTI1",
+                        "text": "c. Intelligence sharing groups and private chat channels are monitored for money mule notifications and actioned with the appropriate teams(s).",
+                        "slug": "Monitor for money mules",
+                        "max": 3
+                    },
+                    {
+                        "id": "FRAUD-1-d",
+                        "maturity": "CTI1",
+                        "text": "d. Information about adversary targeting including brand impersonation and leaked credentials are delivered in a mostly ad hoc manner",
+                        "slug": "Ad hoc targeting info",
+                        "max": 3
+                    },
+                    {
+                        "id": "FRAUD-1-e",
+                        "maturity": "CTI2",
+                        "text": "e. Integration of ISAC and peer sharing into the organization's processes is done in a mostly ad-hoc manner.",
+                        "slug": "Ad hoc ISAC integration",
+                        "max": 3
+                    },
+                    {
+                        "id": "FRAUD-1-f",
+                        "maturity": "CTI2",
+                        "text": "f. Automated monitoring is in place for mentions of common fraud indicators including BEC, SMS phishing, invoice fraud, social engineering directed towards customers, and other relevant activity.",
+                        "slug": "Automated fraud monitoring",
+                        "max": 3
+                    },
+                    {
+                        "id": "FRAUD-1-g",
+                        "maturity": "CTI2",
+                        "text": "g. A cross-functional working group is dedicated to identifying and sharing current and emerging threats on a recurring cadence.",
+                        "slug": "Fraud working group",
+                        "max": 3
+                    },
+                    {
+                        "id": "FRAUD-1-h",
+                        "maturity": "CTI2",
+                        "text": "h. Threat context input is provided to the organization\u2019s training and education material and is aligned with observed cyber threat activities.",
+                        "slug": "Threat-informed training",
+                        "max": 3
+                    },
+                    {
+                        "id": "FRAUD-1-i",
+                        "maturity": "CTI3",
+                        "text": "i. Proactive tracking of fraud actor infrastructure and membership in private chat channels is done through automated collections and tooling.",
+                        "slug": "Proactive fraud actor tracking",
+                        "max": 3
+                    },
+                    {
+                        "id": "FRAUD-1-j",
+                        "maturity": "CTI3",
+                        "text": "j. Implementation of cyber deception methods (including honeypots and accounts) are used for adversary tracking and collecting intelligence on TTPs and IOCs.",
+                        "slug": "Deception for intel collection",
+                        "max": 3
+                    },
+                    {
+                        "id": "FRAUD-1-k",
+                        "maturity": "CTI3",
+                        "text": "k. Intelligence indicators and observables are automatically ingested, collected, and shared with ISAC or peer sharing groups into a TIP or other tooling.",
+                        "slug": "Automated ISAC sharing",
+                        "max": 3
+                    },
+                    {
+                        "id": "FRAUD-1-l",
+                        "maturity": "CTI3",
+                        "text": "l. Intelligence insights are used to create anti-fraud detections and regularly tuned based on the organization\u2019s fraud observations.",
+                        "slug": "Intel-driven fraud detections",
+                        "max": 3
+                    }
+                ]
+            },
+            "2. Improve Brand Impersonation Protection": {
+                "id": "FRAUD-2",
+                "name": "Improve Brand Impersonation Protection",
+                "practices": [
+                    {
+                        "id": "FRAUD-2-a",
+                        "maturity": "CTI1",
+                        "text": "a. Manual intelligence collection and analysis is done ad hoc for adversary targeting including brand impersonation on corporate domains, and social media accounts impersonating corporate brands and individuals.",
+                        "slug": "Ad hoc brand monitoring",
+                        "max": 3
+                    },
+                    {
+                        "id": "FRAUD-2-b",
+                        "maturity": "CTI1",
+                        "text": "b. Intelligence insights are used to drive decisions around MFA(such as limited usage of SMS, or phone calls where possible.",
+                        "slug": "Intel-driven MFA decisions",
+                        "max": 3
+                    },
+                    {
+                        "id": "FRAUD-2-c",
+                        "maturity": "CTI1",
+                        "text": "c. CTI team tracks threat actors associated with fraud and abuse targeting their brand(s).",
+                        "slug": "Track brand-targeting actors",
+                        "max": 3
+                    },
+                    {
+                        "id": "FRAUD-2-d",
+                        "maturity": "CTI1",
+                        "text": "d. CTI team tracks phishing kits being used against the organization\u2019s brand(s).",
+                        "slug": "Track phishing kits",
+                        "max": 3
+                    },
+                    {
+                        "id": "FRAUD-2-e",
+                        "maturity": "CTI2",
+                        "text": "e. Automation is used to detect malvertising campaigns and SEO poisoning for disruption actions.",
+                        "slug": "Automated malvertising detection",
+                        "max": 3
+                    },
+                    {
+                        "id": "FRAUD-2-f",
+                        "maturity": "CTI2",
+                        "text": "f. Automated alerting for adversary targeting, including brand impersonation, is used.",
+                        "slug": "Automated brand impersonation alerts",
+                        "max": 3
+                    },
+                    {
+                        "id": "FRAUD-2-g",
+                        "maturity": "CTI2",
+                        "text": "g. Automated identification and disruption of phishing kits targeting the organization\u2019s brand(s).",
+                        "slug": "Automated phishing kit disruption",
+                        "max": 3
+                    },
+                    {
+                        "id": "FRAUD-2-h",
+                        "maturity": "CTI2",
+                        "text": "h. Memberships in private intel sharing channels are utilized to track and mitigate risk from specific threat actors and campaigns.",
+                        "slug": "Private channel sharing",
+                        "max": 3
+                    },
+                    {
+                        "id": "FRAUD-2-i",
+                        "maturity": "CTI3",
+                        "text": "i. The CTI team provides actionable intelligence for implementation of canary tokens on AWS keys, sensitive documents, hostnames and URL\u2019s (web app exposed) to detect unwanted access or attempts to access.",
+                        "slug": "Intel for canary tokens",
+                        "max": 3
+                    }
+                ]
+            },
+            "3. Enhance Account Takeover Protection": {
+                "id": "FRAUD-3",
+                "name": "Enhance Account Takeover Protection",
+                "practices": [
+                    {
+                        "id": "FRAUD-3-a",
+                        "maturity": "CTI1",
+                        "text": "a. The CTI team tracks forums, sites, and threat actors associated with fraud and abuse targeting their brand(s) to facilitate customer ATO attacks.",
+                        "slug": "Track ATO actors",
+                        "max": 3
+                    },
+                    {
+                        "id": "FRAUD-3-b",
+                        "maturity": "CTI1",
+                        "text": "b. Manual identification of leaked customer credentials and accounts for sale on forums, social media, or websites is sent to relevant teams for immediate action.",
+                        "slug": "Manual credential leak detection",
+                        "max": 3
+                    },
+                    {
+                        "id": "FRAUD-3-c",
+                        "maturity": "CTI2",
+                        "text": "c. The CTI team provides intelligence to drive the creation of fraud specific automation and detections for anomalous customer sign-ins and sessions indicating potential ATO activity.",
+                        "slug": "Intel for ATO detection",
+                        "max": 3
+                    },
+                    {
+                        "id": "FRAUD-3-d",
+                        "maturity": "CTI2",
+                        "text": "d. Feedback loops are created to include the CTI team when users (customers and employees) report suspicious behavior indicative of customer ATO activity.",
+                        "slug": "ATO reporting feedback loop",
+                        "max": 3
+                    },
+                    {
+                        "id": "FRAUD-3-e",
+                        "maturity": "CTI3",
+                        "text": "e. The CTI team provides intelligence on likely threat activity to aid in the implementation of honeypots, canary tokens, honey accounts, etc. to improve detection of malicious use of customer credentials.",
+                        "slug": "Intel for deception tools",
+                        "max": 3
+                    },
+                    {
+                        "id": "FRAUD-3-f",
+                        "maturity": "CTI3",
+                        "text": "f. The CTI team provides intelligence on likely threat activity to support penetration tests, purple and red team engagements to test for social engineering (cyber and physical) and actively audit security controls.",
+                        "slug": "Intel for offensive testing",
+                        "max": 3
+                    }
+                ]
+            }
+        },
+        "WORKFORCE": {
+            "1. Support and Safeguard Human Resources Practices": {
+                "id": "WORKFORCE-1",
+                "name": "Support and Safeguard Human Resources Practices",
+                "practices": [
+                    {
+                        "id": "WORKFORCE-1-a",
+                        "maturity": "CTI1",
+                        "text": "a. CTI insights are regularly used to inform cybersecurity awareness and skills assessment strategies.",
+                        "slug": "CTI-informed awareness strategy",
+                        "max": 3
+                    },
+                    {
+                        "id": "WORKFORCE-1-b",
+                        "maturity": "CTI1",
+                        "text": "b. Direct communications \u2014 and at least periodic engagement \u2014 with workforce management leadership consistently help identify cyber-related skills required for safe and effective operations of the workforce.",
+                        "slug": "Leadership communication",
+                        "max": 3
+                    },
+                    {
+                        "id": "WORKFORCE-1-c",
+                        "maturity": "CTI2",
+                        "text": "c. On a periodic basis, CTI provides inputs to personnel vetting/screening procedures to inform hiring decisions and to minimize potential insider threat risks.",
+                        "slug": "CTI input for vetting",
+                        "max": 3
+                    },
+                    {
+                        "id": "WORKFORCE-1-d",
+                        "maturity": "CTI2",
+                        "text": "d. CTI insights are consistently applied to inform the development of organization-specific plans for data/technology access needs, separation, and transfer procedures.",
+                        "slug": "CTI-informed access policies",
+                        "max": 3
+                    },
+                    {
+                        "id": "WORKFORCE-1-e",
+                        "maturity": "CTI3",
+                        "text": "e. Personnel vetting procedures are tailored to individual positions based on risk analysis (see RISK) of the job role and the organization\u2019s threat profile. (see THREAT)",
+                        "slug": "Risk-based personnel vetting",
+                        "max": 3
+                    },
+                    {
+                        "id": "WORKFORCE-1-f",
+                        "maturity": "CTI3",
+                        "text": "f. Screening tools used to assess the cybersecurity awareness of candidates and inform follow-on/remedial training requirements are developed and updated with CTI insights.",
+                        "slug": "CTI-informed screening tools",
+                        "max": 3
+                    }
+                ]
+            },
+            "2. Support Development of Training and Education Assets": {
+                "id": "WORKFORCE-2",
+                "name": "Support Development of Training and Education Assets",
+                "practices": [
+                    {
+                        "id": "WORKFORCE-2-a",
+                        "maturity": "CTI1",
+                        "text": "a. Working relationships with the teams handling development and delivery of workforce training/education have been developed and engagement occurs on at least an ad hoc basis.",
+                        "slug": "Ad hoc training engagement",
+                        "max": 3
+                    },
+                    {
+                        "id": "WORKFORCE-2-b",
+                        "maturity": "CTI1",
+                        "text": "b. Insights provided by the CTI program are generally relevant to the organization, but not necessarily aligned to specific organizational units or job roles.",
+                        "slug": "General CTI insights",
+                        "max": 3
+                    },
+                    {
+                        "id": "WORKFORCE-2-c",
+                        "maturity": "CTI1",
+                        "text": "c. Workforce training/education initiatives are supported by CTI insights on at least an ad hoc basis and primarily related to significant changes in threat or vulnerability activity. (see THREAT)",
+                        "slug": "Ad hoc CTI training support",
+                        "max": 3
+                    },
+                    {
+                        "id": "WORKFORCE-2-d",
+                        "maturity": "CTI2",
+                        "text": "d. Security policy guidance, such as data protection and secure communication practices, is regularly reviewed by the CTI program \u2014 as are IR findings and other security reporting \u2014 to determine alignment of training/education initiatives with observed threat activity.",
+                        "slug": "Policy review for training alignment",
+                        "max": 3
+                    },
+                    {
+                        "id": "WORKFORCE-2-e",
+                        "maturity": "CTI2",
+                        "text": "e. Training/education teams are engaged on a routine basis to ensure alignment of materials and approaches with the organization\u2019s threat profile.",
+                        "slug": "Routine training engagement",
+                        "max": 3
+                    },
+                    {
+                        "id": "WORKFORCE-2-f",
+                        "maturity": "CTI2",
+                        "text": "f. CTI products and insights are routinely integrated into cybersecurity training and education efforts.",
+                        "slug": "Routine CTI training integration",
+                        "max": 3
+                    },
+                    {
+                        "id": "WORKFORCE-2-g",
+                        "maturity": "CTI2",
+                        "text": "g. Cybersecurity training materials are regularly reviewed by the CTI team to ensure the knowledge, skill, and ability gaps addressed in the curriculum are aligned with the organization\u2019s threat profile.",
+                        "slug": "CTI review of training materials",
+                        "max": 3
+                    },
+                    {
+                        "id": "WORKFORCE-2-h",
+                        "maturity": "CTI3",
+                        "text": "h. CTI insights are used to assist with tailoring cybersecurity awareness activities to individual job roles as appropriate for the organization\u2019s threat profile. (see THREAT)",
+                        "slug": "Role-based awareness training",
+                        "max": 3
+                    },
+                    {
+                        "id": "WORKFORCE-2-i",
+                        "maturity": "CTI3",
+                        "text": "i. The continuous improvement of training programs and education materials is facilitated by CTI insights into the current and anticipated threat landscape. (see PROGRAM)",
+                        "slug": "CTI-driven training improvement",
+                        "max": 3
+                    },
+                    {
+                        "id": "WORKFORCE-2-j",
+                        "maturity": "CTI3",
+                        "text": "j. CTI insights are regularly leveraged for simulation exercises including phishing and social-engineering attacks. (see THREAT)",
+                        "slug": "CTI-informed simulations",
+                        "max": 3
+                    },
+                    {
+                        "id": "WORKFORCE-2-k",
+                        "maturity": "CTI3",
+                        "text": "k. Regular review and evaluation is conducted to measure the effectiveness of CTI inclusion in workforce development efforts and improvements are made as appropriate.",
+                        "slug": "Measure CTI training effectiveness",
+                        "max": 3
+                    }
+                ]
+            },
+            "3. Support Cybersecurity Management in Workforce Development Efforts": {
+                "id": "WORKFORCE-3",
+                "name": "Support Cybersecurity Management in Workforce Development Efforts",
+                "practices": [
+                    {
+                        "id": "WORKFORCE-3-a",
+                        "maturity": "CTI1",
+                        "text": "a. Workforce development efforts are understood by the CTI program and it provides management with inputs as requested.",
+                        "slug": "Ad hoc workforce dev support",
+                        "max": 3
+                    },
+                    {
+                        "id": "WORKFORCE-3-b",
+                        "maturity": "CTI2",
+                        "text": "b. The effort to identify high-risk job roles and support management in developing workforce-centric mitigation strategies is led by the CTI program.",
+                        "slug": "Identify high-risk roles",
+                        "max": 3
+                    },
+                    {
+                        "id": "WORKFORCE-3-c",
+                        "maturity": "CTI2",
+                        "text": "c. Procedures and activities associated with CTI support to workforce management efforts are documented, followed, and maintained to ensure effective and ongoing support.",
+                        "slug": "Documented workforce support",
+                        "max": 3
+                    },
+                    {
+                        "id": "WORKFORCE-3-d",
+                        "maturity": "CTI3",
+                        "text": "d. The CTI program is intimately familiar with workforce management operations and has developed proficiency at pairing content with delivery mechanisms to help optimize impact.",
+                        "slug": "Optimized content delivery",
+                        "max": 3
+                    },
+                    {
+                        "id": "WORKFORCE-3-e",
+                        "maturity": "CTI3",
+                        "text": "e. Changes in the organization\u2019s threat profile that are likely to impact workforce management efforts are routinely briefed to cybersecurity leadership.",
+                        "slug": "Brief leadership on workforce impact",
+                        "max": 3
+                    },
+                    {
+                        "id": "WORKFORCE-3-f",
+                        "maturity": "CTI3",
+                        "text": "f. Contributions to workforce management efforts are tracked, evaluated, and routinely reported to leadership.",
+                        "slug": "Track workforce contributions",
+                        "max": 3
+                    }
+                ]
+            }
+        },
+        "ARCHITECTURE": {
+            "1. Inform Architecture Strategy to Improve Infrastructure Resilience": {
+                "id": "ARCHITECTURE-1",
+                "name": "Inform Architecture Strategy to Improve Infrastructure Resilience",
+                "practices": [
+                    {
+                        "id": "ARCHITECTURE-1-a",
+                        "maturity": "CTI1",
+                        "text": "a. Organizational cybersecurity architecture strategy is understood by the CTI team and support is provided on at least an ad hoc basis.",
+                        "slug": "Ad hoc architecture support",
+                        "max": 3
+                    },
+                    {
+                        "id": "ARCHITECTURE-1-b",
+                        "maturity": "CTI1",
+                        "text": "b. The CTI team is familiar with the personnel responsible for cybersecurity architecture planning and views them as stakeholders of the CTI program.",
+                        "slug": "Know architecture stakeholders",
+                        "max": 3
+                    },
+                    {
+                        "id": "ARCHITECTURE-1-c",
+                        "maturity": "CTI2",
+                        "text": "c. The CTI program regularly advises on gaps in cybersecurity architecture based on threat landscape trends. (see THREAT)",
+                        "slug": "Advise on architecture gaps",
+                        "max": 3
+                    },
+                    {
+                        "id": "ARCHITECTURE-1-d",
+                        "maturity": "CTI2",
+                        "text": "d. Elements of the cybersecurity architecture plan are integrated into the process of creating the organization's threat profile. (see THREAT)",
+                        "slug": "Architecture in threat profile",
+                        "max": 3
+                    },
+                    {
+                        "id": "ARCHITECTURE-1-e",
+                        "maturity": "CTI2",
+                        "text": "e. The cybersecurity architecture is proactively reviewed on a routine basis to ensure it accounts for changes in the organization's risk analysis information (see RISK) and threat profile. (see THREAT)",
+                        "slug": "Routine architecture review",
+                        "max": 3
+                    },
+                    {
+                        "id": "ARCHITECTURE-1-f",
+                        "maturity": "CTI3",
+                        "text": "f. The CTI program continuously informs cybersecurity architecture transformation, ensuring proactive adjustments to counter evolving threats through a bidirectional feedback loop. (see SITUATION and RISK)",
+                        "slug": "CTI-informed architecture transformation",
+                        "max": 3
+                    }
+                ]
+            },
+            "2. Support Prioritization of Cybersecurity Initiatives": {
+                "id": "ARCHITECTURE-2",
+                "name": "Support Prioritization of Cybersecurity Initiatives",
+                "practices": [
+                    {
+                        "id": "ARCHITECTURE-2-a",
+                        "maturity": "CTI1",
+                        "text": "a. Recommendations are provided on at least an ad hoc basis for cybersecurity architecture initiatives based upon the organization\u2019s threat landscape. (see THREAT)",
+                        "slug": "Ad hoc architecture recommendations",
+                        "max": 3
+                    },
+                    {
+                        "id": "ARCHITECTURE-2-b",
+                        "maturity": "CTI1",
+                        "text": "b. The CTI program uses the organization\u2019s Asset Inventory system, Change Management Database (CMDB), and Risk Register (see RISK) to gain a basic understanding of organizational assets, controls, operating environment, and risk posture.",
+                        "slug": "Basic org understanding (CMDB)",
+                        "max": 3
+                    },
+                    {
+                        "id": "ARCHITECTURE-2-c",
+                        "maturity": "CTI2",
+                        "text": "c. The CTI team leverages the Asset Inventory system and CMDB to help advise on newly discovered vulnerabilities, determine potential impact, and provide focused insights.",
+                        "slug": "CMDB-informed vulnerability advice",
+                        "max": 3
+                    },
+                    {
+                        "id": "ARCHITECTURE-2-d",
+                        "maturity": "CTI2",
+                        "text": "d. A standardized approach to using business impact analysis, risk analysis information (see RISK), and threat profiling (see THREAT) is used to produce recommendations and guidance on the establishment and maintenance of the cybersecurity architecture.",
+                        "slug": "Standardized recommendation approach",
+                        "max": 3
+                    },
+                    {
+                        "id": "ARCHITECTURE-2-e",
+                        "maturity": "CTI2",
+                        "text": "e. TThe CTI team analyzes incidents (see THREAT) and the threat landscape (see SITUATION) to predict which gaps in the cybersecurity architecture ecosystem may be exploited and should be prioritized for investment.",
+                        "slug": "Predictive gap analysis",
+                        "max": 3
+                    },
+                    {
+                        "id": "ARCHITECTURE-2-f",
+                        "maturity": "CTI3",
+                        "text": "f. The CTI program maintains awareness of key cybersecurity architecture initiatives and proactively prepares inputs.",
+                        "slug": "Proactive initiative support",
+                        "max": 3
+                    },
+                    {
+                        "id": "ARCHITECTURE-2-g",
+                        "maturity": "CTI3",
+                        "text": "g. Teams responsible for cybersecurity architecture trust the CTI program and routinely engage it for insights and support.",
+                        "slug": "Trusted architecture advisor",
+                        "max": 3
+                    }
+                ]
+            },
+            "3. Drive CTI Tools and Infrastructure Integration": {
+                "id": "ARCHITECTURE-3",
+                "name": "Drive CTI Tools and Infrastructure Integration",
+                "practices": [
+                    {
+                        "id": "ARCHITECTURE-3-a",
+                        "maturity": "CTI1",
+                        "text": "a. Use of CTI tools across the organization is ad hoc and largely stand-alone. CTI tools are used almost exclusively for research and correlation.",
+                        "slug": "Ad hoc tool use",
+                        "max": 3
+                    },
+                    {
+                        "id": "ARCHITECTURE-3-b",
+                        "maturity": "CTI1",
+                        "text": "b. Integration with IR platforms is ad hoc and implemented only as organization\u2019s risk analysis (see RISK) and threat profile require. (see THREAT)",
+                        "slug": "Ad hoc IR platform integration",
+                        "max": 3
+                    },
+                    {
+                        "id": "ARCHITECTURE-3-c",
+                        "maturity": "CTI2",
+                        "text": "c. CTI tools and infrastructure are integrated with monitoring and Incident Response platforms such as SOAR, SIEM, firewall, proxy, intrusion prevention system (IPS), web application firewall (WAF), or endpoint detection and response (EDR) solutions \u2014 to enhance and automate prevention and detection processes. (see RESPONSE)",
+                        "slug": "Security stack integration",
+                        "max": 3
+                    },
+                    {
+                        "id": "ARCHITECTURE-3-d",
+                        "maturity": "CTI2",
+                        "text": "d. Identity and access protection capabilities are fortified to prevent attacks, such as credential stuffing and account takeover (see ACCESS), through the integration of CTI tools and infrastructure.",
+                        "slug": "Tool-fortified access protection",
+                        "max": 3
+                    },
+                    {
+                        "id": "ARCHITECTURE-3-e",
+                        "maturity": "CTI3",
+                        "text": "e. CTI tools and infrastructure are used to support implementation of ML models for anomaly detection, behavioral analytics, and threat prediction.",
+                        "slug": "Support for ML models",
+                        "max": 3
+                    }
+                ]
+            }
+        },
+        "PROGRAM": {
+            "1. Integrate and Align CTI Program Strategy": {
+                "id": "PROGRAM-1",
+                "name": "Integrate and Align CTI Program Strategy",
+                "practices": [
+                    {
+                        "id": "PROGRAM-1-a",
+                        "maturity": "CTI1",
+                        "text": "a. The organization has a CTI program strategy, which may or may not align to the organization\u2019s greater cybersecurity program and is managed in an ad hoc manner. CTI program strategic documentation is incomplete and/or not up to date.",
+                        "slug": "Ad hoc program strategy",
+                        "max": 3
+                    },
+                    {
+                        "id": "PROGRAM-1-b",
+                        "maturity": "CTI2",
+                        "text": "b. The CTI program strategy defines goals, objectives, and metrics for the organization\u2019s CTI activities along with the structure and organization of the program. Clear maturity milestones are established.",
+                        "slug": "Defined program strategy",
+                        "max": 3
+                    },
+                    {
+                        "id": "PROGRAM-1-c",
+                        "maturity": "CTI2",
+                        "text": "c. The CTI program strategy and priorities are formally documented and aligned with the organization\u2019s cybersecurity mission, strategic objectives, and risk to critical infrastructure and assets. The CTI program strategy defines the organization\u2019s approach to provide program oversight and governance for CTI activities.",
+                        "slug": "Aligned program strategy",
+                        "max": 3
+                    },
+                    {
+                        "id": "PROGRAM-1-d",
+                        "maturity": "CTI2",
+                        "text": "d. The cybersecurity program strategy identifies any applicable standards compliance frameworks that must be satisfied by the CTI program (e.g., FFIEC, NIST CSF, NIS2, ISO27001, SOX, GLBA, etc.).",
+                        "slug": "Compliance framework identification",
+                        "max": 3
+                    },
+                    {
+                        "id":"PROGRAM-1-e",
+                        "maturity": "CTI3",
+                        "text": "e. The CTI program strategy is updated periodically and according to defined triggers, such as business changes, or changes to the risk and threat profile.",
+                        "slug": "Dynamic strategy updates",
+                        "max": 3
+                    },
+                    {
+                        "id": "PROGRAM-1-f",
+                        "maturity": "CTI3",
+                        "text": "f. The CTI program strategy closely aligns its objectives and key results to the organization\u2019s cybersecurity program objectives, ensuring all domains, especially WORKFORCE and ARCHITECTURE, are working in concert.",
+                        "slug": "OKR alignment",
+                        "max": 3
+                    }
+                ]
+            },
+            "2. Maintain and Improve CTI Program": {
+                "id": "PROGRAM-2",
+                "name": "Maintain and Improve CTI Program",
+                "practices": [
+                    {
+                        "id": "PROGRAM-2-a",
+                        "maturity": "CTI1",
+                        "text": "a. Senior management with proper authority provides support for the CTI program, at least in an ad hoc or informal manner.",
+                        "slug": "Ad hoc management support",
+                        "max": 3
+                    },
+                    {
+                        "id": "PROGRAM-2-b",
+                        "maturity": "CTI2",
+                        "text": "b. The CTI program is established according to the organization\u2019s overall cybersecurity program strategy.",
+                        "slug": "Strategy-aligned program",
+                        "max": 3
+                    },
+                    {
+                        "id": "PROGRAM-2-c",
+                        "maturity": "CTI2",
+                        "text": "c. The CTI program\u2019s KPIs are tied to those of the organization\u2019s overall cybersecurity program.",
+                        "slug": "Aligned KPIs",
+                        "max": 3
+                    },
+                    {
+                        "id": "PROGRAM-2-d",
+                        "maturity": "CTI2",
+                        "text": "d. Senior management sponsorship for the CTI program is visible and active.",
+                        "slug": "Active management sponsorship",
+                        "max": 3
+                    },
+                    {
+                        "id": "PROGRAM-2-e",
+                        "maturity": "CTI2",
+                        "text": "e. Responsibility for the CTI program is assigned to a role with sufficient authority.",
+                        "slug": "Assigned program owner",
+                        "max": 3
+                    },
+                    {
+                        "id": "PROGRAM-2-f",
+                        "maturity": "CTI2",
+                        "text": "f. Stakeholders for CTI program management activities are identified and actively involved.",
+                        "slug": "Active stakeholders",
+                        "max": 3
+                    },
+                    {
+                        "id": "PROGRAM-2-g",
+                        "maturity": "CTI3",
+                        "text": "g. CTI program activities are periodically reviewed and improved upon to ensure they align with and support the cybersecurity program strategy.",
+                        "slug": "Periodic program review",
+                        "max": 3
+                    },
+                    {
+                        "id": "PROGRAM-2-h",
+                        "maturity": "CTI3",
+                        "text": "h. CTI activities are independently reviewed to ensure conformance with cybersecurity policies and procedures, periodically and according to defined triggers, such as process changes.",
+                        "slug": "Independent policy review",
+                        "max": 3
+                    },
+                    {
+                        "id": "PROGRAM-2-i",
+                        "maturity": "CTI3",
+                        "text": "i. The CTI program addresses and enables the achievement of legal and regulatory compliance, as appropriate.",
+                        "slug": "Enable compliance",
+                        "max": 3
+                    },
+                    {
+                        "id": "PROGRAM-2-j",
+                        "maturity": "CTI3",
+                        "text": "j. The CTI element collaborates with external entities to contribute to the development and implementation of cybersecurity standards, controls, guidelines, leading practices, lessons learned, and emerging technologies.",
+                        "slug": "External collaboration",
+                        "max": 3
+                    },
+                    {
+                        "id": "PROGRAM-2-k",
+                        "maturity": "CTI3",
+                        "text": "k. The effectiveness of activities in the PROGRAM domain is evaluated and tracked for the purpose of continuous improvement.",
+                        "slug": "Track program effectiveness",
+                        "max": 3
+                    }
+                ]
+            },
+            "3. Support Cybersecurity Management in Program Alignment Efforts": {
+                "id": "PROGRAM-3",
+                "name": "Support Cybersecurity Management in Program Alignment Efforts",
+                "practices": [
+                    {
+                        "id": "PROGRAM-3-a",
+                        "maturity": "CTI1",
+                        "text": "a. No practice at CTI1.",
+                        "slug": "No CTI1 practice",
+                        "max": 3
+                    },
+                    {
+                        "id": "PROGRAM-3-b",
+                        "maturity": "CTI2",
+                        "text": "b. Documented procedures are established, followed, and maintained for activities in the PROGRAM domain.",
+                        "slug": "Documented program procedures",
+                        "max": 3
+                    },
+                    {
+                        "id": "PROGRAM-3-c",
+                        "maturity": "CTI2",
+                        "text": "c. CTI program product, process, and service templates are documented and have a clear business case identified for each one.",
+                        "slug": "Documented templates & business cases",
+                        "max": 3
+                    },
+                    {
+                        "id": "PROGRAM-3-d",
+                        "maturity": "CTI2",
+                        "text": "d. Adequate resources (people, funding, and tools) are provided to support activities in the PROGRAM domain.",
+                        "slug": "Adequate program resources",
+                        "max": 3
+                    },
+                    {
+                        "id": "PROGRAM-3-e",
+                        "maturity": "CTI3",
+                        "text": "e. Up-to-date policies or other organizational directives define requirements for activities in the PROGRAM domain and CTI program documentation is \u201cliving documents.\u201d",
+                        "slug": "Living program documents",
+                        "max": 3
+                    },
+                    {
+                        "id": "PROGRAM-3-f",
+                        "maturity": "CTI3",
+                        "text": "f. Responsibility, accountability, and authority for the performance of activities in the PROGRAM domain are assigned to personnel.",
+                        "slug": "Assigned program responsibility",
+                        "max": 3
+                    },
+                    {
+                        "id": "PROGRAM-3-g",
+                        "maturity": "CTI3",
+                        "text": "g. Personnel performing activities in the PROGRAM domain have the skills and knowledge needed to perform their assigned responsibilities. (see WORKFORCE)",
+                        "slug": "Skilled program personnel",
+                        "max": 3
+                    },
+                    {
+                        "id": "PROGRAM-3-h",
+                        "maturity": "CTI3",
+                        "text": "h. The PROGRAM domain incorporates continuous improvement as a core component of the organization's overal cybersecurity strategy, leveraging systematic problem-solving techniques.",
+                        "slug": "Program continuous improvement",
+                        "max": 3
+                    }
+                ]
+            }
+        }
+    }
+}

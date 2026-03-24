@@ -3,11 +3,6 @@ import pandas as pd
 import json
 import re
 
-import sys
-import pandas as pd
-import json
-import re
-
 def parse_domain_sheet(domain_df, domain_nickname):
     """
     Parses the DataFrame of a single "Domain X" sheet and extracts all
@@ -16,15 +11,13 @@ def parse_domain_sheet(domain_df, domain_nickname):
     objectives_dict = {}
     current_objective_name = None
     current_objective_index = 0
-    
-    # --- FIX: Added state variable to track maturity ---
     current_maturity_string = "CTI-Unknown"
     
-    # Find the header row by looking for 'SCORE' in the 5th column (index 4)
+    # Find the header row by looking for 'SCORE' in column D (index 3)
     # We search from row 3 (index 2) onwards
     try:
-        # Convert column 4 to string, strip whitespace, and find 'SCORE'
-        score_col_as_str = domain_df.iloc[2:, 4].astype(str).str.strip()
+        # Convert column 3 to string, strip whitespace, and find 'SCORE'
+        score_col_as_str = domain_df.iloc[2:, 3].astype(str).str.strip()
         header_row_index = domain_df.iloc[2:][score_col_as_str == 'SCORE'].index[0]
     except IndexError:
         print(f"Error: Could not find header row (looking for 'SCORE') in sheet for domain '{domain_nickname}'. Skipping sheet.")
@@ -36,62 +29,64 @@ def parse_domain_sheet(domain_df, domain_nickname):
         row_values = [str(cell) if pd.notna(cell) else "" for cell in row]
         
         # Get cell values
-        obj_name_cell = row_values[1].strip()      # Column B
-        maturity_cell = row_values[2].strip()      # Column C
-        practice_cell = row_values[3].strip()      # Column D
-        max_cell = row_values[5].strip()           # Column F
+        col_a = row_values[0].strip() if len(row_values) > 0 else ""      # Column A
+        col_b = row_values[1].strip() if len(row_values) > 1 else ""      # Column B
+        col_c = row_values[2].strip() if len(row_values) > 2 else ""      # Column C
+        col_d = row_values[3].strip() if len(row_values) > 3 else ""      # Column D (SCORE)
+        col_e = row_values[4].strip() if len(row_values) > 4 else ""      # Column E (MAX)
 
         # --- 1. Check if this is a "Subtotal" or "Domain Total" row ---
-        if "Subtotal" in practice_cell or "Domain Total" in practice_cell:
+        if "Subtotal" in col_c or "Domain Total" in col_c:
             current_objective_name = None # Reset
-            current_maturity_string = "CTI-Unknown" # --- FIX: Reset state ---
+            current_maturity_string = "CTI-Unknown"
             continue # Skip this row
 
         # --- 2. Check if this row is a new OBJECTIVE ---
-        elif obj_name_cell and not practice_cell and not max_cell:
-            current_objective_name = obj_name_cell
-            current_objective_index += 1
-            current_maturity_string = "CTI-Unknown" # --- FIX: Reset state ---
-            
-            obj_id = f"{domain_nickname}-{current_objective_index}"
-            
-            # Clean the objective name (remove "1. ", "2. ", etc.)
-            cleaned_name = re.sub(r'^\d+\.\s*', '', current_objective_name).strip()
-            
-            if current_objective_name not in objectives_dict:
-                objectives_dict[current_objective_name] = {
-                    "id": obj_id,
-                    "name": cleaned_name,
-                    "practices": []
-                }
+        # Objectives are in Column B and have no practice text
+        if col_b and not col_a and not col_e:
+            # Check if it's not a maturity level (CTI1, CTI2, CTI3)
+            if not col_b.startswith('CTI'):
+                current_objective_name = col_b
+                current_objective_index += 1
+                current_maturity_string = "CTI-Unknown"
+                
+                obj_id = f"{domain_nickname}-{current_objective_index}"
+                
+                # Clean the objective name (remove "1. ", "2. ", etc.)
+                cleaned_name = re.sub(r'^\d+\.\s*', '', current_objective_name).strip()
+                
+                if current_objective_name not in objectives_dict:
+                    objectives_dict[current_objective_name] = {
+                        "id": obj_id,
+                        "name": cleaned_name,
+                        "practices": []
+                    }
 
         # --- 3. Check if this row is a PRACTICE ---
-        elif practice_cell and max_cell.isdigit() and current_objective_name:
+        # Practices have text in col_c and a max score in col_e
+        elif col_c and col_e.isdigit() and current_objective_name:
             
-            # --- FIX: Logic to track and reuse maturity level ---
-            practice_maturity_num = re.sub(r'[^\d]', '', maturity_cell) # Gets number from Col C
+            # Check if col_b has a maturity level (CTI1, CTI2, CTI3)
+            if col_b.startswith('CTI'):
+                practice_maturity_num = re.sub(r'[^\d]', '', col_b)
+                if practice_maturity_num:
+                    current_maturity_string = f"CTI{practice_maturity_num}"
             
-            if practice_maturity_num:
-                # A new maturity is specified (e.g., "CTI 1"), update the state
-                current_maturity_string = f"CTI{practice_maturity_num}"
-            else:
-                # Column C is blank, reuse the last known maturity state
-                # If no state was ever set, it will be "CTI-Unknown"
-                pass 
-            # --- End of Fix ---
-            
-            # Extract the letter (a, b, c) from the practice text
-            practice_letter_match = re.match(r'^([a-z])\.\s+', practice_cell)
+            # Extract the letter (a, b, c) from the practice text in col_c
+            practice_letter_match = re.match(r'^([a-z])\.\s+', col_c)
             practice_letter = practice_letter_match.group(1) if practice_letter_match else 'x'
             
             # Create a unique practice ID
             practice_id = f"{domain_nickname}-{current_objective_index}-{practice_letter}"
             
+            # Strip the letter prefix from the practice text
+            cleaned_text = re.sub(r'^[a-z]\.\s+', '', col_c).strip()
+            
             practice_obj = {
                 "id": practice_id,
-                "maturity": current_maturity_string, # --- FIX: Use state variable ---
-                "text": practice_cell,
-                "max": int(max_cell),
+                "maturity": current_maturity_string,
+                "text": cleaned_text,
+                "max": int(col_e),
                 "score": 0,
                 "targetScore": 0,
                 "impact": 1,
@@ -109,7 +104,7 @@ def parse_domain_sheet(domain_df, domain_nickname):
                 print(f"Warning: Found practice for unknown objective '{current_objective_name}'. Skipping.")
 
         # --- 4. Check if this is a blank row ---
-        elif not obj_name_cell and not practice_cell:
+        elif not col_a and not col_b and not col_c:
             pass # It's a blank row, do nothing, keep current state
             
     return objectives_dict
@@ -153,22 +148,23 @@ def main(input_xlsx_path, output_json_path):
             
             # --- 1. Get Domain Info (for the `domains` array) ---
             
-            # Domain full name is in row 4 (index 3), column A (index 0)
+            # Domain full name is in row 4 (index 3), column B (index 1)
             # Convert to string first, then strip
-            domain_full_name = str(domain_df.iloc[3, 0]).strip()
+            domain_full_name = str(domain_df.iloc[3, 1]).strip()
             
             # Find the "Domain Total" row to get the max score
-            # Search in Column D (index 3)
-            # Convert column 3 to string, strip whitespace, and find 'Domain Total'
-            total_col_as_str = domain_df[3].astype(str).str.strip() # Changed from domain_df[0]
-            total_row_df = domain_df[total_col_as_str == 'Domain Total']
+            # In v1.3, "Domain Total" is in Column C (index 2)
+            # Convert column 2 to string, strip whitespace, and find 'Domain Total'
+            total_col_as_str = domain_df[2].astype(str).str.strip()
+            total_row_df = domain_df[total_col_as_str.str.contains('Domain Total', na=False)]
+                
             if total_row_df.empty:
                 print(f"Warning: Could not find 'Domain Total' row in '{sheet_name}'. Skipping domain.")
                 continue
                 
-            # Max score is in Column F (index 5) of that row
+            # Max score is in Column E (index 4) of that row
             # Convert to float first (in case it's "54.0") then to int
-            domain_max = int(float(total_row_df.iloc[0, 5])) # Changed from iloc[0, 2]
+            domain_max = int(float(total_row_df.iloc[0, 4]))
             
             # Add to the `domains` list
             CMM_DATA["domains"].append({
@@ -184,6 +180,8 @@ def main(input_xlsx_path, output_json_path):
 
         except Exception as e:
             print(f"Error: Failed to process sheet '{sheet_name}'. Error: {e}")
+            import traceback
+            traceback.print_exc()
 
     # --- 3. Write the output file ---
     print(f"\nProcessing complete. Writing to {output_json_path}...")
@@ -210,6 +208,3 @@ if __name__ == "__main__":
     input_file = sys.argv[1]
     output_file = sys.argv[2]
     main(input_file, output_file)
-
-
-
