@@ -336,6 +336,7 @@
                         <div class="relative h-96 w-full">
                             <canvas id="maturityRadarChart"></canvas>
                         </div>
+                        <p id="chartScaleIndicator" class="text-sm text-slate-500 italic mt-2 text-center hidden">* Chart scaled for visibility</p>
                     </div>
                     
                     <div class="bg-white p-6 rounded-lg shadow-md">
@@ -1505,31 +1506,61 @@ class Domain {
                 if (state.chartInstances.radar) {
                     state.chartInstances.radar.destroy();
                 }
+
+                // Calculate max value for chart scaling (highest value + 20)
+                let maxPercent = 0;
+                domainScores.forEach(d => {
+                    if (d.relevant) {
+                        maxPercent = Math.max(maxPercent, d.percent || 0);
+                        if (state.appMode === 'planning') {
+                            maxPercent = Math.max(maxPercent, d.targetPercent || 0);
+                        }
+                    }
+                });
+
+                let chartMax = Math.ceil(maxPercent / 10) * 10 + 20;
+                if (chartMax > 100) chartMax = 100;
+
+                const scaleIndicator = document.getElementById('chartScaleIndicator');
+                if (scaleIndicator) {
+                    if (chartMax < 100) {
+                        scaleIndicator.textContent = `* Chart scaled to ${chartMax}% for visibility`;
+                        scaleIndicator.classList.remove('hidden');
+                    } else {
+                        scaleIndicator.classList.add('hidden');
+                    }
+                }
+
+                const radarDatasets = [
+                    {
+                        label: 'Current Maturity %',
+                        data: domainScores.map(d => d.relevant ? d.percent : 0),
+                        backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                        borderColor: 'rgba(59, 130, 246, 1)',
+                        borderWidth: 2,
+                    }
+                ];
+
+                if (state.appMode === 'planning') {
+                    radarDatasets.push({
+                        label: 'Target Maturity %',
+                        data: domainScores.map(d => d.relevant ? d.targetPercent : 0),
+                        backgroundColor: 'rgba(22, 163, 74, 0.2)',
+                        borderColor: 'rgba(22, 163, 74, 1)',
+                        borderWidth: 2,
+                    });
+                }
+
                 state.chartInstances.radar = new Chart(radarCtx, {
                     type: 'radar',
                     data: {
                         labels: domainScores.map(d => d.nickname),
-                        datasets: [
-                            {
-                                label: 'Current Maturity %',
-                                data: domainScores.map(d => d.relevant ? d.percent : 0),
-                                backgroundColor: 'rgba(59, 130, 246, 0.2)',
-                                borderColor: 'rgba(59, 130, 246, 1)',
-                                borderWidth: 2,
-                            },
-                            {
-                                label: 'Target Maturity %',
-                                data: domainScores.map(d => d.relevant ? d.targetPercent : 0),
-                                backgroundColor: 'rgba(22, 163, 74, 0.2)',
-                                borderColor: 'rgba(22, 163, 74, 1)',
-                                borderWidth: 2,
-                            }
-                        ]
+                        datasets: radarDatasets
                     },
                     options: {
                         responsive: true,
                         maintainAspectRatio: false,
-                        scales: { r: { beginAtZero: true, max: 100, ticks: { stepSize: 20 } } }
+                        scales: { r: { beginAtZero: true, max: chartMax, ticks: { stepSize: 20 } } }
                     }
                 });
 
