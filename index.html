@@ -1824,8 +1824,8 @@
                         {
                             label: 'Current Maturity %',
                             data: domainScores.map(d => d.relevant ? d.percent : 0),
-                            backgroundColor: 'rgba(59, 130, 246, 0.2)',
-                            borderColor: 'rgba(59, 130, 246, 1)',
+                            backgroundColor: withAlpha(BRAND_COLORS.red, 0.2),
+                            borderColor: BRAND_COLORS.red,
                             borderWidth: 2,
                         }
                     ];
@@ -1834,8 +1834,8 @@
                         radarDatasets.push({
                             label: 'Target Maturity %',
                             data: domainScores.map(d => d.relevant ? d.targetPercent : 0),
-                            backgroundColor: 'rgba(22, 163, 74, 0.2)',
-                            borderColor: 'rgba(22, 163, 74, 1)',
+                            backgroundColor: withAlpha(BRAND_COLORS.blue, 0.2),
+                            borderColor: BRAND_COLORS.blue,
                             borderWidth: 2,
                         });
                     }
@@ -1844,22 +1844,7 @@
                         type: 'radar',
                         data: {
                             labels: domainScores.map(d => d.nickname),
-                            datasets: [
-                                {
-                                    label: 'Current Maturity %',
-                                    data: domainScores.map(d => d.relevant ? d.percent : 0),
-                                    backgroundColor: withAlpha(BRAND_COLORS.red, 0.2),
-                                    borderColor: BRAND_COLORS.red,
-                                    borderWidth: 2,
-                                },
-                                {
-                                    label: 'Target Maturity %',
-                                    data: domainScores.map(d => d.relevant ? d.targetPercent : 0),
-                                    backgroundColor: withAlpha(BRAND_COLORS.blue, 0.2),
-                                    borderColor: BRAND_COLORS.blue,
-                                    borderWidth: 2,
-                                }
-                            ]
+                            datasets: radarDatasets
                         },
                         options: {
                             responsive: true,
