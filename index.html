@@ -13,6 +13,8 @@
             redDark: '#cc312d',
             blue: '#2AB6F6',
             blueDark: '#1a9fd8',
+            green: '#22c55e',
+            greenDark: '#16a34a',
             sidebar: '#0E141C',
             sidebarHover: '#1a2330',
             muted: '#BCBCBC',
@@ -25,6 +27,8 @@
         root.style.setProperty('--brand-red-dark', BRAND_COLORS.redDark);
         root.style.setProperty('--brand-blue', BRAND_COLORS.blue);
         root.style.setProperty('--brand-blue-dark', BRAND_COLORS.blueDark);
+        root.style.setProperty('--brand-green', BRAND_COLORS.green);
+        root.style.setProperty('--brand-green-dark', BRAND_COLORS.greenDark);
         root.style.setProperty('--sidebar', BRAND_COLORS.sidebar);
         root.style.setProperty('--sidebar-hover', BRAND_COLORS.sidebarHover);
         root.style.setProperty('--muted', BRAND_COLORS.muted);
@@ -40,6 +44,8 @@
                             'red-dark': BRAND_COLORS.redDark,
                             blue: BRAND_COLORS.blue,
                             'blue-dark': BRAND_COLORS.blueDark,
+                            green: BRAND_COLORS.green,
+                            'green-dark': BRAND_COLORS.greenDark,
                         },
                         sidebar: {
                             DEFAULT: BRAND_COLORS.sidebar,
@@ -275,22 +281,22 @@
         }
 
         .maturity-dot:hover {
-            border-color: var(--brand-red);
+            border-color: var(--brand-blue);
         }
 
         .maturity-dot.active {
-            background-color: var(--brand-red);
-            border-color: var(--brand-red);
+            background-color: var(--brand-blue);
+            border-color: var(--brand-blue);
         }
 
         .maturity-dot.selected {
-            border-color: var(--brand-red-dark);
+            border-color: var(--brand-blue-dark);
             transform: scale(1.1);
-            box-shadow: 0 0 0 3px rgba(229, 56, 52, 0.3);
+            box-shadow: 0 0 0 3px rgba(42, 182, 246, 0.3);
         }
 
         .maturity-line.active {
-            background-color: var(--brand-red);
+            background-color: var(--brand-blue);
         }
 
         .target-dot {
@@ -308,22 +314,22 @@
         }
 
         .target-dot:hover {
-            border-color: var(--brand-blue);
+            border-color: var(--brand-green);
         }
 
         .target-dot.active {
-            background-color: var(--brand-blue);
-            border-color: var(--brand-blue);
+            background-color: var(--brand-green);
+            border-color: var(--brand-green);
         }
 
         .target-dot.selected {
-            border-color: var(--brand-blue-dark);
+            border-color: var(--brand-green-dark);
             transform: scale(1.1);
-            box-shadow: 0 0 0 3px rgba(42, 182, 246, 0.3);
+            box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.3);
         }
 
         .target-line.active {
-            background-color: var(--brand-blue);
+            background-color: var(--brand-green);
         }
 
         .sortable-header {
@@ -1766,13 +1772,13 @@
                             <td class="py-4 px-6 text-sm text-slate-500">${domain.totalMax}</td>
                             <td class="py-4 px-6 text-sm text-slate-500">
                                 <div class="w-full bg-muted rounded-full h-2.5">
-                                    <div class="bg-brand-red h-2.5 rounded-full" style="width: ${domain.percent.toFixed(0)}%"></div>
+                                    <div class="bg-brand-blue h-2.5 rounded-full" style="width: ${domain.percent.toFixed(0)}%"></div>
                                 </div>
                                 <span class="text-xs">${domain.percent.toFixed(1)}%</span>
                             </td>
                             <td class="py-4 px-6 text-sm text-slate-500">
                                 <div class="w-full bg-muted rounded-full h-2.5">
-                                    <div class="bg-brand-blue h-2.5 rounded-full" style="width: ${domain.targetPercent.toFixed(0)}%"></div>
+                                    <div class="bg-brand-green h-2.5 rounded-full" style="width: ${domain.targetPercent.toFixed(0)}%"></div>
                                 </div>
                                 <span class="text-xs">${domain.targetPercent.toFixed(1)}%</span>
                             </td>
@@ -1824,8 +1830,8 @@
                         {
                             label: 'Current Maturity %',
                             data: domainScores.map(d => d.relevant ? d.percent : 0),
-                            backgroundColor: withAlpha(BRAND_COLORS.red, 0.2),
-                            borderColor: BRAND_COLORS.red,
+                            backgroundColor: withAlpha(BRAND_COLORS.blue, 0.2),
+                            borderColor: BRAND_COLORS.blue,
                             borderWidth: 2,
                         }
                     ];
@@ -1834,8 +1840,8 @@
                         radarDatasets.push({
                             label: 'Target Maturity %',
                             data: domainScores.map(d => d.relevant ? d.targetPercent : 0),
-                            backgroundColor: withAlpha(BRAND_COLORS.blue, 0.2),
-                            borderColor: BRAND_COLORS.blue,
+                            backgroundColor: withAlpha(BRAND_COLORS.green, 0.2),
+                            borderColor: BRAND_COLORS.green,
                             borderWidth: 2,
                         });
                     }
@@ -1864,7 +1870,7 @@
                             labels: ['Assessed', 'Not Assessed'],
                             datasets: [{
                                 data: [grandTotalAssessed, grandTotalPractices - grandTotalAssessed],
-                                backgroundColor: [BRAND_COLORS.red, BRAND_COLORS.muted],
+                                backgroundColor: [BRAND_COLORS.blue, BRAND_COLORS.muted],
                                 borderWidth: 1
                             }]
                         },
